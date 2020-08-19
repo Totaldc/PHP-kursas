@@ -33,9 +33,13 @@ for($count; $count > 0; $count-=3){
         print "<br>";
         print $count;
         for($i = 1; $i <= $count; $i++){
-
-            print "<img src=\"https://images-na.ssl-images-amazon.com/images/I/81-UXgGcn7L._AC_SL1500_.jpg\" width=\"100px\">";
+            if($i < $count){
+                print "<img src=\"https://previews.123rf.com/images/belchonock/belchonock1802/belchonock180279729/96003599-almost-empty-beer-glass-isolated-on-white.jpg\" width=\"100px\">";
+            }else{
+                print "<img src=\"https://images-na.ssl-images-amazon.com/images/I/81-UXgGcn7L._AC_SL1500_.jpg\" width=\"100px\">";
+            }
         } 
+
 
 
 }
