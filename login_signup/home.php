@@ -13,6 +13,8 @@ session_start();
 </head>
 <body>
 
+<a href="logout.php">Logout</a>
+
 <h1>WELCOME <?php print $_SESSION['username']; ?></h1>
     
 </body>
