@@ -103,6 +103,14 @@
 		$hud['stats'][$key] = $stat;
 	}
 
+
+	//armor bar
+
+	$total = rand(1, 5000);
+	$current = rand(1, $total);
+	$percent = round(($current / $total) * 100, 1)
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -199,6 +207,25 @@
 			width: 200px;
 		}
 
+		/* armor bar */
+
+		.outter{
+			position: absolute;
+			left: 233px;
+			top: 55px;
+			height:10px;
+			width:115px;
+			border:solid 1px black;
+		}
+
+		.inner{
+			height:10px;
+			width: <?php print $percent; ?>%;
+			border-right:solid 1px black;
+			background-color:blue;
+		}
+
+
 
 
 	</style>
@@ -226,6 +253,10 @@
 				</div>
 		<?php endforeach; ?>
 
+		
+	<div class="outter">
+		<div class="inner"></div>
+	</div>
 	
 	
 </div>
