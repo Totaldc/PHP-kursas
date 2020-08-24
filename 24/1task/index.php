@@ -108,7 +108,13 @@
 
 	$total = rand(1, 5000);
 	$current = rand(1, $total);
-	$percent = round(($current / $total) * 100, 1)
+	$percent = round(($current / $total) * 100, 1);
+
+	//health bar
+
+	$htotal = rand(1, 5000);
+	$hcurrent = rand(1, $htotal);
+	$hpercent = round(($hcurrent / $htotal) * 100, 1);
 
 
 ?>
@@ -216,6 +222,7 @@
 			height:10px;
 			width:115px;
 			border:solid 1px black;
+			background-color: #DCDCDC;
 		}
 
 		.inner{
@@ -225,6 +232,24 @@
 			background-color:blue;
 		}
 
+		/* HEALT BAR */
+
+		.h-outter{
+			position: absolute;
+			left: 10px;
+			top: 230px;
+			height:25px;
+			width:180px;
+			border:solid 1px black;
+			background-color: #DCDCDC;
+		}
+
+		.h-inner{
+			height:25px;
+			width: <?php print $hpercent; ?>%;
+			border-right:solid 1px black;
+			background-color:red;
+		}
 
 
 
@@ -256,6 +281,10 @@
 		
 	<div class="outter">
 		<div class="inner"></div>
+	</div>
+
+	<div class="h-outter">
+		<div class="h-inner"></div>
 	</div>
 	
 	
