@@ -36,8 +36,11 @@ $hud = [
 	],
 
 	'stars' => [
+		[
+			'star_full'  => '⭐',
+			'star_empty' => '✰',
+		],
 
-		'star'  => '⭐',
 	],
 ];
 
@@ -328,23 +331,28 @@ $cash = 1000 + 200 * $counter;
 		</div>
 
 		<div class="stars">
-
 			<?php
+				$star_count  =  0;
+				if($counter > 0){
+					for($i = 1; $i <= $counter; $i++){
+						foreach ($hud['stars'] as $star) {
+							print $star['star_full'];
+							$star_count++;
+						}
+					}
 
-			for ($i = 1; $i <= $counter; $i++) {
-				foreach ($hud['stars'] as $star) {
-					print $star;
-				}
-			}
+					for($j = $star_count+1; $j <= 6; $j++){
+						foreach ($hud['stars'] as $star) {
+							print $star['star_empty'];
+							$star_count++;
+						}
+					}
 
-
+				} 
+				
+			
 			?>
-
 		</div>
-
-
-
-
 	</div>
 </body>
 
