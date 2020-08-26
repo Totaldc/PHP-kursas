@@ -21,6 +21,7 @@
                     <span>Vartotojo pavarde: <?php print $_POST['lname'] ?></span>
                     <span>Vartotojo emailas: <?php print $_POST['email'] ?></span>
                     <span>Lytis: <?php print $_POST['gender'] ?></span>
+                    <span>Veikla: <?php print $_POST['ocupation'] ?></span>
                 </div>
             </div>
         </div>

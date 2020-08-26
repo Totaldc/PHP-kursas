@@ -34,6 +34,11 @@ if (isset($_POST['email']) && isset($_POST['pass1']) && isset($_POST['pass2']) &
         <input type="radio" name="gender" id="male" value="male">
         <label for="female">Female: </label>
         <input type="radio" name="gender" id="female" value="female">
+        <select name="ocupation">
+            <option value="Bedarbis">Bedarbis</option>
+            <option value="Dirbantis">dirbantis</option>
+            <option value="Nesakysiu">Nesakysiu</option>
+        </select>
         <input type="password" name="pass1" id="pass1" placeholder="password">
         <input type="password" name="pass2" id="pass2" placeholder="reenter password">
         <input type="submit">
