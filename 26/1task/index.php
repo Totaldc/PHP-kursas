@@ -3,17 +3,15 @@
 <?php
 $x = $_POST['number'];
 
-function square($x){
+function square($x)
+{
 
-print  $x  * $x;
-
+    print  $x  * $x;
 }
 
 square($x);
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,13 +21,9 @@ square($x);
     <title>Document</title>
 </head>
 <body>
-    
-    <form  method="POST">
-
-    <input type="number" name="number" id="name" placeholder="Enter number">
-    <input type="submit">
-
+    <form method="POST">
+        <input type="number" name="number" id="number" placeholder="Enter number">
+        <input type="submit">
     </form>
-
 </body>
 </html>
