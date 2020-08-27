@@ -27,18 +27,16 @@ function input_attr(string $field_id, array $field): string
 }
 
 
-function button_attr(string $field_id, array $field): string
+
+
+
+function button_attr ($button_id, $button)
 {
-    $attributes = [
-        'name' => $field_id,
-        'type' => $field['type'],
-        'value' => $field['value'] ?? ''
-    ];
-    $attributes += $field['extra']['attr'];
-    return html_attr($attributes);
+	$buttons = [
+		'value' => $button_id,
+		'title' => $button['title'],
+	];
+	$buttons += $button['extra']['attr'] ?? [];
+	return html_attr($buttons);
 }
-
-
-
-
 

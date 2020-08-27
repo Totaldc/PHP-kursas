@@ -22,13 +22,11 @@ $form = [
     ],
     'buttons' => [
         'save' => [
-            'save' => [
                 'title' => 'Join',
                 'extra' => [
                     'attr' => [
                         'class' => 'big-button'
                     ],
-                ],
             ],
         ],
     ],
