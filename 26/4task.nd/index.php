@@ -3,15 +3,19 @@
 
 
 
-if (isset($_POST['email']) && isset($_POST['pass1']) && isset($_POST['pass2']) && isset($_POST['user_name']) && isset($_POST['lname']) && isset($_POST['gender'])) {
+if (isset($_POST['email']) && isset($_POST['pass1']) && isset($_POST['pass2']) && isset($_POST['user_name']) && isset($_POST['lname']) && isset($_POST['gender']) && isset($_POST['why'])) {
     if($_POST['pass1'] === $_POST['pass2']){
         $message = 'Prisijungti nepavyko';
     } else{
         
     }
-   } else{
+
+} else{
        $message = 'Suvesk visus laukus';
    }
+
+  
+
 
 
 ?>
@@ -39,6 +43,8 @@ if (isset($_POST['email']) && isset($_POST['pass1']) && isset($_POST['pass2']) &
             <option value="Dirbantis">dirbantis</option>
             <option value="Nesakysiu">Nesakysiu</option>
         </select>
+        <input type="checkbox" id="vehicle1" name="why[]" value="Todel">
+        <input type="checkbox" id="vehicle1" name="why[]" value="Va todel">
         <input type="password" name="pass1" id="pass1" placeholder="password">
         <input type="password" name="pass2" id="pass2" placeholder="reenter password">
         <input type="submit">

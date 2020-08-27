@@ -22,6 +22,12 @@
                     <span>Vartotojo emailas: <?php print $_POST['email'] ?></span>
                     <span>Lytis: <?php print $_POST['gender'] ?></span>
                     <span>Veikla: <?php print $_POST['ocupation'] ?></span>
+                    <span>Priezastis registruotis: <?php $why = $_POST['why'];
+                                                    $n = count($why);
+
+                                                    for ($i = 0; $i < $n; $i++) {
+                                                        print ($why[$i] . " ");
+                                                    }   ?></span>
                 </div>
             </div>
         </div>
