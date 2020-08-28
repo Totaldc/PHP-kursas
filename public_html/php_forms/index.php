@@ -19,13 +19,15 @@ $form = [
                 ],
             ],
         ],
-        'max' => [
+    ],
+    'fields' => [
+        'sex' => [
             'label' => 'Lytis',
             'type' => 'select',
-            'options' => [
-                'male' => 'Kardanas',
-                'female' => 'Mova',
-            ],
+                'options' => [
+                    'male' => 'Kardanas',
+                    'female' => 'Mova'
+                ],
         ],
     ],
     'buttons' => [

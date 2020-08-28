@@ -64,7 +64,9 @@ function option_attr($option_id)
 {
 	$options = [
         'title' => $option_id,
-	];
+    ];
+    
+    $option_title = $option_field['options'] ?? [];
 	return html_attr($options);
 }
 

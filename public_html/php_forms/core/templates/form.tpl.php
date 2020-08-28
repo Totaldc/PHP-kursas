@@ -8,7 +8,7 @@
 
         <?php foreach($form['fields'] as $select_id => $field): ?>
             <?php foreach ($field['options'] as $option_id => $option_field) : ?>
-					<option <?php print option_attr($option_id) ?>>
+                    <option <?php print option_attr($option_id); ?>>
                         <?php print $option_field ; ?>
 					</option>
                 <?php endforeach; ?>
