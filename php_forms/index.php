@@ -1,6 +1,6 @@
 <?php
 
-require 'functions/html.php';
+require 'bootloader.php';
 
 
 $form = [
@@ -19,6 +19,14 @@ $form = [
                 ],
             ],
         ],
+        'max' => [
+            'label' => 'Lytis',
+            'type' => 'select',
+            'options' => [
+                'male' => 'Kardanas',
+                'female' => 'Mova',
+            ],
+        ],
     ],
     'buttons' => [
         'save' => [
@@ -28,6 +36,11 @@ $form = [
                         'class' => 'big-button'
                     ],
             ],
+        ],
+    ],
+    'labels' => [
+        'email' => [
+            'title' => 'labelis',
         ],
     ],
 ];
@@ -47,7 +60,7 @@ $form = [
 </head>
 
 <body>
-    <?php include 'templates/form.tpl.php'; ?>
+    <?php include 'core/templates/form.tpl.php'; ?>
 </body>
 
 </html>
