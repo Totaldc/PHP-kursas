@@ -55,7 +55,7 @@ class Database
             }
         }
 
-        $this-stmt->bindValue($param. $value, $type);
+        $this->stmt->bindValue($param. $value, $type);
     }
 
     public function execute(){
