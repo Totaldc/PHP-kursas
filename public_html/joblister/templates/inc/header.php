@@ -16,15 +16,12 @@
             <nav>
                 <ul class="nav nav-pills float-right">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="create.php">Create Listing</a>
                     </li>
                 </ul>
             </nav>
-            <h3 class="text-muted">Project name</h3>
+            <h3 class="text-muted"><?php print SITE_TITLE; ?></h3>
         </div>
