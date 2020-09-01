@@ -97,6 +97,7 @@ $form = [
     ],
 ];
 
+
 function returnFields($form)
 {
     $fields = [];
@@ -134,17 +135,12 @@ function sanitize_form_input_values($form)
     }
 }
 
-
 var_dump(sanitize_form_input_values($form));
 
 
 function sanitize_post($inpval, $form)
 {
-
     var_dump($inpval);
-
-
-
     foreach ($inpval  as $value) {
         $filter_params[$value] =  sanitize_form_input_values($form);
     }
@@ -154,9 +150,24 @@ function sanitize_post($inpval, $form)
 $input = sanitize_post($inpval, $form);
 var_dump($input);
 
+
+
+function validate_form(&$form, $input)
+{
+    foreach ($form['fields'] as $key => &$field) {
+        if ($input[$key] === '') {
+            $field['error'] = 'palikote tuscia laukeli';
+            return $field['error'];
+        } 
+    }
+}
+
+$error = validate_form($form, $input);
+
+var_dump($error);
+
 ?>
 
-​
 <!DOCTYPE html>
 <html lang="en">
 ​
@@ -172,8 +183,11 @@ var_dump($input);
 <body>
     <?php include 'core/templates/form.tpl.php'; ?>
     <p><?php print $input['name']; ?></p>
+    <p><?php print $error; ?></p>
     <p><?php print $input['email']; ?></p>
+    <p><?php print $error; ?></p>
     <p><?php print $input['phone']; ?></p>
+    <p><?php print $error; ?></p>
     <p><?php print $input['checkbox']; ?></p>
     <p><?php print $input['sex']; ?></p>
 </body>

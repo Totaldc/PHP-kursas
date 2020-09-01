@@ -110,6 +110,8 @@ function sanitize_post($fields)
     $input = sanitize_post($fields);
     var_dump($input);
 
+    
+
 ?>
 
 <html>
@@ -122,4 +124,10 @@ function sanitize_post($fields)
         <p><?php print $input['checkbox'];?></p>
         <p><?php print $input['sex'];?></p>
     </body>
+
+    <form method="POST">
+    <input type="text" name="vardas" placeholder="<Bocmanas>">
+    <input type="text" name="pavarde" placeholder="Bebrauskas">
+    <button>Submit</button>
+</form>
 </html>
