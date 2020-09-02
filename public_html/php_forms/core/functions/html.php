@@ -129,30 +129,24 @@ function sanitize_form_input_values (array $form): array
 function validate_form(&$form, $form_values)
 {
     $success = true;
-    foreach ($form['fields'] as $key => &$field) {
-        
-        
+	
+	foreach($form['fields'] as $key => &$field){
+		// got through validators array
+		foreach($field['validators'] as $validator){
+			// check if function can be called
+			if(is_callable($validator)){
+				//call function
+				if($validator($form_values[$key], $field)){
+					$field['value'] = $form_values[$key];
+				} else {
+					$success = false;
+				break;
+				}
+			}
+		}
+	}
+	
 
-        if (in_array('validate_field_not_empty', $field['validators'] )) {
-            if (validate_field_not_empty($form_values[$key], $field)) { 
-                $field['value'] = $form_values[$key];
-              
-            } else {
-                $success = false;
-            }
-        }
-
-        
-        if (in_array('validate_field_is_number', $field['validators'] )) {
-            if (validate_field_is_number($form_values[$key], $field)) { 
-                $field['value'] = $form_values[$key];
-            
-            } else {
-                $success = false;
-            }
-        }
-
-}
 return $success;
 }
 

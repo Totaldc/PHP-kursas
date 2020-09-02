@@ -25,3 +25,4 @@ function validate_field_is_number($field_value, &$field){
         return true;
     }
 }
+
