@@ -1,196 +1,155 @@
 <?php
 
-require 'bootloader.php';
+require('bootloader.php');
 
 $form = [
-    'attr' =>
-    [
-        'action' => 'index.php',
-        'method' => 'POST',
-        'class' => 'my-form',
-        'id' => 'login-form',
-    ],
-    'fields' =>
-    [
-        'name' => [
-            'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-            'label' => 'Name',
-            'type' => 'text',
-            // 'value' => 'name',
-            'extra' =>
-            [
-                'attr' =>
-                [
-                    'class' => 'name-field',
-                    'placeholder' => 'Vardas',
-                ],
-            ],
-        ],
-        'email' => [
-            'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-            // 'label' => 'E-Mail',
-            'type' => 'email',
-            // 'value' => 'test-mail',
-            'extra' =>
-            [
-                'attr' =>
-                [
-                    'class' => 'email-field',
-                    'placeholder' => 'lopo@email.com',
-                ],
-            ],
-        ],
-        'phone' => [
-            'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-            'label' => 'Phone',
-            'type' => 'tel',
-            // 'value' => 'phone',
-            'extra' =>
-            [
-                'attr' =>
-                [
-                    'class' => 'phone-field',
-                    'placeholder' => 'Phone',
-                ],
-            ],
-        ],
-        'checkbox' => [
-            'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-            'label' => 'I have a bike',
-            'type' => 'checkbox',
-            'value' => 'Bike',
-            'extra' =>
-            [
-                'attr' =>
-                [
-                    'class' => 'checkbox-field',
-                ],
-            ],
-        ],
-        'sex' => [
-            'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-            'label' => 'Lytis',
-            'type' => 'select',
-            'value' => 'female',
-            // 'id' => 'kazkoks',
-            'options' => [
-                'male' => 'Kardanas',
-                'female' => 'Mova',
-                'other' => 'Kardamova',
-            ],
-        ],
-    ],
-    'buttons' =>
-    [
-        'save' =>
-        [
-            'title' => 'Join',
-            'extra' =>
-
-            [
-                'attr' =>
-                [
-                    'class' => 'big-button',
-                ],
-            ],
-        ],
-    ],
+	'attr' => [
+		'action' => 'index.php',
+		'class' => 'my-form',
+		'id' => 'login-form',
+	],
+	'fields' => [
+		'first_name' => [
+			'label' => 'First Name:',
+			'filter' => FILTER_SANITIZE_ENCODED,
+			'value' => '',
+			'type' => 'text',
+			'validators' => [
+                'validate_field_not_empty',
+                'validate_field_is_number'
+			],
+			'extra' => [
+				'attr' => [
+					'class' => 'my-class',
+					'placeholder' => 'Pvz. Aivaras',
+				],
+			],
+		],
+		'last_name' => [
+			'label' => 'Last Name:',
+			'filter' => FILTER_SANITIZE_ENCODED,
+			'value' => '',
+			'type' => 'text',
+            'validators' => [
+                'validate_field_not_empty',
+                'validate_field_is_number'
+			],
+			'extra' => [
+				'attr' => [
+					'class' => 'my-class',
+					'placeholder' => 'Pvz. Kybartaitis',
+				],
+			],
+		],
+		'email' => [
+			'label' => 'Your Email:',
+			'value' => '',
+			'type' => 'email',
+            'validators' => [
+                'validate_field_not_empty',
+                'validate_field_is_number'
+			],
+			'extra' => [
+				'attr' => [
+					'class' => 'my-class',
+					'placeholder' => 'Pvz. aivaras@makdraiveris.lt',
+				],
+			],
+		],
+		'sex' => [
+			'label' => 'Sex:',
+			'type' => 'select',
+			'value' => '',
+            'validators' => [
+                'validate_field_not_empty',
+                'validate_field_is_number'
+			],
+			'options' => [
+				'male' => 'Male',
+				'female' => 'Female',
+				'trans' => 'Transexual',
+				'other' => [
+					'title' => 'Other',
+				],
+			],
+		],
+	],
+	'buttons' => [
+		'submit' => [
+			'title' => 'Submit',
+			'type' => 'submit',
+			'value' => 'submit',
+			'extra' => [
+				'attr' => [
+					'class' => 'big-button',
+				],
+			],
+		],
+	],
 ];
 
 
-function returnFields($form)
-{
-    $fields = [];
-    foreach ($form['fields'] as $key => $field) {
-        $fields[] = $key;
-    }
-    return $fields;
+if (!empty($_POST)) {
+	$form_values = sanitize_form_input_values($form);
+	validate_form($form, $form_values);
 }
-
-$inpval = returnFields($form);
-
-// function sanitize_post($fields)
-// {
-
-//     var_dump($fields);
-
-//     foreach ($fields as $value) {
-//         $filter_params[$value] = FILTER_SANITIZE_SPECIAL_CHARS;
-//     }
-//     return filter_input_array(INPUT_POST, $filter_params);
-// }
-
-//     $input = sanitize_post($fields);
-//     var_dump($input);
-
-function sanitize_form_input_values($form)
-{
-    foreach ($form['fields'] as  $value) {
-        foreach ($value as $key => $item) {
-            if ($key === 'filter') {
-                $filter = $item;
-                return $filter;
-            }
-        }
-    }
-}
-
-var_dump(sanitize_form_input_values($form));
-
-
-function sanitize_post($inpval, $form)
-{
-    var_dump($inpval);
-    foreach ($inpval  as $value) {
-        $filter_params[$value] =  sanitize_form_input_values($form);
-    }
-    return filter_input_array(INPUT_POST, $filter_params);
-}
-
-$input = sanitize_post($inpval, $form);
-var_dump($input);
-
-
-
-function validate_form(&$form, $input)
-{
-    foreach ($form['fields'] as $key => &$field) {
-        if ($input[$key] === '') {
-            $field['error'] = 'palikote tuscia laukeli';
-            return $field['error'];
-        } 
-    }
-}
-
-$error = validate_form($form, $input);
-
-var_dump($error);
-
+//var_dump($form);
+//var_dump($form_values);
 ?>
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-​
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Form from array</title>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style>
+        form {
+            box-shadow: 0 4px 6px 2px #555555;
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label span {
+            margin-bottom: 5px;
+        }
+
+        form input, select {
+            padding: 10px;
+        }
+
+        form span {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        form .error {
+            color: #660404;
+            /*background-color: rgba(255, 0, 0, 0.2);*/
+            padding: 10px;
+        }
+
+        form button {
+            padding: 10px;
+        }
+	</style>
+	<title>Document</title>
 </head>
-​
-
 <body>
-    <?php include 'core/templates/form.tpl.php'; ?>
-    <p><?php print $input['name']; ?></p>
-    <p><?php print $error; ?></p>
-    <p><?php print $input['email']; ?></p>
-    <p><?php print $error; ?></p>
-    <p><?php print $input['phone']; ?></p>
-    <p><?php print $error; ?></p>
-    <p><?php print $input['checkbox']; ?></p>
-    <p><?php print $input['sex']; ?></p>
+<main>
+	<?php include('core/templates/form.tpl.php'); ?>
+	<p><?php print $form_values['first_name'] ?? 'Neivesta' ?></p>
+	<p><?php print $form_values['last_name'] ?? 'Neivesta' ?></p>
+	<p><?php print $form_values['email'] ?? 'Neivesta' ?></p>
+	<p><?php print $form_values['sex'] ?? 'Neivesta' ?></p>
+</main>
 </body>
-​
-
 </html>
