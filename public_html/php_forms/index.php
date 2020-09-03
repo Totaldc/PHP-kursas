@@ -82,7 +82,11 @@ $form = [
             'validators' => [
                 'validate_field_not_empty',
 				'validate_field_is_number',
-				'validate_field_is_diff1',
+				// 'validate_field_is_diff1',
+				'validate_field_range' => [
+					'min' => 10,
+					'max' => 50,
+				]
 			
 			],
 			'extra' => [
@@ -100,7 +104,11 @@ $form = [
             'validators' => [
                 'validate_field_not_empty',
 				'validate_field_is_number',
-				'validate_field_is_diff2',
+				// 'validate_field_is_diff2',
+				'validate_field_range' => [
+					'min' => 20,
+					'max' => 50,
+				]
 				
 			],
 			'extra' => [
@@ -160,7 +168,12 @@ $form = [
 
 if (!empty($_POST)) {
 	$form_values = sanitize_form_input_values($form);
-	validate_form($form, $form_values);
+	$success = validate_form($form, $form_values);
+	if ($success) {
+		var_dump('Gal ir normalus');
+	} else{
+		var_dump('Tai kad nelabai');
+	}
 }
 
 

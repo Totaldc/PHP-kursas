@@ -299,54 +299,73 @@ const TEAM_NOUNS = [
   'axes'
 ];
 
-function randArrEl($arr)
+function rand_arr_el($arr)
 {
   return $arr[rand(0, count($arr) - 1)];
 }
 
-function createRandomPlayer()
+function create_random_player()
 {
   $player = [];
-  $player['name'] = randArrEl(NAMES);
-  $player['surname'] = randArrEl(SURNAMES);
+  $player['name'] = rand_arr_el(NAMES);
+  $player['surname'] = rand_arr_el(SURNAMES);
   $player['number'] = rand(0, 99);
   $player['age'] = rand(18, 36);
   $player['height'] = rand(175, 230);
   $player['weight'] = round($player['height'] / (rand(18, 22) / 10));
-  $player['position'] = randArrEl(POSITION_TYPES);
+  $player['position'] = rand_arr_el(POSITION_TYPES);
   return $player;
 }
 
-
-
 function map_player_num($player)
 {
-    return $player['number'];
+  return $player['number'];
 }
+
+function validate_uniq_team_numbers(&$team)
+{
+  $team_numbers = arr_map($team['players'], 'map_player_num');
+  while (($rep_i = find_repetitive_value($team_numbers)) >= 0) {
+    do {
+      $potencial_replacement = rand(0, 99);
+    } while (find_value($team_numbers, $potencial_replacement) === -1);
+    $team_numbers[$rep_i] = $potencial_replacement;
+    $team['players'][$rep_i]['number'] = $team_numbers[$rep_i];
+  }
+}
+
+function validate_player_positions(&$team, $min_pos_count)
+{
+  $players_position_count = [];
+  foreach (POSITION_TYPES as $position_type) 
+    $players_position_count[$position_type] = 0;
+  
+  foreach ($team['players'] as $player) 
+    $players_position_count[$player['position']]++;
+  
+  foreach ($team['players'] as &$player) {
+    $min_pos_count_key = arr_min_key($players_position_count);
+    if ($players_position_count[$min_pos_count_key] >= $min_pos_count) break;
+    $postion_type = $player['position'];
+    if ($players_position_count[$postion_type] > $min_pos_count) {
+      $player['position'] = $min_pos_count_key;
+      $players_position_count[$postion_type]--;
+      $players_position_count[$min_pos_count_key]++;
+    }
+  }
+}
+
 function createTeam()
 {
-    $team = ['players' => []];
-    $team['name'] = ucfirst(randArrEl(TEAM_ADJECTIVES)) . ' ' . ucfirst(randArrEl(TEAM_NOUNS));
-    $team['coach'] = ucfirst(randArrEl(NAMES)) . ' ' . ucfirst(randArrEl(SURNAMES));
-    for ($i = 0; $i < rand(11, 13); $i++) {
-        $team['players'][] = createRandomPlayer();
-    }
-    //  1. Patikrinti ir ištaisyti, jeigu yra žaidėjų su tais pačiais
-    $team_numbers = arr_map($team['players'],'map_player_num');
-    if (arr_unique_values($team_numbers)) {
-        print "visi zaidejai unikalus";
-    } else {
-        print "yra neunikaliu zaideju";
-    }
-        //  2. Patikrinti ar komandoje yra bent po 2, kiekvienos pozicijos žaidėjai. Jeigu ne, klaidą ištaisyti
-
-        while (!arr_unique_values($team_numbers)) {
-          for ($i = 0; $i < count($team_numbers); $i++){
-              $team_numbers[$i] = rand(0, 99);
-              $team['players'][$i]['number'] = $team_numbers[$i];
-          }
-      }
-        // kažkokiam kitos rolės žaidėjui pakeitus rolę į trūkstamą.
-        // 3. Parašyti funkciją, kuri pagal kažkokią "smart logiką" suskirsto VISUS komandos žaidėjus rolėmis.
-        return $team;
+  $team = ['players' => []];
+  $team['name'] = ucfirst(rand_arr_el(TEAM_ADJECTIVES)) . ' ' . ucfirst(rand_arr_el(TEAM_NOUNS));
+  $team['coach'] = ucfirst(rand_arr_el(NAMES)) . ' ' . ucfirst(rand_arr_el(SURNAMES));
+  for ($i = 0; $i < rand(11, 13); $i++)
+    $team['players'][] = create_random_player();
+  //  1. Patikrinti ir ištaisyti, jeigu yra žaidėjų su tais pačiais numeriais
+  validate_uniq_team_numbers($team);
+  //  2. Patikrinti ar komandoje yra bent po 2, kiekvienos pozicijos žaidėjus. Jeigu ne, klaidą ištaisyti
+  // kažkokiam kitos rolės žaidėjui pakeitus rolę į trūkstamą.
+  validate_player_positions($team, 2);
+  return $team;
 }
