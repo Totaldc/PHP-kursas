@@ -145,7 +145,6 @@ function validate_form(&$form, $form_values)
 			}
 		}
 	}
-	
 
 return $success;
 }

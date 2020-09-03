@@ -26,3 +26,46 @@ function validate_field_is_number($field_value, &$field){
     }
 }
 
+function validate_field_is_legal($field_value, &$field) : int{
+    if($field_value < 18 || $field_value > 100){
+        $field['error'] = 'Netinkamas amzius';
+		return false;
+    } else {
+        return true;
+    }
+}
+
+function validate_field_space($field_value, &$field) : bool
+{
+    if($field_value == trim($field_value) && strpos($field_value, ' ') !== false){
+		return true;
+    } else {
+        $field['error'] = 'Ismok rasyt';
+		return false;
+    }
+}
+
+function validate_field_is_diff1($field_value, &$field){
+
+	if($field_value < 100 || $field_value > 200){
+        $field['error'] = 'Netinkamas skaicius';
+		return false;
+    } else {
+        return true;
+    }
+	
+}
+
+function validate_field_is_diff2($field_value, &$field){
+
+	if($field_value < 50 || $field_value > 100){
+        $field['error'] = 'Netinkamas skaicius';
+		return false;
+    } else {
+        return true;
+    }
+	
+}
+
+
+

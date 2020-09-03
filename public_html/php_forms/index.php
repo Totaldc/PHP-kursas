@@ -41,6 +41,75 @@ $form = [
 				],
 			],
 		],
+		'full_name' => [
+			'label' => 'Full name:',
+			'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
+			'value' => '',
+			'type' => 'text',
+            'validators' => [
+                'validate_field_not_empty',
+                'validate_field_space'
+			],
+			'extra' => [
+				'attr' => [
+					'class' => 'my-class',
+					'placeholder' => 'Pvz. Kybartaitis',
+				],
+			],
+		],
+		'age' => [
+			'label' => 'Age:',
+			'filter' => FILTER_SANITIZE_ENCODED,
+			'value' => '',
+			'type' => 'text',
+            'validators' => [
+                'validate_field_not_empty',
+				'validate_field_is_number',
+				'validate_field_is_legal'
+			],
+			'extra' => [
+				'attr' => [
+					'class' => 'my-class',
+					'placeholder' => 'Pvz. Kybartaitis',
+				],
+			],
+		],
+		'number1' => [
+			'label' => 'Number1:',
+			'filter' => FILTER_SANITIZE_ENCODED,
+			'value' => '',
+			'type' => 'number',
+            'validators' => [
+                'validate_field_not_empty',
+				'validate_field_is_number',
+				'validate_field_is_diff1',
+			
+			],
+			'extra' => [
+				'attr' => [
+					'class' => 'my-class',
+					'placeholder' => 'Enter number 1',
+				],
+			],
+		],
+		'number2' => [
+			'label' => 'Number2:',
+			'filter' => FILTER_SANITIZE_ENCODED,
+			'value' => '',
+			'type' => 'number',
+            'validators' => [
+                'validate_field_not_empty',
+				'validate_field_is_number',
+				'validate_field_is_diff2',
+				
+			],
+			'extra' => [
+				'attr' => [
+					'class' => 'my-class',
+					'placeholder' => 'Enter number 2',
+				],
+			],
+		],
 		'email' => [
 			'label' => 'Your Email:',
 			'value' => '',
@@ -93,8 +162,13 @@ if (!empty($_POST)) {
 	$form_values = sanitize_form_input_values($form);
 	validate_form($form, $form_values);
 }
+
+
 //var_dump($form);
 //var_dump($form_values);
+
+
+
 ?>
 <!doctype html>
 <html lang="en">
