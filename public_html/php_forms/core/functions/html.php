@@ -162,7 +162,7 @@ function sanitize_form_input_values(array $form): array
 // }
 
 
-function validate_form (array &$form, array $form_values): bool
+function validate_form(array &$form, array $form_values): bool
 {
 	$success = true;
 	foreach ($form['fields'] as $key => &$field) {
@@ -196,3 +196,4 @@ function validate_form (array &$form, array $form_values): bool
 	}
 	return $success;
 }
+

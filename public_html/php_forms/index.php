@@ -165,6 +165,7 @@ $form = [
 	],
 ];
 
+array_to_file($form);
 
 if (!empty($_POST)) {
 	$form_values = sanitize_form_input_values($form);
@@ -180,7 +181,8 @@ if (!empty($_POST)) {
 //var_dump($form);
 //var_dump($form_values);
 
-
+// $json = json_encode($form);
+// $bytes = file_put_contents("db.txt", $json); 
 
 ?>
 <!doctype html>
