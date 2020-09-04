@@ -162,58 +162,103 @@ function sanitize_form_input_values(array $form): array
 // }
 
 
+// function validate_form(array &$form, array $form_values)
+// {
+// 	$success = true;
+
+// 	foreach ($form as $form_key => &$field){
+// 		if($form_key === 'validators'){
+// 			print 'valio ble';
+// 			foreach($field as $valid_key => $validator){
+// 				var_dump($valid_key);
+// 				foreach($validator as $key){
+// 					var_dump($key);
+
+				
+// 				if (is_callable($valid_key)) {
+// 					var_dump('Is colable ble');
+// 					// call function
+// 					if ($valid_key($form_values, $field)) {
+// 						$field['value'] = $form_values[$form_key];
+// 						var_dump($form_values[$form_key]);
+// 					} else {
+// 						$success = false;
+// 						break;
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// 	}
+
+// 	foreach ($form['fields'] as $key => &$field) {
+// 		// go through validators array
+// 		foreach ($field['validators'] as $validator_key => $validator) {
+// 			//check if validator is array
+// 			if (is_array($validator)) {
+// 				// check if validator is callable
+// 				if (is_callable($validator_key)) {
+// 					// call function
+// 					if ($validator_key($form_values[$key], $field, $validator)) {
+// 						$field['value'] = $form_values[$key];
+// 					} else {
+// 						$success = false;
+// 						break;
+// 					}
+// 				}
+// 				continue;
+// 			}
+// 			//if not array
+// 			if (is_callable($validator)) {
+// 				// call function
+// 				if ($validator($form_values[$key], $field)) {
+// 					$field['value'] = $form_values[$key];
+// 				} else {
+// 					$success = false;
+// 					break;
+// 				}
+// 			}
+// 		}
+// 	}
+// 	return $success;
+// }
+
 function validate_form(array &$form, array $form_values): bool
 {
-	$success = true;
-
-	foreach ($form as $form_key => &$field){
-		if($form_key === 'validators'){
-			print 'valio ble';
-			foreach($field as $validator){
-				var_dump($validator);
-				if (is_callable($validator)) {
-					var_dump('Is colable ble');
-					// call function
-					if ($validator($form_values, $field)) {
-						$field['value'] = $form_values;
-					} else {
-						$success = false;
-						break;
-					}
-				}
-			}
-		}
-	}
-
-	foreach ($form['fields'] as $key => &$field) {
+    $success = true;
+    foreach ($form['fields'] as $key => &$field) {
 		// go through validators array
-		foreach ($field['validators'] as $validator_key => $validator) {
-			//check if validator is array
-			if (is_array($validator)) {
-				// check if validator is callable
-				if (is_callable($validator_key)) {
-					// call function
-					if ($validator_key($form_values[$key], $field, $validator)) {
-						$field['value'] = $form_values[$key];
-					} else {
-						$success = false;
-						break;
-					}
-				}
-				continue;
+		
+        foreach ($field['validators'] as $validator_key => $validator) {
+            //check if validator is array
+            if (is_array($validator)) {
+                $function = $validator_key;
+                $params = $validator;
+            } else {
+                $function = $validator;
 			}
-			//if not array
-			if (is_callable($validator)) {
-				// call function
-				if ($validator($form_values[$key], $field)) {
-					$field['value'] = $form_values[$key];
-				} else {
-					$success = false;
-					break;
-				}
-			}
-		}
+			
+            if ($function($form_values[$key], $field, $params ?? null)) {
+                $field['value'] = $form_values[$key];
+            } else {
+                $success = false;
+                break;
+            }
+        }
 	}
-	return $success;
+	
+    foreach ($form['validators'] as $validator_key => $validator) {
+        if (is_array($validator)) {
+            $function = $validator_key;
+            $params = $validator;
+        } else {
+            $function = $validator;
+        }
+       
+        if (!$function($form_values, $form, $params ?? null)) {
+            $success = false;
+            break;
+        }
+    }
+    return $success;
 }
-

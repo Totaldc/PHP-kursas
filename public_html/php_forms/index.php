@@ -164,10 +164,10 @@ $form = [
 		],
 	],
 	'validators' => [
-		'validate_field_match' //=> [
-		// 	'number1',
-		// 	'number2'
-		// ]
+		'validate_field_match' => [
+			'number1',
+			'number2'
+		]
 	]
 ];
 
