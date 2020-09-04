@@ -163,6 +163,12 @@ $form = [
 			],
 		],
 	],
+	'validators' => [
+		'validate_field_match' //=> [
+		// 	'number1',
+		// 	'number2'
+		// ]
+	]
 ];
 
 array_to_file($form);

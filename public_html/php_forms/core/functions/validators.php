@@ -86,3 +86,12 @@ function validate_field_range($field_value, &$field, $params)
         return true;
     }
 }
+
+function validate_field_match($form_values, &$form){
+    if ($form_values['number1'] === $form_values['number2']) {
+      var_dump('joooooo finally veikia');
+    } else {
+        $form['error'] = 'Nu tu...';
+        return false;
+    }
+}

@@ -165,6 +165,26 @@ function sanitize_form_input_values(array $form): array
 function validate_form(array &$form, array $form_values): bool
 {
 	$success = true;
+
+	foreach ($form as $form_key => &$field){
+		if($form_key === 'validators'){
+			print 'valio ble';
+			foreach($field as $validator){
+				var_dump($validator);
+				if (is_callable($validator)) {
+					var_dump('Is colable ble');
+					// call function
+					if ($validator($form_values, $field)) {
+						$field['value'] = $form_values;
+					} else {
+						$success = false;
+						break;
+					}
+				}
+			}
+		}
+	}
+
 	foreach ($form['fields'] as $key => &$field) {
 		// go through validators array
 		foreach ($field['validators'] as $validator_key => $validator) {
