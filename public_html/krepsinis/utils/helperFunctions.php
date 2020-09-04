@@ -25,7 +25,7 @@ function find_repetitive_value(array $array): int
 {
   for ($i = 0; $i < count($array) - 1; $i++) {
     for ($j = $i + 1; $j < count($array); $j++) {
-      if ($array[$i] === $array[$j]) return $j;
+      if ($array[$i] === $array[$j]) return $i;
     }
   }
   return -1;

@@ -1,303 +1,5 @@
 <?php
-const POSITION_TYPES = ['SG', 'PG', 'LF', 'HF', 'C'];
-const NAMES = [
-  'James',
-  'John',
-  'Robert',
-  'Michael',
-  'William',
-  'David',
-  'Richard',
-  'Joseph',
-  'Thomas',
-  'Charles',
-  'Christopher',
-  'Daniel',
-  'Matthew',
-  'Anthony',
-  'Donald',
-  'Mark',
-  'Paul',
-  'Steven',
-  'Andrew',
-  'Kenneth',
-  'Joshua',
-  'George',
-  'Kevin',
-  'Brian',
-  'Edward',
-  'Ronald',
-  'Timothy',
-  'Jason',
-  'Jeffrey',
-  'Ryan',
-  'Jacob',
-  'Gary',
-  'Nicholas',
-  'Eric',
-  'Stephen',
-  'Jonathan',
-  'Larry',
-  'Justin',
-  'Scott',
-  'Brandon',
-  'Frank',
-  'Benjamin',
-  'Gregory',
-  'Samuel',
-  'Raymond',
-  'Patrick',
-  'Alexander',
-  'Jack',
-  'Dennis',
-  'Jerry',
-  'Tyler',
-  'Aaron',
-  'Jose',
-  'Henry',
-  'Douglas',
-  'Adam',
-  'Peter',
-  'Nathan',
-  'Zachary',
-  'Walter',
-  'Kyle',
-  'Harold',
-  'Carl',
-  'Jeremy',
-  'Keith',
-  'Roger',
-  'Gerald',
-  'Ethan',
-  'Arthur',
-  'Terry',
-  'Christian',
-  'Sean',
-  'Lawrence',
-  'Austin',
-  'Joe',
-  'Noah',
-  'Jesse',
-  'Albert',
-  'Bryan',
-  'Billy',
-  'Bruce',
-  'Willie',
-  'Jordan',
-  'Dylan',
-  'Alan',
-  'Ralph',
-  'Gabriel',
-  'Roy',
-  'Juan',
-  'Wayne',
-  'Eugene',
-  'Logan',
-  'Randy',
-  'Louis',
-  'Russell',
-  'Vincent',
-  'Philip',
-  'Bobby',
-  'Johnny',
-  'Bradley'
-];
-const SURNAMES = [
-  'Jamesson',
-  'Johnson',
-  'Robertson',
-  'Michaelson',
-  'Williamson',
-  'Davidson',
-  'Richardson',
-  'Josephson',
-  'Thomasson',
-  'Charlesson',
-  'Christopherson',
-  'Danielson',
-  'Matthewson',
-  'Anthonyson',
-  'Donaldson',
-  'Markson',
-  'Paulson',
-  'Stevenson',
-  'Andrewson',
-  'Kennethson',
-  'Joshuason',
-  'Georgeson',
-  'Kevinson',
-  'Brianson',
-  'Edwardson',
-  'Ronaldson',
-  'Timothyson',
-  'Jasonson',
-  'Jeffreyson',
-  'Ryanson',
-  'Jacobson',
-  'Garyson',
-  'Nicholasson',
-  'Ericson',
-  'Stephenson',
-  'Jonathanson',
-  'Larryson',
-  'Justinson',
-  'Scottson',
-  'Brandonson',
-  'Frankson',
-  'Benjaminson',
-  'Gregoryson',
-  'Samuelson',
-  'Raymondson',
-  'Patrickson',
-  'Alexanderson',
-  'Jackson',
-  'Dennisson',
-  'Jerryson',
-  'Tylerson',
-  'Aaronson',
-  'Joseson',
-  'Henryson',
-  'Douglasson',
-  'Adamson',
-  'Peterson',
-  'Nathanson',
-  'Zacharyson',
-  'Walterson',
-  'Kyleson',
-  'Haroldson',
-  'Carlson',
-  'Jeremyson',
-  'Keithson',
-  'Rogerson',
-  'Geraldson',
-  'Ethanson',
-  'Arthurson',
-  'Terryson',
-  'Christianson',
-  'Seanson',
-  'Lawrenceson',
-  'Austinson',
-  'Joeson',
-  'Noahson',
-  'Jesseson',
-  'Albertson',
-  'Bryanson',
-  'Billyson',
-  'Bruceson',
-  'Willieson',
-  'Jordanson',
-  'Dylanson',
-  'Alanson',
-  'Ralphson',
-  'Gabrielson',
-  'Royson',
-  'Juanson',
-  'Wayneson',
-  'Eugeneson',
-  'Loganson',
-  'Randyson',
-  'Louisson',
-  'Russellson',
-  'Vincentson',
-  'Philipson',
-  'Bobbyson',
-  'Johnnyson',
-  'Bradleyson'
-];
-const TEAM_ADJECTIVES = [
-  'attractive',
-  'bald',
-  'beautiful',
-  'chubby',
-  'clean',
-  'dazzling',
-  'drab',
-  'elegant',
-  'fancy',
-  'fit',
-  'flabby',
-  'glamorous',
-  'gorgeous',
-  'handsome',
-  'long',
-  'magnificent',
-  'muscular',
-  'plain',
-  'plump',
-  'quaint',
-  'scruffy',
-  'shapely',
-  'short',
-  'skinny',
-  'stocky',
-  'ugly',
-  'unkempt',
-  'unsightly',
-  'ashy',
-  'black',
-  'blue',
-  'gray',
-  'green',
-  'icy',
-  'lemon',
-  'mango',
-  'orange',
-  'purple',
-  'red',
-  'salmon',
-  'white',
-  'yellow'
-];
-const TEAM_NOUNS = [
-  'statuses',
-  'moose',
-  'crises',
-  'fishes',
-  'series',
-  'appendixes',
-  'Misters',
-  'sheep',
-  'buses',
-  'lives',
-  'apparatuses',
-  'deer',
-  'oxen',
-  'focuses',
-  'bases',
-  'platypuses',
-  'cactuses',
-  'sheep',
-  'analyses',
-  'women',
-  'equipment',
-  'dice',
-  'leaves',
-  'lives',
-  'phenomena',
-  'staff',
-  'alumni',
-  'geniuses',
-  'radiuses',
-  'staff',
-  'alumni',
-  'software',
-  'data',
-  'addenda',
-  'viruses',
-  'synopses',
-  'mongooses',
-  'genera',
-  'formulas',
-  'roofs',
-  'phenomena',
-  'mediums',
-  'businesses',
-  'data',
-  'chassis',
-  'crises',
-  'heroes',
-  'axes'
-];
+include 'utils/constants.php';
 
 function rand_arr_el($arr)
 {
@@ -328,7 +30,7 @@ function validate_uniq_team_numbers(&$team)
   while (($rep_i = find_repetitive_value($team_numbers)) >= 0) {
     do {
       $potencial_replacement = rand(0, 99);
-    } while (find_value($team_numbers, $potencial_replacement) === -1);
+    } while (find_value($team_numbers, $potencial_replacement) !== -1);
     $team_numbers[$rep_i] = $potencial_replacement;
     $team['players'][$rep_i]['number'] = $team_numbers[$rep_i];
   }
@@ -337,12 +39,12 @@ function validate_uniq_team_numbers(&$team)
 function validate_player_positions(&$team, $min_pos_count)
 {
   $players_position_count = [];
-  foreach (POSITION_TYPES as $position_type) 
+  foreach (POSITION_TYPES as $position_type)
     $players_position_count[$position_type] = 0;
-  
-  foreach ($team['players'] as $player) 
+
+  foreach ($team['players'] as $player)
     $players_position_count[$player['position']]++;
-  
+
   foreach ($team['players'] as &$player) {
     $min_pos_count_key = arr_min_key($players_position_count);
     if ($players_position_count[$min_pos_count_key] >= $min_pos_count) break;
@@ -355,17 +57,130 @@ function validate_player_positions(&$team, $min_pos_count)
   }
 }
 
-function createTeam()
+function create_team()
 {
   $team = ['players' => []];
   $team['name'] = ucfirst(rand_arr_el(TEAM_ADJECTIVES)) . ' ' . ucfirst(rand_arr_el(TEAM_NOUNS));
   $team['coach'] = ucfirst(rand_arr_el(NAMES)) . ' ' . ucfirst(rand_arr_el(SURNAMES));
   for ($i = 0; $i < rand(11, 13); $i++)
     $team['players'][] = create_random_player();
-  //  1. Patikrinti ir ištaisyti, jeigu yra žaidėjų su tais pačiais numeriais
   validate_uniq_team_numbers($team);
-  //  2. Patikrinti ar komandoje yra bent po 2, kiekvienos pozicijos žaidėjus. Jeigu ne, klaidą ištaisyti
-  // kažkokiam kitos rolės žaidėjui pakeitus rolę į trūkstamą.
   validate_player_positions($team, 2);
   return $team;
 }
+function render_team($team)
+{
+?>
+  <div class="container">
+    <div class="team">
+      <div class="team__coach">Coach: <?= $team['coach']; ?></div>
+      <div class="team__name"><?= $team['name']; ?></div>
+      <div class="players-table">
+        <div class="players-table__title">Players</div>
+        <div class="players-table__row players-table__row--header">
+          <div>Name</div>
+          <div>Surname</div>
+          <div>Number</div>
+          <div>Age</div>
+          <div>Height</div>
+          <div>Weight</div>
+          <div>Position</div>
+        </div>
+        <div class="players-table__body">
+          <?php foreach ($team['players'] as $player) : ?>
+            <div class="players-table__row">
+              <div><?= $player['name']; ?></div>
+              <div><?= $player['surname']; ?></div>
+              <div><?= $player['number']; ?></div>
+              <div><?= $player['age']; ?></div>
+              <div><?= $player['height']; ?></div>
+              <div><?= $player['weight']; ?></div>
+              <div><?= $player['position']; ?></div>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </div>
+  </div> ​ ​
+<?php
+}
+
+/**
+ * Sugeneruoja nurodytą kiekį krepšinio komandų
+ *
+ * @param int $count komandų kiekis
+ * @return array sugeneruotų komandų masyvas
+ */
+function create_teams(int $count): array
+{
+  $all_teams = [];
+  for ($i = 0; $i < $count; $i++) {
+    $all_teams[] = create_team();
+  }
+  return $all_teams;
+}
+
+/**
+ * Grąžina komandos žaidėjų skaičių,
+ *
+ * @param array $team krepšinio komanda
+ * @return int žaidėjų skaičius
+ */
+function team_player_count($team)
+{
+  return count($team['players']);
+}
+
+/**
+ * Atfiltruoja komandas pagal žaidėjų skaičių
+ *
+ * @param array $teams komandų masyvas
+ * @param int $player_count žaidėjų skaičius
+ * @return array Atfiltruotų komandų masyvas
+ */
+function filter_teams_by_player_count($teams, $player_count)
+{
+  $filtered_teams = [];
+  foreach ($teams as $team) {
+    if (team_player_count($team) === $player_count)
+      $filtered_teams[] = $team;
+  }
+  return $filtered_teams;
+}
+
+/**
+ * Suskaičiuoja tam tikros krepšininko pocijos žaidėjų kiekį
+ *
+ * @param array $team krepšinio komanda
+ * @param string $position krepšininko pozicija
+ * @return int žaidėjų kiekis
+ */
+function team_player_position_count(array $team, string $position): int
+{
+  $position_count = 0;
+  foreach ($team['players'] as $player) {
+    if ($player['position'] === $position) 
+      $position_count++;
+  }
+  return $position_count;
+}
+
+
+/**
+ * Atfiltruoja komandas kurios turi nurodytą kiekį tam tikros pozicijos žaidėjų
+ *
+ * @param array $teams komandų masyvas
+ * @param string $position krepšininko pozicija
+ * @param int $count žaidėjų kiekis
+ * @return array atrfiltruotų komandų masyvas
+ */
+function filter_teams_by_player_position_count($teams, $position, $count)
+{
+  $filtered_teams = [];
+  foreach ($teams as $team) {
+    if (team_player_position_count($team, $position) === $count)
+      $filtered_teams[] = $team;
+  }
+  return $filtered_teams;
+}
+
