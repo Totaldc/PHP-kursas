@@ -177,6 +177,7 @@ $form = [
 if (!empty($_POST)) {
 	$form_values = sanitize_form_input_values($form);
 	$success = validate_form($form, $form_values);
+	unset($form_values['number2']);
 	form_success($form_values);
 	if ($success) {
 		var_dump('Gal ir normalus');

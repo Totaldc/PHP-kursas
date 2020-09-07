@@ -44,16 +44,17 @@ function form_success($form)
         $current_data = file_get_contents('db.txt');
         $array_data = json_decode($current_data, true);
         var_dump($array_data);
-            $extra = array(
-                'email'               =>     $_POST['email'],
-                'number1'          =>     $_POST["number1"],
-            );
-            $array_data[] = $extra;
+        if(!in_array($form, $array_data)){
+            print "yra";
+            $array_data[] = $form;
             $final_data = json_encode($array_data);
             file_put_contents('db.txt', $final_data);
-       
+        } else {
+            print "nepaejo";
+        }
+    }
 }  
-}
+
 
 
 
