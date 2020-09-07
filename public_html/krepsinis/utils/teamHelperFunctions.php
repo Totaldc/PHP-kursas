@@ -145,8 +145,11 @@ function filter_teams_by_player_count($teams, $player_count)
     if (team_player_count($team) === $player_count)
       $filtered_teams[] = $team;
   }
-  return $filtered_teams;
+  var_dump($filtered_teams);
 }
+
+
+
 
 /**
  * Suskaičiuoja tam tikros krepšininko pocijos žaidėjų kiekį
@@ -183,4 +186,8 @@ function filter_teams_by_player_position_count($teams, $position, $count)
   }
   return $filtered_teams;
 }
+
+function count_all_players($all_)
+
+
 

@@ -9,71 +9,71 @@ $form = [
 		'id' => 'login-form',
 	],
 	'fields' => [
-		'first_name' => [
-			'label' => 'First Name:',
-			'filter' => FILTER_SANITIZE_ENCODED,
-			'value' => '',
-			'type' => 'text',
-			'validators' => [
-                'validate_field_not_empty',
-                'validate_field_is_number'
-			],
-			'extra' => [
-				'attr' => [
-					'class' => 'my-class',
-					'placeholder' => 'Pvz. Aivaras',
-				],
-			],
-		],
-		'last_name' => [
-			'label' => 'Last Name:',
-			'filter' => FILTER_SANITIZE_ENCODED,
-			'value' => '',
-			'type' => 'text',
-            'validators' => [
-                'validate_field_not_empty',
-                'validate_field_is_number'
-			],
-			'extra' => [
-				'attr' => [
-					'class' => 'my-class',
-					'placeholder' => 'Pvz. Kybartaitis',
-				],
-			],
-		],
-		'full_name' => [
-			'label' => 'Full name:',
-			'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-			'value' => '',
-			'type' => 'text',
-            'validators' => [
-                'validate_field_not_empty',
-                'validate_field_space'
-			],
-			'extra' => [
-				'attr' => [
-					'class' => 'my-class',
-					'placeholder' => 'Pvz. Kybartaitis',
-				],
-			],
-		],
-		'age' => [
-			'label' => 'Age:',
-			'filter' => FILTER_SANITIZE_ENCODED,
-			'value' => '',
-			'type' => 'text',
-            'validators' => [
-                'validate_field_not_empty',
-				'validate_field_is_number',
-				'validate_field_is_legal'
-			],
-			'extra' => [
-				'attr' => [
-					'class' => 'my-class',
-					'placeholder' => 'Pvz. Kybartaitis',
-				],
-			],
-		],
+		// 'first_name' => [
+		// 	'label' => 'First Name:',
+		// 	'filter' => FILTER_SANITIZE_ENCODED,
+		// 	'value' => '',
+		// 	'type' => 'text',
+		// 	'validators' => [
+        //         'validate_field_not_empty',
+        //         'validate_field_is_number'
+		// 	],
+		// 	'extra' => [
+		// 		'attr' => [
+		// 			'class' => 'my-class',
+		// 			'placeholder' => 'Pvz. Aivaras',
+		// 		],
+		// 	],
+		// ],
+		// 'last_name' => [
+		// 	'label' => 'Last Name:',
+		// 	'filter' => FILTER_SANITIZE_ENCODED,
+		// 	'value' => '',
+		// 	'type' => 'text',
+        //     'validators' => [
+        //         'validate_field_not_empty',
+        //         'validate_field_is_number'
+		// 	],
+		// 	'extra' => [
+		// 		'attr' => [
+		// 			'class' => 'my-class',
+		// 			'placeholder' => 'Pvz. Kybartaitis',
+		// 		],
+		// 	],
+		// ],
+		// 'full_name' => [
+		// 	'label' => 'Full name:',
+		// 	'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
+		// 	'value' => '',
+		// 	'type' => 'text',
+        //     'validators' => [
+        //         'validate_field_not_empty',
+        //         'validate_field_space'
+		// 	],
+		// 	'extra' => [
+		// 		'attr' => [
+		// 			'class' => 'my-class',
+		// 			'placeholder' => 'Pvz. Kybartaitis',
+		// 		],
+		// 	],
+		// ],
+		// 'age' => [
+		// 	'label' => 'Age:',
+		// 	'filter' => FILTER_SANITIZE_ENCODED,
+		// 	'value' => '',
+		// 	'type' => 'text',
+        //     'validators' => [
+        //         'validate_field_not_empty',
+		// 		'validate_field_is_number',
+		// 		'validate_field_is_legal'
+		// 	],
+		// 	'extra' => [
+		// 		'attr' => [
+		// 			'class' => 'my-class',
+		// 			'placeholder' => 'Pvz. Kybartaitis',
+		// 		],
+		// 	],
+		// ],
 		'number1' => [
 			'label' => 'Number1:',
 			'filter' => FILTER_SANITIZE_ENCODED,
@@ -133,23 +133,23 @@ $form = [
 				],
 			],
 		],
-		'sex' => [
-			'label' => 'Sex:',
-			'type' => 'select',
-			'value' => '',
-            'validators' => [
-                'validate_field_not_empty',
-                'validate_field_is_number'
-			],
-			'options' => [
-				'male' => 'Male',
-				'female' => 'Female',
-				'trans' => 'Transexual',
-				'other' => [
-					'title' => 'Other',
-				],
-			],
-		],
+		// 'sex' => [
+		// 	'label' => 'Sex:',
+		// 	'type' => 'select',
+		// 	'value' => '',
+        //     'validators' => [
+        //         'validate_field_not_empty',
+        //         'validate_field_is_number'
+		// 	],
+		// 	'options' => [
+		// 		'male' => 'Male',
+		// 		'female' => 'Female',
+		// 		'trans' => 'Transexual',
+		// 		'other' => [
+		// 			'title' => 'Other',
+		// 		],
+		// 	],
+		// ],
 	],
 	'buttons' => [
 		'submit' => [
