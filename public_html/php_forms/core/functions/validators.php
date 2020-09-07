@@ -88,9 +88,9 @@ function validate_field_range($field_value, &$field, $params)
 }
 
 function validate_field_match($form_values, &$form, $params){
-    var_dump($form);
+    // var_dump($form);
     if ($form_values[$params[0]] === $form_values[$params[1]]) {
-        array_to_file($form);
+       print 'puikiai';
     } else {
         $form['error'] = 'Nu tu...';
         return false;

@@ -15,8 +15,8 @@ $form = [
 		// 	'value' => '',
 		// 	'type' => 'text',
 		// 	'validators' => [
-        //         'validate_field_not_empty',
-        //         'validate_field_is_number'
+		//         'validate_field_not_empty',
+		//         'validate_field_is_number'
 		// 	],
 		// 	'extra' => [
 		// 		'attr' => [
@@ -30,9 +30,9 @@ $form = [
 		// 	'filter' => FILTER_SANITIZE_ENCODED,
 		// 	'value' => '',
 		// 	'type' => 'text',
-        //     'validators' => [
-        //         'validate_field_not_empty',
-        //         'validate_field_is_number'
+		//     'validators' => [
+		//         'validate_field_not_empty',
+		//         'validate_field_is_number'
 		// 	],
 		// 	'extra' => [
 		// 		'attr' => [
@@ -46,9 +46,9 @@ $form = [
 		// 	'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
 		// 	'value' => '',
 		// 	'type' => 'text',
-        //     'validators' => [
-        //         'validate_field_not_empty',
-        //         'validate_field_space'
+		//     'validators' => [
+		//         'validate_field_not_empty',
+		//         'validate_field_space'
 		// 	],
 		// 	'extra' => [
 		// 		'attr' => [
@@ -62,8 +62,8 @@ $form = [
 		// 	'filter' => FILTER_SANITIZE_ENCODED,
 		// 	'value' => '',
 		// 	'type' => 'text',
-        //     'validators' => [
-        //         'validate_field_not_empty',
+		//     'validators' => [
+		//         'validate_field_not_empty',
 		// 		'validate_field_is_number',
 		// 		'validate_field_is_legal'
 		// 	],
@@ -79,15 +79,15 @@ $form = [
 			'filter' => FILTER_SANITIZE_ENCODED,
 			'value' => '',
 			'type' => 'number',
-            'validators' => [
-                'validate_field_not_empty',
+			'validators' => [
+				'validate_field_not_empty',
 				'validate_field_is_number',
 				// 'validate_field_is_diff1',
 				'validate_field_range' => [
 					'min' => 10,
 					'max' => 50,
 				]
-			
+
 			],
 			'extra' => [
 				'attr' => [
@@ -101,15 +101,15 @@ $form = [
 			'filter' => FILTER_SANITIZE_ENCODED,
 			'value' => '',
 			'type' => 'number',
-            'validators' => [
-                'validate_field_not_empty',
+			'validators' => [
+				'validate_field_not_empty',
 				'validate_field_is_number',
 				// 'validate_field_is_diff2',
 				'validate_field_range' => [
 					'min' => 20,
 					'max' => 50,
 				]
-				
+
 			],
 			'extra' => [
 				'attr' => [
@@ -122,9 +122,9 @@ $form = [
 			'label' => 'Your Email:',
 			'value' => '',
 			'type' => 'email',
-            'validators' => [
-                'validate_field_not_empty',
-                'validate_field_is_number'
+			'validators' => [
+				'validate_field_not_empty',
+				'validate_field_is_number'
 			],
 			'extra' => [
 				'attr' => [
@@ -137,9 +137,9 @@ $form = [
 		// 	'label' => 'Sex:',
 		// 	'type' => 'select',
 		// 	'value' => '',
-        //     'validators' => [
-        //         'validate_field_not_empty',
-        //         'validate_field_is_number'
+		//     'validators' => [
+		//         'validate_field_not_empty',
+		//         'validate_field_is_number'
 		// 	],
 		// 	'options' => [
 		// 		'male' => 'Male',
@@ -171,17 +171,23 @@ $form = [
 	]
 ];
 
-array_to_file($form);
+
+
 
 if (!empty($_POST)) {
 	$form_values = sanitize_form_input_values($form);
 	$success = validate_form($form, $form_values);
+	unset($form_values['number2']);
+	array_to_file($form_values);
+
+	file_to_array('db.txt');
 	if ($success) {
 		var_dump('Gal ir normalus');
-	} else{
+	} else {
 		var_dump('Tai kad nelabai');
 	}
 }
+
 
 
 //var_dump($form);
@@ -193,58 +199,64 @@ if (!empty($_POST)) {
 ?>
 <!doctype html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport"
-	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<style>
-        form {
-            box-shadow: 0 4px 6px 2px #555555;
-            width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
+		form {
+			box-shadow: 0 4px 6px 2px #555555;
+			width: 400px;
+			margin: 50px auto;
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+		}
 
-        form label {
-            display: flex;
-            flex-direction: column;
-        }
+		form label {
+			display: flex;
+			flex-direction: column;
+		}
 
-        form label span {
-            margin-bottom: 5px;
-        }
+		form label span {
+			margin-bottom: 5px;
+		}
 
-        form input, select {
-            padding: 10px;
-        }
+		form input,
+		select {
+			padding: 10px;
+		}
 
-        form span {
-            margin-top: 5px;
-            margin-bottom: 10px;
-        }
+		form span {
+			margin-top: 5px;
+			margin-bottom: 10px;
+		}
 
-        form .error {
-            color: #660404;
-            /*background-color: rgba(255, 0, 0, 0.2);*/
-            padding: 10px;
-        }
+		form .error {
+			color: #660404;
+			/*background-color: rgba(255, 0, 0, 0.2);*/
+			padding: 10px;
+		}
 
-        form button {
-            padding: 10px;
-        }
+		form button {
+			padding: 10px;
+		}
 	</style>
 	<title>Document</title>
 </head>
+
 <body>
-<main>
-	<?php include('core/templates/form.tpl.php'); ?>
-	<p><?php print $form_values['first_name'] ?? 'Neivesta' ?></p>
-	<p><?php print $form_values['last_name'] ?? 'Neivesta' ?></p>
-	<p><?php print $form_values['email'] ?? 'Neivesta' ?></p>
-	<p><?php print $form_values['sex'] ?? 'Neivesta' ?></p>
-</main>
+	<main>
+		<?php include('core/templates/form.tpl.php'); ?>
+		<?php if (isset($message)) : ?>
+			<span><?php print $message; ?></span>
+		<?php endif; ?>
+		<p><?php print $form_values['first_name'] ?? 'Neivesta' ?></p>
+		<p><?php print $form_values['last_name'] ?? 'Neivesta' ?></p>
+		<p><?php print $form_values['email'] ?? 'Neivesta' ?></p>
+		<p><?php print $form_values['sex'] ?? 'Neivesta' ?></p>
+	</main>
 </body>
+
 </html>

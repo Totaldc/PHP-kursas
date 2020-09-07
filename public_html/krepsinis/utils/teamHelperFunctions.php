@@ -105,6 +105,12 @@ function render_team($team)
 <?php
 }
 
+function render_teams($teams){
+  foreach($teams as $team){
+    render_team($team);
+  }
+}
+
 /**
  * Sugeneruoja nurodytą kiekį krepšinio komandų
  *
@@ -126,11 +132,49 @@ function create_teams(int $count): array
  * @param array $team krepšinio komanda
  * @return int žaidėjų skaičius
  */
+
 function team_player_count($team)
 {
   return count($team['players']);
 }
 
+function sum_players($teams)
+{
+  $total = 0;
+  foreach($teams as $team){
+    $total += count($team['players']);
+  }
+  return $total;
+}
+
+function sum_avg ($teams){
+  $avg = sum_players($teams) / 8;
+  return $avg . " ";
+}
+
+function if_more($teams){
+  $m11 = 0;
+  $m12 = 0;
+  $m13 = 0;
+  foreach($teams as $team){;
+
+  if( sum_avg ($teams) >= 11 ){
+    $m11 += 1;
+   
+  }
+  if( sum_avg ($teams) >= 12 ){
+    $m12 += 1;
+    
+  }
+  if( sum_avg ($teams) >= 13 ){
+    $m13 += 1;
+  
+  }
+}
+print $m11 . " ";
+print $m12 . " ";
+print $m13 . " ";
+}
 /**
  * Atfiltruoja komandas pagal žaidėjų skaičių
  *
@@ -187,7 +231,6 @@ function filter_teams_by_player_position_count($teams, $position, $count)
   return $filtered_teams;
 }
 
-function count_all_players($all_)
 
 
 
