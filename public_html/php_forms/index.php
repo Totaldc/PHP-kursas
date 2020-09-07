@@ -177,10 +177,7 @@ $form = [
 if (!empty($_POST)) {
 	$form_values = sanitize_form_input_values($form);
 	$success = validate_form($form, $form_values);
-	unset($form_values['number2']);
-	array_to_file($form_values);
-
-	file_to_array('db.txt');
+	form_success($form_values);
 	if ($success) {
 		var_dump('Gal ir normalus');
 	} else {

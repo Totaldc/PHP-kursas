@@ -1,1 +1,1 @@
-{"number1":"123","email":"email@email.com"}
+[{"email":"email@email.com","number1":"111"},{"email":"email@email.com","number1":"111"},{"email":"belekas@belekas.lt","number1":"111"},{"email":"belekas@belekas.lt","number1":"111"},{"email":"belekas@belekas.lt","number1":"111"},{"email":"trolis@trolis.lt","number1":"111"},{"email":"trolis@trolis.lt","number1":"111"}]

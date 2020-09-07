@@ -12,29 +12,66 @@
 //     }
 // }
 
+// function file_to_array($file)
+// {
+//     if (file_exists($file)) {
+//         $data = file_get_contents($file);
+//       $bytes_written = $decoded = json_decode($data, true);
+//         var_dump($decoded);
+//         if ($bytes_written === false){
+//             return false;
+//         } else{
+//             return true;
+//         }
+// }
+// }
 
-function array_to_file($form) {
-    $file = 'db.txt';
-    $db = json_encode($form);
-    $bytes_written = file_put_contents($file, $db);
-    if ($bytes_written === false){
-        return false;
-    } else{
-        return true;
-    }
-}
 
-function file_to_array($file)
+// function array_to_file($form) {
+//     $file = 'db.txt';
+//     $db = json_encode($form);
+//     $bytes_written = file_put_contents($file, $db);
+//     if ($bytes_written === false){
+//         return false;
+//     } else{
+//         return true;
+//     }
+// }
+
+function form_success($form)
 {
-    if (file_exists($file)) {
-        $data = file_get_contents($file);
-        $decoded = json_decode($data, true);
-        var_dump($decoded);
-        return is_array($decoded) ? $decoded : [];
-    } else {
-        return false;
-    }
+    if (file_exists('db.txt')) {
+        $current_data = file_get_contents('db.txt');
+        $array_data = json_decode($current_data, true);
+        var_dump($array_data);
+            $extra = array(
+                'email'               =>     $_POST['email'],
+                'number1'          =>     $_POST["number1"],
+            );
+            $array_data[] = $extra;
+            $final_data = json_encode($array_data);
+            file_put_contents('db.txt', $final_data);
+       
+}  
 }
+
+
+
+
+
+// function form_success($form){
+//     $file = 'db.txt';
+//     $data = file_get_contents($file);
+//     $decoded = json_decode($data, true);
+    
+//     $decoded[] = $_POST;
+//     // add you data here at the proper position
+    
+//     $data = json_encode($decoded);
+//     var_dump($data);
+// }
+
+
 
 
 // $file = file_get_contents('db.txt');
