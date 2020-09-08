@@ -96,3 +96,37 @@ function validate_field_match($form_values, &$form, $params){
         return false;
     }
 }
+
+
+
+/**
+ * is user exists in DB_FILE
+ *
+ * @param string $field_value
+ * @param array $field
+ * @return bool
+ */
+function validate_register(string $field_value, array &$field): bool
+{
+    $data_arr = file_to_array('db.txt');
+    foreach ($data_arr as $key => $value) {
+        if ($value['email'] === $field_value) {
+            $field['error'] = "User $field_value already registered";
+            return false;
+        }
+    }
+    return true;
+}
+
+
+// function validate_register(string $field_value, array &$field): bool
+// {
+//     $data_arr = file_to_array('db.txt');
+//     foreach ($data_arr as $key => $value) {
+//         if ($value['email'] === $field_value) {
+//             $field['error'] = "User $field_value already registered";
+//             return false;
+//         }
+//     }
+//     return true;
+// }

@@ -105,10 +105,10 @@ function render_team($team)
 <?php
 }
 
-function render_teams($teams){
-  foreach($teams as $team){
+function render_teams($teams)
+{
+  foreach ($teams as $team)
     render_team($team);
-  }
 }
 
 /**
@@ -132,49 +132,11 @@ function create_teams(int $count): array
  * @param array $team krepšinio komanda
  * @return int žaidėjų skaičius
  */
-
 function team_player_count($team)
 {
   return count($team['players']);
 }
 
-function sum_players($teams)
-{
-  $total = 0;
-  foreach($teams as $team){
-    $total += count($team['players']);
-  }
-  return $total;
-}
-
-function sum_avg ($teams){
-  $avg = sum_players($teams) / 8;
-  return $avg . " ";
-}
-
-function if_more($teams){
-  $m11 = 0;
-  $m12 = 0;
-  $m13 = 0;
-  foreach($teams as $team){;
-
-  if( sum_avg ($teams) >= 11 ){
-    $m11 += 1;
-   
-  }
-  if( sum_avg ($teams) >= 12 ){
-    $m12 += 1;
-    
-  }
-  if( sum_avg ($teams) >= 13 ){
-    $m13 += 1;
-  
-  }
-}
-print $m11 . " ";
-print $m12 . " ";
-print $m13 . " ";
-}
 /**
  * Atfiltruoja komandas pagal žaidėjų skaičių
  *
@@ -189,29 +151,25 @@ function filter_teams_by_player_count($teams, $player_count)
     if (team_player_count($team) === $player_count)
       $filtered_teams[] = $team;
   }
-  var_dump($filtered_teams);
+  return $filtered_teams;
 }
 
-
-
-
 /**
- * Suskaičiuoja tam tikros krepšininko pocijos žaidėjų kiekį
+ * Suskaičiuoja tam tikros krepšininko pocijos žaidėjų kiekį komandoje
  *
  * @param array $team krepšinio komanda
  * @param string $position krepšininko pozicija
  * @return int žaidėjų kiekis
  */
-function team_player_position_count(array $team, string $position): int
+function team_players_position_count(array $team, string $position): int
 {
   $position_count = 0;
   foreach ($team['players'] as $player) {
-    if ($player['position'] === $position) 
+    if ($player['position'] === $position)
       $position_count++;
   }
   return $position_count;
 }
-
 
 /**
  * Atfiltruoja komandas kurios turi nurodytą kiekį tam tikros pozicijos žaidėjų
@@ -225,12 +183,79 @@ function filter_teams_by_player_position_count($teams, $position, $count)
 {
   $filtered_teams = [];
   foreach ($teams as $team) {
-    if (team_player_position_count($team, $position) === $count)
+    if (team_players_position_count($team, $position) === $count)
       $filtered_teams[] = $team;
   }
   return $filtered_teams;
 }
 
+function sum_teams_players($teams){
+  $total = 0;
+  foreach ($teams as $team) {
+    $total += count($team['players']);
+  }
+  return $total;
+}
 
+function avg_players_per_team($teams){
+  return sum_teams_players($teams)/ count($teams);
+}
 
+function teams_with_team_size_count($teams, $team_size){
+  $team_count = 0;
+  foreach ($teams as $team) {
+    if(count($team['players']) === $team_size) 
+      $team_count++;
+  }
+  return $team_count;
+}
 
+function teams_players_position_count($teams, $position){
+  $total = 0;
+  foreach ($teams as $team) {
+    $total +=  team_players_position_count($team, $position);
+  }
+  return $total;
+}
+
+function form_player_position_count_array($teams){
+  $result = [];
+  foreach (POSITION_TYPES as $position_type) {
+    $result[$position_type] = teams_players_position_count($teams, $position_type);
+  }
+  return $result;
+}
+
+function position_percentage($team, $position){
+  $value = 100 * team_players_position_count($team, $position) / count($team['players']);
+  return round($value, 2);
+}
+
+function render_team_position_row($team)
+{
+  ?>
+  <div class="table_row">
+  <div><?= $team['name'] ?></div>
+  <?php foreach(POSITION_TYPES as $position_type) : ?>
+    <div><?= position_percentage($team, $position_type); ?> %</div>
+  <?php endforeach; ?>
+  </div>
+  <?php
+}
+
+function render_teams_player_position_table($teams){
+  ?>
+  <div class="container">
+    <div class="table">
+      <div class="table_title">Zaideju poziciju lentele</div>
+      <div class="table_row table_row--header">
+    <div>Komanda</div>
+    <?php foreach(POSITION_TYPES as $position_type): ?>
+      <div><?= $position_type ?></div>
+    <?php endforeach; ?>
+      </div>
+
+    </div>
+  </div>
+  <?php
+}

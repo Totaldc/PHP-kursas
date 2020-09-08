@@ -222,7 +222,13 @@ function sanitize_form_input_values(array $form): array
 // 	}
 // 	return $success;
 // }
-
+/**
+ * Validates form
+ *
+ * @param array $form
+ * @param array $form_values
+ * @return bool
+ */
 function validate_form(array &$form, array $form_values): bool
 {
     $success = true;
@@ -253,8 +259,8 @@ function validate_form(array &$form, array $form_values): bool
             $params = $validator;
         } else {
             $function = $validator;
-        }
-       
+		}
+		
         if (!$function($form_values, $form, $params ?? null)) {
             $success = false;
             break;

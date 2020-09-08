@@ -38,22 +38,76 @@
 //     }
 // }
 
+// function form_success($form)
+// {
+//     if (file_exists('db.txt')) {
+//         $current_data = file_get_contents('db.txt');
+//         $array_data = json_decode($current_data, true);
+//         if(validate_register($form, $array_data)){
+//         var_dump($array_data);
+//             print "yra";
+//             $array_data[] = $form;
+//             $final_data = json_encode($array_data);
+//             file_put_contents('db.txt', $final_data);
+//         return $array_data;
+//     }
+// }  
+// }
+/**
+ * convert array to json and write to file
+ *
+ * @param $array
+ * @param $file_name
+ * @return bool
+ */
+function array_to_file(array $array, string $file_name): bool
+{
+    $array_json = json_encode($array);
+    return file_put_contents($file_name, $array_json) !== false;
+}
+/**
+ * convert json file to array
+ *
+ * @param $file_name
+ * @return array or bool
+ */
+function file_to_array(string $file_name)
+{
+    if (file_exists($file_name)) {
+        $data = file_get_contents($file_name);
+        $decoded = json_decode($data, true);
+        return is_array($decoded) ? $decoded : [];
+    } else {
+        return false;
+    }
+}
 function form_success($form)
 {
-    if (file_exists('db.txt')) {
-        $current_data = file_get_contents('db.txt');
-        $array_data = json_decode($current_data, true);
-        var_dump($array_data);
-        if(!in_array($form, $array_data)){
-            print "yra";
-            $array_data[] = $form;
-            $final_data = json_encode($array_data);
-            file_put_contents('db.txt', $final_data);
-        } else {
-            print "nepaejo";
-        }
-    }
-}  
+    var_dump($form);
+    $database = file_to_array('db.txt');
+    $database[] = $form;
+  return array_to_file($database, 'db.txt');
+}
+// function file_to_array($file){
+//     $current_data = file_get_contents($file);
+//     $array_data = json_decode($current_data, true);
+//     print "yra";
+//     return $array_data;
+// }
+
+// function array_to_file($array_data, $file){
+//     $file = 'db.txt';
+//     $json = json_encode($array_data);
+//     return file_put_contents($file, $json);
+// }
+
+// function form_success($form){
+//     $database = file_to_array('db.txt');
+
+//     $database[] = $form;
+
+//     array_to_file($database, 'db.txt');
+// }
 
 
 

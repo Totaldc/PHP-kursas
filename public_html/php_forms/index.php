@@ -83,10 +83,10 @@ $form = [
 				'validate_field_not_empty',
 				'validate_field_is_number',
 				// 'validate_field_is_diff1',
-				'validate_field_range' => [
-					'min' => 10,
-					'max' => 50,
-				]
+				// 'validate_field_range' => [
+				// 	'min' => 10,
+				// 	'max' => 50,
+				// ]
 
 			],
 			'extra' => [
@@ -105,10 +105,10 @@ $form = [
 				'validate_field_not_empty',
 				'validate_field_is_number',
 				// 'validate_field_is_diff2',
-				'validate_field_range' => [
-					'min' => 20,
-					'max' => 50,
-				]
+				// 'validate_field_range' => [
+				// 	'min' => 20,
+				// 	'max' => 50,
+				// ]
 
 			],
 			'extra' => [
@@ -119,20 +119,21 @@ $form = [
 			],
 		],
 		'email' => [
-			'label' => 'Your Email:',
-			'value' => '',
-			'type' => 'email',
-			'validators' => [
-				'validate_field_not_empty',
-				'validate_field_is_number'
-			],
-			'extra' => [
-				'attr' => [
-					'class' => 'my-class',
-					'placeholder' => 'Pvz. aivaras@makdraiveris.lt',
-				],
-			],
-		],
+            'label' => 'Email',
+            'type' => 'email',
+            'value' => 'email@email.com',
+            'validators' =>
+                [
+                    'validate_field_not_empty',
+                    'validate_register',
+                ],
+            'extra' => [
+                'attr' => [
+                    'placeholder' => 'Enter Your Email'
+                ]
+            ]
+        ],
+		
 		// 'sex' => [
 		// 	'label' => 'Sex:',
 		// 	'type' => 'select',
@@ -164,29 +165,25 @@ $form = [
 		],
 	],
 	'validators' => [
-		'validate_field_match' => [
-			'number1',
-			'number2'
-		]
+		// 'validate_field_match' => [
+		// 	'number1',
+		// 	'number2'
+		// ]
 	]
 ];
-
-
 
 
 if (!empty($_POST)) {
 	$form_values = sanitize_form_input_values($form);
 	$success = validate_form($form, $form_values);
 	unset($form_values['number2']);
-	form_success($form_values);
 	if ($success) {
+		form_success($form_values);
 		var_dump('Gal ir normalus');
 	} else {
 		var_dump('Tai kad nelabai');
 	}
 }
-
-
 
 //var_dump($form);
 //var_dump($form_values);
@@ -247,6 +244,7 @@ if (!empty($_POST)) {
 <body>
 	<main>
 		<?php include('core/templates/form.tpl.php'); ?>
+		<?php include('core/templates/table.tpl.php'); ?>
 		<?php if (isset($message)) : ?>
 			<span><?php print $message; ?></span>
 		<?php endif; ?>
