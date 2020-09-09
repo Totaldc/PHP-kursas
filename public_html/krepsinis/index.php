@@ -1,5 +1,6 @@
 <?php
   // init
+  require 'constants.php';
   require 'utils/helperFunctions.php';
 ?>
 <!DOCTYPE html>
@@ -13,8 +14,8 @@
 </head>
 <body>
   <?php
-    include 'views/header.php';
-    include 'views/body.php';
+    include 'views/common/header.php';
+    include 'views/common/body.php';
   ?>
 </body>
 </html>

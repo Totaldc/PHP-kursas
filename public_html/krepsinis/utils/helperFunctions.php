@@ -50,7 +50,7 @@ function find_value($array, $value)
  * @param Function $map_function funkcija kuri formuos naujus elementus pagal $array masyvo elementus
  * @return Array naujai suformuotų elementų masyvas
  */
-function arr_map($array, $map_function)
+function arr_map($array, string $map_function)
 {
   $mapped_arr = [];
   foreach ($array as $el) {
@@ -91,4 +91,9 @@ function arr_min_key($arr)
     }
   }
   return $min_key;
+}
+
+function percentage($part, $all){
+  $value = 100 * $part / $all;
+  return round($value, 2);
 }

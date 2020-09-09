@@ -118,6 +118,16 @@ function validate_register(string $field_value, array &$field): bool
     return true;
 }
 
+function validate_login($form_values, &$form){
+    if($form_values !== ''){
+        return true;
+    }
+    else{
+        $form['error'] = 'REGISTRACIJA NEPAEJO';
+        return false;
+    }
+}
+
 
 // function validate_register(string $field_value, array &$field): bool
 // {

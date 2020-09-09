@@ -83,7 +83,7 @@ function file_to_array(string $file_name)
 }
 function form_success($form)
 {
-    var_dump($form);
+    // var_dump($form);
     $database = file_to_array('db.txt');
     $database[] = $form;
   return array_to_file($database, 'db.txt');

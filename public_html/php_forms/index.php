@@ -169,6 +169,10 @@ $form = [
 		// 	'number1',
 		// 	'number2'
 		// ]
+		],
+
+	'validators' => [
+		'validate_login'
 	]
 ];
 
@@ -180,10 +184,9 @@ if (!empty($_POST)) {
 	$success = validate_form($form, $form_values);
 	unset($form_values['number2']);
 	if ($success) {
-		header("Location: test.php");
-
-
+		sesh($form_values);
 		form_success($form_values);
+		$form['msg'] = 'REGISTRACIJA SEKMINGA';
 		var_dump('Gal ir normalus');
 	} else {
 		var_dump('Tai kad nelabai');
@@ -195,6 +198,9 @@ if (!empty($_POST)) {
 
 // $json = json_encode($form);
 // $bytes = file_put_contents("db.txt", $json); 
+
+
+
 
 ?>
 <!doctype html>
@@ -252,6 +258,9 @@ if (!empty($_POST)) {
 		<?php include('core/templates/table.tpl.php'); ?>
 		<?php if (isset($message)) : ?>
 			<span><?php print $message; ?></span>
+		<?php endif; ?>
+		<?php if (isset($login_message)) : ?>
+			<span><?php print $login_message; ?></span>
 		<?php endif; ?>
 		<p><?php print $form_values['first_name'] ?? 'Neivesta' ?></p>
 		<p><?php print $form_values['last_name'] ?? 'Neivesta' ?></p>
