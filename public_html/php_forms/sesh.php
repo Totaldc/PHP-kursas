@@ -1,6 +1,8 @@
 <?php
-function sesh($form_values)
+function sesh($form_values, &$form)
 {
+
+$form['error'] = "REGISTRACIJA PAVYKO";
 
 if(!isset($_SESSION)) {
     
@@ -19,6 +21,7 @@ $_SESSION['email'] = $form_values['email'];
 $_SESSION['password'] = $form_values['number1'];
 
 var_dump($_SESSION);
+
 
 
 }

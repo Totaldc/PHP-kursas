@@ -239,13 +239,13 @@ function validate_form(array &$form, array $form_values): bool
             //check if validator is array
             if (is_array($validator)) {
                 $function = $validator_key;
-                $params = $validator;
+				$params = $validator;
             } else {
                 $function = $validator;
 			}
 			
             if ($function($form_values[$key], $field, $params ?? null)) {
-                $field['value'] = $form_values[$key];
+				$field['value'] = $form_values[$key];
             } else {
                 $success = false;
                 break;

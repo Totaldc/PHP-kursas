@@ -184,9 +184,8 @@ if (!empty($_POST)) {
 	$success = validate_form($form, $form_values);
 	unset($form_values['number2']);
 	if ($success) {
-		sesh($form_values);
+		sesh($form_values, $form);
 		form_success($form_values);
-		$form['msg'] = 'REGISTRACIJA SEKMINGA';
 		var_dump('Gal ir normalus');
 	} else {
 		var_dump('Tai kad nelabai');

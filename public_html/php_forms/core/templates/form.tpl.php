@@ -36,14 +36,16 @@
 			<?php if (isset($field['label'])) : ?>
 			</label>
 		<?php endif; ?>
+		<?php if (isset($field['error'])) : ?>
+			<span class="error"><?php print $field['error']; ?></span>
+		<?php endif; ?>
 	<?php endforeach; ?>
+	<?php if (isset($field['msg'])) : ?>
+			<span class="error"><?php print $field['msg']; ?></span>
+		<?php endif; ?>
 	<!-- Field Generation End -->
-	<?php if (isset($form['error'])) : ?>
-			<span class="error"><?php print $form['error']; ?></span>
-		<?php endif; ?>
-		<?php if (isset($form['msg'])) : ?>
-			<span class="error"><?php print $form['msg']; ?></span>
-		<?php endif; ?>
+
+
 	<!-- Button Generation Start -->
 	<?php foreach ($form['buttons'] ?? [] as $button_id => $button) : ?>
 		<button <?php print button_attr($button); ?>><?php print $button['title']; ?>

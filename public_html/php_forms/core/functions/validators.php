@@ -75,7 +75,7 @@ function validate_field_is_diff2($field_value, &$field)
 function validate_field_range($field_value, &$field, $params)
 {
 
-   $params = $field['validators']['validate_field_range'];
+    $params = $field['validators']['validate_field_range'];
 
 
     if ($field_value < $params['min'] || $field_value > $params['max']) {
@@ -87,10 +87,11 @@ function validate_field_range($field_value, &$field, $params)
     }
 }
 
-function validate_field_match($form_values, &$form, $params){
+function validate_field_match($form_values, &$form, $params)
+{
     // var_dump($form);
     if ($form_values[$params[0]] === $form_values[$params[1]]) {
-       print 'puikiai';
+        print 'puikiai';
     } else {
         $form['error'] = 'Nu tu...';
         return false;
@@ -118,25 +119,11 @@ function validate_register(string $field_value, array &$field): bool
     return true;
 }
 
-function validate_login($form_values, &$form){
-    if($form_values !== ''){
-        return true;
-    }
-    else{
-        $form['error'] = 'REGISTRACIJA NEPAEJO';
+function validate_login($form_values, &$field)
+{
+    if (empty($form_values)) {
         return false;
-    }
+    } 
+    print "REGISTRACIJA PAVYKO";
+    return true;
 }
-
-
-// function validate_register(string $field_value, array &$field): bool
-// {
-//     $data_arr = file_to_array('db.txt');
-//     foreach ($data_arr as $key => $value) {
-//         if ($value['email'] === $field_value) {
-//             $field['error'] = "User $field_value already registered";
-//             return false;
-//         }
-//     }
-//     return true;
-// }
