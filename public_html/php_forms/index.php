@@ -74,145 +74,64 @@ $form = [
 		// 		],
 		// 	],
 		// ],
-		// 'number1' => [
-		// 	'label' => 'Number1:',
-		// 	'filter' => FILTER_SANITIZE_ENCODED,
-		// 	'value' => '',
-		// 	'type' => 'number',
-		// 	'validators' => [
-		// 		'validate_field_not_empty',
-		// 		'validate_field_is_number',
-		// 		// 'validate_field_is_diff1',
-		// 		// 'validate_field_range' => [
-		// 		// 	'min' => 10,
-		// 		// 	'max' => 50,
-		// 		// ]
+		'number1' => [
+			'label' => 'Number1:',
+			'filter' => FILTER_SANITIZE_ENCODED,
+			'value' => '',
+			'type' => 'number',
+			'validators' => [
+				'validate_field_not_empty',
+				'validate_field_is_number',
+				// 'validate_field_is_diff1',
+				// 'validate_field_range' => [
+				// 	'min' => 10,
+				// 	'max' => 50,
+				// ]
 
-		// 	],
-		// 	'extra' => [
-		// 		'attr' => [
-		// 			'class' => 'my-class',
-		// 			'placeholder' => 'Enter number 1',
-		// 		],
-		// 	],
-		// ],
-		// 'number2' => [
-		// 	'label' => 'Number2:',
-		// 	'filter' => FILTER_SANITIZE_ENCODED,
-		// 	'value' => '',
-		// 	'type' => 'number',
-		// 	'validators' => [
-		// 		'validate_field_not_empty',
-		// 		'validate_field_is_number',
-		// 		// 'validate_field_is_diff2',
-		// 		// 'validate_field_range' => [
-		// 		// 	'min' => 20,
-		// 		// 	'max' => 50,
-		// 		// ]
+			],
+			'extra' => [
+				'attr' => [
+					'class' => 'my-class',
+					'placeholder' => 'Enter number 1',
+				],
+			],
+		],
+		'number2' => [
+			'label' => 'Number2:',
+			'filter' => FILTER_SANITIZE_ENCODED,
+			'value' => '',
+			'type' => 'number',
+			'validators' => [
+				'validate_field_not_empty',
+				'validate_field_is_number',
+				// 'validate_field_is_diff2',
+				// 'validate_field_range' => [
+				// 	'min' => 20,
+				// 	'max' => 50,
+				// ]
 
-		// 	],
-		// 	'extra' => [
-		// 		'attr' => [
-		// 			'class' => 'my-class',
-		// 			'placeholder' => 'Enter number 2',
-		// 		],
-		// 	],
-		// ],
-		// 'email' => [
-        //     'label' => 'Email',
-        //     'type' => 'email',
-        //     'value' => 'email@email.com',
-        //     'validators' =>
-        //         [
-        //             'validate_field_not_empty',
-        //             'validate_register',
-        //         ],
-        //     'extra' => [
-        //         'attr' => [
-        //             'placeholder' => 'Enter Your Email'
-        //         ]
-        //     ]
-		// ],
-		
-		'checkbox1' => [
-			'label' => 'Listas nr 1',
-			'name' => 'listas1',
-            'type' => 'radio',
-            'value' => 'Yes',
-            'extra' =>
-            [
-                'attr' =>
-                [
-                    'class' => 'radio-field',
-                ],
-            ],
+			],
+			'extra' => [
+				'attr' => [
+					'class' => 'my-class',
+					'placeholder' => 'Enter number 2',
+				],
+			],
 		],
-		
-		'checkbox2' => [
-			'name' => 'listas1',
-            'type' => 'radio',
-            'value' => 'No',
-            'extra' =>
-            [
-                'attr' =>
+		'email' => [
+            'label' => 'Email',
+            'type' => 'email',
+            'value' => 'email@email.com',
+            'validators' =>
                 [
-                    'class' => 'radio-field',
+                    'validate_field_not_empty',
+                    'validate_register',
                 ],
-            ],
-		],
-		
-		'checkbox3' => [
-			'label' => 'Listas nr 2',
-			'name' => 'listas2',
-            'type' => 'radio',
-            'value' => 'Yes',
-            'extra' =>
-            [
-                'attr' =>
-                [
-                    'class' => 'radio-field',
-                ],
-            ],
-		],
-		
-		'checkbox4' => [
-			'name' => 'listas2',
-            'type' => 'radio',
-            'value' => 'No',
-            'extra' =>
-            [
-                'attr' =>
-                [
-                    'class' => 'radio-field',
-                ],
-            ],
-		],
-		
-		'checkbox5' => [
-			'label' => 'Listas nr 3',
-			'name' => 'listas3',
-            'type' => 'radio',
-            'value' => 'Yes',
-            'extra' =>
-            [
-                'attr' =>
-                [
-                    'class' => 'radio-field',
-                ],
-            ],
-		],
-		
-		'checkbox6' => [
-			'name' => 'listas3',
-            'type' => 'radio',
-            'value' => 'No',
-            'extra' =>
-            [
-                'attr' =>
-                [
-                    'class' => 'radio-field',
-                ],
-            ],
+            'extra' => [
+                'attr' => [
+                    'placeholder' => 'Enter Your Email'
+                ]
+            ]
         ],
 		
 		// 'sex' => [
@@ -245,8 +164,15 @@ $form = [
 			],
 		],
 	],
-	
+	'validators' => [
+		// 'validate_field_match' => [
+		// 	'number1',
+		// 	'number2'
+		// ]
+	]
 ];
+
+
 
 
 if (!empty($_POST)) {
@@ -254,6 +180,9 @@ if (!empty($_POST)) {
 	$success = validate_form($form, $form_values);
 	unset($form_values['number2']);
 	if ($success) {
+		header("Location: test.php");
+
+
 		form_success($form_values);
 		var_dump('Gal ir normalus');
 	} else {

@@ -235,25 +235,25 @@ function validate_form(array &$form, array $form_values): bool
     foreach ($form['fields'] as $key => &$field) {
 		// go through validators array
 		
-        // foreach ($field['validators'] as $validator_key => $validator) {
-        //     //check if validator is array
-        //     if (is_array($validator)) {
-        //         $function = $validator_key;
-        //         $params = $validator;
-        //     } else {
-        //         $function = $validator;
-		// 	}
+        foreach ($field['validators'] as $validator_key => $validator) {
+            //check if validator is array
+            if (is_array($validator)) {
+                $function = $validator_key;
+                $params = $validator;
+            } else {
+                $function = $validator;
+			}
 			
-        //     if ($function($form_values[$key], $field, $params ?? null)) {
-        //         $field['value'] = $form_values[$key];
-        //     } else {
-        //         $success = false;
-        //         break;
-        //     }
-        // }
+            if ($function($form_values[$key], $field, $params ?? null)) {
+                $field['value'] = $form_values[$key];
+            } else {
+                $success = false;
+                break;
+            }
+        }
 	}
 	
-    foreach ($form['validators'] ?? [] as $validator_key => $validator) {
+    foreach ($form['validators'] as $validator_key => $validator) {
         if (is_array($validator)) {
             $function = $validator_key;
             $params = $validator;

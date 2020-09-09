@@ -2,6 +2,13 @@
 
 	<!-- Field Generation Start -->
 	<?php foreach ($form['fields'] ?? [] as $field_id => $field) : ?>
+		<!-- Checking if input has name -->
+		<?php if (isset($field['name'])) : ?>
+			<span>
+				<?php print $field['name'] ?>
+			</span>
+		<?php endif; ?>
+
 		<!-- Checking if input has label -->
 		<?php if (isset($field['label'])) : ?>
 			<label><span>
@@ -10,12 +17,6 @@
 			<?php endif; ?>
 
 
-		<!-- Checking if input has name -->
-		<?php if (isset($field['value'])) : ?>
-			<span>
-				<?php print $field['value'] ?>
-			</span>
-		<?php endif; ?>
 
 			<!-- Checking if input type is select -->
 			<?php if ($field['type'] == 'select') : ?>
