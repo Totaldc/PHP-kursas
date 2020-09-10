@@ -119,11 +119,36 @@ function validate_register(string $field_value, array &$field): bool
     return true;
 }
 
-function validate_login($form_values, &$field)
+// function validate_login($form_values, &$field)
+// {
+//     if (empty($form_values)) {
+//         return false;
+//     } 
+//     print "REGISTRACIJA PAVYKO";
+//     return true;
+// }
+
+
+/**
+ * Validates login
+ *
+ * @param array $form_values
+ * @param array $form
+ * @return bool
+ */
+function validate_login(array $form_values, array &$form): bool
 {
-    if (empty($form_values)) {
-        return false;
-    } 
-    print "REGISTRACIJA PAVYKO";
-    return true;
+    $users = file_to_array('db.txt');
+    
+    var_dump($form_values);
+    var_dump(['form_values' => $form_values]);
+    foreach ($users as $user) {
+        if ($form_values['email'] === $user['email'] && $form_values['number1'] === $user['number1']) {
+            $_SESSION['email'] = $form_values['email'];
+            $_SESSION['password'] = $form_values['number1'];
+            var_dump('paejoooo');
+            return true;
+        }
+    }
+    return false;
 }

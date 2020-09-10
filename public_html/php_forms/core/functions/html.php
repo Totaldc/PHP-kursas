@@ -2,6 +2,7 @@
 
 require('validators.php');
 
+
 /**
  * Generates attributes
  *
@@ -268,3 +269,4 @@ function validate_form(array &$form, array $form_values): bool
     }
     return $success;
 }
+
