@@ -139,9 +139,6 @@ function validate_register(string $field_value, array &$field): bool
 function validate_login(array $form_values, array &$form): bool
 {
     $users = file_to_array('db.txt');
-    
-    var_dump($form_values);
-    var_dump(['form_values' => $form_values]);
     foreach ($users as $user) {
         if ($form_values['email'] === $user['email'] && $form_values['number1'] === $user['number1']) {
             $_SESSION['email'] = $form_values['email'];
@@ -151,4 +148,8 @@ function validate_login(array $form_values, array &$form): bool
         }
     }
     return false;
+}
+
+function is_logedin(array $form_values, array &$form){
+    var_dump($_SESSION);
 }

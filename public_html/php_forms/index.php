@@ -2,6 +2,7 @@
 
 require('bootloader.php');
 
+$h1 = $_SESSION['email'];
 
 ?>
 
@@ -14,6 +15,7 @@ require('bootloader.php');
     <title>Document</title>
 </head>
 <body>
-    <?php var_dump($_SESSION); ?>
+    <h1>WELCOME <?php print $h1; ?></h1>
+    <a href="logout.php">Logout</a>
 </body>
 </html>
