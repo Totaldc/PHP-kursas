@@ -31,19 +31,20 @@ $row = ['name' => 'OtherName'];
 $row2 = ['name' => 'OtherName'];
 $row3 = ['name' => 'OtherName'];
 
-$conditions = ['name' => 'OtherName'];
 
 $db->insertRow('users_table', $row, 'First');
 $db->insertRow('users_table', $row2, 'Second');
 $db->insertRow('users_table', $row3, 'Third');
+$conditions = ['name' => 'OtherName'];
+
 // $db->updateRow('users_table', 'First', $row);
 // $db->getRowById('users_table', 'First');
-var_dump($db->getRowsWhere('users_table', $conditions));
+$test = $db->getRowsWhere('users_table', $conditions);
+var_dump($test);
 // $db->deleteRow('users_table', 'First');
 
 // $db->insertRow('users_table', 'Name', 'First');
 // $db->insertRow('users_table', 'Name', 'Second');
 // $db->insertRow('users_table', 'Name', 'Third');
 
-var_dump($db->getData());
 

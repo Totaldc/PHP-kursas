@@ -199,21 +199,25 @@ class FileDB
         }
     }
 
-    public function getRowsWhere ($table_name, array $conditions)
+    public function getRowsWhere($table_name, array $conditions)
     {
-       if ($this->tableExists($table_name)) {
-          $new_arr = [];
-          foreach ($this->data[$table_name] as $key => $row) {
-             var_dump($row);
-             foreach ($conditions as $condition) {
-                if (in_array($condition, $row)) {
-                   $new_arr[$key] = $condition;
-                   var_dump($new_arr);
+        if ($this->tableExists($table_name)) {
+            $test_arr = [];
+            $test_key = [];
+            $new = [];
+            foreach ($this->data[$table_name] as $key => $row) {
+                foreach ($row as $key => $item) {
+                    foreach ($conditions as $test_key => $condition) {
+                        $test_arr = $condition;
+                        $test_key = $test_key;
+                        var_dump($test_key);
+                    }
+                    if ($test_arr === $item && $test_key === $key) {
+                        $new[$key] = $item;
+                    }
                 }
-             }
-             return $new_arr;
-          }
-       }
-       return false;
+            }
+            return $new;
+        }
     }
 }
