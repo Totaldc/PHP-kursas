@@ -19,6 +19,8 @@
   $hamburPort = new ShipPort("Port of Hamburg", "Hamburg", "Germany", 53.5095114, 9.8954374);
   $genoaPort = new ShipPort("Port of Genoa", "Genoa", "Italy", 47.5360178, -05748012);
   $guardalavacaPort = new ShipPort("Puerto de Guordalamaca", "Guardalamaca", "Cuba", 21.1231251, -75.830705);
+  $ship1 = new Ship("Titanic", "Cruise ship", 500);
+  $ship2 = new Ship("Kurenas", "Small boat", 1);
   // 1. Nuo Rugsėjo 15, 18 valandos(GMT +1) Barselona(Spain) 
   //  iki Rugsėjo 18, 14 valandos(GMT +1) Genoa(Italy) - 240 eurų
   $startDate = DateTime::createFromFormat($dateFormat, '2020-09-15 18:00', new DateTimeZone('Etc/GMT+1'));

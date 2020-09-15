@@ -10,7 +10,7 @@ class Cruise
   private $price;
   // Kitos svarbios savybės
   private $ship;
-  private $rooms;
+private $stops;
   private $countries;
   // Šalutinės savybės
   private $advImages;
