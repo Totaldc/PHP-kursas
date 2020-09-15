@@ -1,28 +1,49 @@
 <?php
 
-$id = $_COOKIE['id'] ?? time();
-$visits = ($_COOKIE['count_visit'] ?? 0) +1;
+require('bootloader.php');
 
-setcookie('id', $id, time() + 3600);
-setcookie('count_visit', $visits,  time() + 3600);
+$db = new FileDB(DB_FILE);
 
-$h1 = "Welcome user nr $id";
-$h2 = "It's your $visits time on this website"; 
+$array = [1, 2, 3, 5];
 
-?>
+$db->setData($array);
 
-<!DOCTYPE html>
-<html lang="en">
+var_dump($db);
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 
-<body>
-    <h1><?php print $h1; ?></h1>
-    <h2><?php print $h2; ?></h2>
-</body>
+$newData = $db->getData();
 
-</html>
+$database = $db->save();
+var_dump($database);
+
+$db->load();
+$database = $db->getData();
+var_dump($database);
+
+$db->createTable('users_table');
+
+// $db->dropTable('users_table');
+
+// $db->truncateTable('users_table');
+
+
+$row = ['name' => 'OtherName'];
+$row2 = ['name' => 'OtherName'];
+$row3 = ['name' => 'OtherName'];
+
+$conditions = ['name' => 'OtherName'];
+
+$db->insertRow('users_table', $row, 'First');
+$db->insertRow('users_table', $row2, 'Second');
+$db->insertRow('users_table', $row3, 'Third');
+// $db->updateRow('users_table', 'First', $row);
+// $db->getRowById('users_table', 'First');
+var_dump($db->getRowsWhere('users_table', $conditions));
+// $db->deleteRow('users_table', 'First');
+
+// $db->insertRow('users_table', 'Name', 'First');
+// $db->insertRow('users_table', 'Name', 'Second');
+// $db->insertRow('users_table', 'Name', 'Third');
+
+var_dump($db->getData());
+
