@@ -54,25 +54,24 @@ $form = [
 ];
 
 
+$db = new FileDB(DB_FILE);
+
+
 if (!empty($_POST)) {
-	// filter characters
-	$form_values = sanitize_form_input_values($form);
-	// validate form according to validators
-	if (validate_form($form, $form_values)) {
-		unset($form_values['password_repeat']);
-		
-		if (!empty(file_to_array(DB_FILE))) {
-			$file_to_array = file_to_array(DB_FILE);
-			$file_to_array[] = $form_values;
-		} else {
-			$file_to_array[] = $form_values;
-		}
-		
-		$message = array_to_file($file_to_array, DB_FILE) ? 'Registracija sėkminga!' : 'Užsiregistruoti nepavyko';
-		header('Location: login.php');
-		exit;
-	}
-	
+    $form_values = sanitize_form_input_values($form);
+    $success = validate_form($form, $form_values);
+    if ($success) {
+        unset($form_values['password_repeat']);
+        $db = new FileDB(DB_FILE);
+        $db->load();
+        $db->insertRow('users', $form_values);
+        $save_data = $db->save();
+        $message = $save_data ? 'Issaugota' : 'Neisaugota';
+        header('Location: login.php');
+        exit;
+    } else {
+        $message = 'Eik tu nx';
+    }
 }
 //var_dump($form);
 //var_dump($form_values);
