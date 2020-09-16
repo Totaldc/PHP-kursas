@@ -1,1 +1,1 @@
-{"0":{"email":"email@email.com","password":"psw"},"1":{"email":"php@php.lt","password":"psw"},"2":{"email":"paulius@paulius.pk","password":"psw"},"3":{"email":"email@email.com","password":"psw"},"users":[{"email":"email@email.com","password":"psw"},{"email":"php@php.lt","password":"psw"}]}
+{"users_table":[{"email":"email@email.com","password":"psw"},{"email":"email@email.com","password":"psw"}]}

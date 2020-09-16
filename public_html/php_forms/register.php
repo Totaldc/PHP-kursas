@@ -54,9 +54,6 @@ $form = [
 ];
 
 
-$db = new FileDB(DB_FILE);
-
-
 if (!empty($_POST)) {
     $form_values = sanitize_form_input_values($form);
     $success = validate_form($form, $form_values);
@@ -64,15 +61,18 @@ if (!empty($_POST)) {
         unset($form_values['password_repeat']);
         $db = new FileDB(DB_FILE);
         $db->load();
-        $db->insertRow('users', $form_values);
+        $db->insertRow('users_table', $form_values);
         $save_data = $db->save();
         $message = $save_data ? 'Issaugota' : 'Neisaugota';
         header('Location: login.php');
         exit;
     } else {
-        $message = 'Eik tu nx';
+        $message = 'Nepaejo';
     }
 }
+
+
+
 //var_dump($form);
 //var_dump($form_values);
 ?>

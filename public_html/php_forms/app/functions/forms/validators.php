@@ -11,12 +11,12 @@ function validate_user_unique(string $field_value, array &$field): bool
 {
 	$db = new FileDB(DB_FILE);
 	$db->load();
-	foreach ($db as $element) {
-		if ($db->getRowsWhere('user_table', ['username' => $field_value])) {
+
+		if ($db->getRowsWhere('users_table', ['email' => $field_value])) {
 			$field['error'] = 'Toks vartotojas jau egzistuoja';
 			return false;
 		}
-	}
+	
 	return true;
 }
 
@@ -29,14 +29,15 @@ function validate_user_unique(string $field_value, array &$field): bool
  */
 function validate_login(array $field_value, array &$field)
 {
-	$data = file_to_array(DB_FILE);
-	foreach ($data as $user) {
-		if ($field_value['email'] === $user['email'] && $field_value['password'] === $user['password']) {
+	$db = new FileDB(DB_FILE);
+	$db->load();
+	
+		if ($field_value['email'] === $db->getRowsWhere('users_table', ['email' => $field_value]) && $field_value['password'] === $db->getRowsWhere('users_table', ['email' => $field_value])) {
 			$_SESSION['email'] = $field_value['email'];
 			$_SESSION['password'] = $field_value['password'];
 			return true;
 		}
-	}
+
 
 	return false;
 }

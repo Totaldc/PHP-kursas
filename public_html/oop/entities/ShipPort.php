@@ -1,18 +1,17 @@
 <?php
+//     Uostas    yra   Lokacija
+class ShipPort extends Location
+{
+  private $name;
+  private $city;
+  private $country;
 
-class ShipPort extends Location{
-    private $name;
-    private $city;
-    private $country;
-
-
-
-    public function __construct($name, $city, $country, $latitude, $longitude)
-    {
-        parent::__contruct($latitude, $longitude);
-        $this->name = $name;
-        $this->city = $city;
-        $this->country = $country;
-    }
-
+  public function __construct($name, $city, $country, $latitude, $longitude)
+  {
+    // Kviečia tėvinės klasės konstruktorių
+    parent::__construct($latitude, $longitude);
+    $this->name = $name;
+    $this->city = $city;
+    $this->country = $country;
+  }
 }

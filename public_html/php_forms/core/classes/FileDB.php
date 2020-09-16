@@ -222,7 +222,7 @@ class FileDB
     // }
 
 
-    /**
+        /**
      * Returns array of rows based on conditions
      *
      * @param string $table_name
@@ -236,10 +236,10 @@ class FileDB
 
         foreach ($table as $row_key => $row) {
             $success = true;
-
+            
             foreach ($conditions as $cond_key => $comparison_value_1) {
                 $comparison_value_2 = $row[$cond_key];
-                //                var_dump(['condition key' => $cond_key, 'condition value' => $condition, 'row' => $row]);
+//                var_dump(['condition key' => $cond_key, 'condition value' => $condition, 'row' => $row]);
                 if ($comparison_value_1 !== $comparison_value_2) {
                     $success = false;
                     break;
