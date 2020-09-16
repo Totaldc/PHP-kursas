@@ -2,7 +2,8 @@
 
 require('bootloader.php');
 
-$message = is_logged_in() ? 'WELCOME ' . $_SESSION['email'] : 'Sorriuks, ner';
+$message = 'WELCOME ' . $_SESSION['email'] ;
+
 
 ?>
 <!doctype html>

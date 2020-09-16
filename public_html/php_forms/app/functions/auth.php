@@ -5,19 +5,21 @@
  *
  * @return bool
  */
-function is_logged_in(): bool
-{
-	if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
-		$users = file_to_array(DB_FILE) ?? [];
-		foreach ($users as $user) {
-			if ($user['email'] === $_SESSION['email'] && $user['password'] === $_SESSION['password']) {
-				return true;
-			}
-		}
-	}
+// function is_logged_in(): bool
+// {
+// 	$db = new FileDB(DB_FILE);
+// 	$db->load();
+// 	if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
+// 		$users = file_to_array(DB_FILE) ?? [];
+// 		foreach ($users as $user) {
+// 			if ($user['email'] === $_SESSION['email'] && $user['password'] === $_SESSION['password']) {
+// 				return true;
+// 			}
+// 		}
+// 	}
 	
-	return false;
-}
+// 	return false;
+// }
 
 
 function logout($redirect = false)

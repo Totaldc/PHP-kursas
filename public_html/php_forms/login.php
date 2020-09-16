@@ -40,19 +40,16 @@ $form = [
 ];
 
 if (!empty($_POST)) {
-	$form_values = sanitize_form_input_values($form);
-	if (validate_form($form, $form_values)) {
-		$db = new FileDB(DB_FILE);
-        $db->load();
-		$message = 'Prisijungti pavyko';
-//		var_dump($_SESSION);
-		 header('Location: index.php');
-	} else {
-		$message = 'Prisijungti nepavyko';
-	}
+    $input = sanitize_form_input_values($form);
+    if (validate_form($form, $input)) {
+        $_SESSION = [
+            'email' => $input['email'],
+			'password' => $input['password']
+		];
+		header('Location: index.php');
+		return true;
+    }
 }
-
-
 // if (!empty($_POST)) {
 //     $form_values = sanitize_form_input_values($form);
 //     $success = validate_form($form, $form_values);

@@ -136,19 +136,19 @@ function validate_register(string $field_value, array &$field): bool
  * @param array $form
  * @return bool
  */
-function validate_login(array $form_values, array &$form): bool
-{
-    $users = file_to_array('db.txt');
-    foreach ($users as $user) {
-        if ($form_values['email'] === $user['email'] && $form_values['number1'] === $user['number1']) {
-            $_SESSION['email'] = $form_values['email'];
-            $_SESSION['password'] = $form_values['number1'];
-            var_dump('paejoooo');
-            return true;
-        }
-    }
-    return false;
-}
+// function validate_login(array $form_values, array &$form): bool
+// {
+//     $users = file_to_array('db.txt');
+//     foreach ($users as $user) {
+//         if ($form_values['email'] === $user['email'] && $form_values['number1'] === $user['number1']) {
+//             $_SESSION['email'] = $form_values['email'];
+//             $_SESSION['password'] = $form_values['password'];
+//             var_dump('paejoooo');
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
 function is_logedin(array $form_values, array &$form){
     var_dump($_SESSION);
