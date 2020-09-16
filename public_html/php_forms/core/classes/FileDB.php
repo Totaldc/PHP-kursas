@@ -199,25 +199,56 @@ class FileDB
         }
     }
 
-    public function getRowsWhere($table_name, array $conditions)
+    // public function getRowsWhere($table_name, array $conditions)
+    // {
+    //     if ($this->tableExists($table_name)) {
+    //         $test_arr = [];
+    //         $test_key = [];
+    //         $new = [];
+    //         foreach ($this->data[$table_name] as $key => $row) {
+    //             foreach ($row as $key => $item) {
+    //                 foreach ($conditions as $test_key => $condition) {
+    //                     $test_arr = $condition;
+    //                     $test_key = $test_key;
+    //                     var_dump($test_key);
+    //                 }
+    //                 if ($test_arr === $item && $test_key === $key) {
+    //                     $new[$key] = $item;
+    //                 }
+    //             }
+    //         }
+    //         return $new;
+    //     }
+    // }
+
+
+        /**
+     * Returns array of rows based on conditions
+     *
+     * @param string $table_name
+     * @param array $conditions
+     * @return array
+     */
+    public function getRowsWhere(string $table_name, array $conditions): array
     {
-        if ($this->tableExists($table_name)) {
-            $test_arr = [];
-            $test_key = [];
-            $new = [];
-            foreach ($this->data[$table_name] as $key => $row) {
-                foreach ($row as $key => $item) {
-                    foreach ($conditions as $test_key => $condition) {
-                        $test_arr = $condition;
-                        $test_key = $test_key;
-                        var_dump($test_key);
-                    }
-                    if ($test_arr === $item && $test_key === $key) {
-                        $new[$key] = $item;
-                    }
+        $results = [];
+        $table = $this->data[$table_name];
+
+        foreach ($table as $row_key => $row) {
+            $success = true;
+            
+            foreach ($conditions as $cond_key => $comparison_value_1) {
+                $comparison_value_2 = $row[$cond_key];
+//                var_dump(['condition key' => $cond_key, 'condition value' => $condition, 'row' => $row]);
+                if ($comparison_value_1 !== $comparison_value_2) {
+                    $success = false;
+                    break;
                 }
             }
-            return $new;
+            if ($success) {
+                $results[] = $row;
+            }
         }
+        return $results;
     }
 }
