@@ -42,6 +42,16 @@ print $color;
 		  height: 500px;
 		  background-color: grey;
 	  }
+
+	  span {
+		  position:  absolute;
+		  width: 10px;
+		  height: 10px;
+		  background-color: <?php print $color; ?>;
+		  top: <?php print $y; ?>;
+		  left: <?php print $x; ?>;
+	  }
+
 	</style>
 </head>
 
@@ -54,6 +64,9 @@ print $color;
 	<h1><?php print $message; ?></h1>
 
 <div class="wall">
+	<span>
+		
+	</span>
 
 </div>
 
