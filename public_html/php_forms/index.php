@@ -4,6 +4,7 @@ require('bootloader.php');
 
 $message = is_logged_in() ? 'WELCOME ' . $_SESSION['email'] : 'Nesate prisijunges';
 
+var_dump($_SESSION);
 ?>
 <!doctype html>
 <html lang="en">

@@ -21,7 +21,7 @@ $form = [
 				'validate_field_not_empty',
 			],
         ],
-        'sex' => [
+        'color' => [
             'label' => 'Color',
             'type' => 'select',
             // 'id' => 'kazkoks',
@@ -42,6 +42,9 @@ $form = [
 		],
 	],
 ];
+
+$_SESSION['color'] = $_POST['color'];
+var_dump($_SESSION['color']);
 
 ?>
 
@@ -110,6 +113,6 @@ $form = [
 <main>
 	<h1>Koordinates:</h1>
 	<?php include('core/templates/form.tpl.php'); ?>
-
+    <?php ?>
 </body>
 </html>
