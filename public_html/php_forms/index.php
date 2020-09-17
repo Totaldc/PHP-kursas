@@ -15,6 +15,11 @@ $message = is_logged_in() ? 'WELCOME ' . $_SESSION['email'] : 'Nesate prisijunge
 	<title>Document</title>
 </head>
 <body>
+	<header>
+		<?php
+		include 'app/templates/nav.php'; 
+		?>
+	</header>
 <h1><?php print $message; ?></h1>
 </body>
 </html>
