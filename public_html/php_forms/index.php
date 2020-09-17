@@ -36,6 +36,13 @@ print $color;
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Index</title>
+	<style>
+      .wall {
+		  width: 500px;
+		  height: 500px;
+		  background-color: grey;
+	  }
+	</style>
 </head>
 
 <body>
@@ -45,6 +52,11 @@ print $color;
 		?>
 	</header>
 	<h1><?php print $message; ?></h1>
+
+<div class="wall">
+
+</div>
+
 
 </body>
 
