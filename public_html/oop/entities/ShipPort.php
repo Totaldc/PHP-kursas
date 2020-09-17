@@ -1,5 +1,4 @@
 <?php
-//     Uostas    yra   Lokacija
 class ShipPort extends Location
 {
   private $name;
@@ -14,4 +13,11 @@ class ShipPort extends Location
     $this->city = $city;
     $this->country = $country;
   }
+
+
+  public function getCityAndCountry()
+  {
+    return $this->city . '|' . $this->country;
+  }
+
 }

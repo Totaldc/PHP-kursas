@@ -4,7 +4,16 @@ require('bootloader.php');
 
 $message = is_logged_in() ? 'WELCOME ' . $_SESSION['email'] : 'Nesate prisijunges';
 
-var_dump($_SESSION);
+// $color = $_SESSION['color'];
+// $x = $_SESSION['number1'];
+// $y = $_SESSION['number2'];
+
+$db = new FileDB(DB_FILE);
+$db->load();
+$database = $db->getData();
+
+var_dump($database['coord']);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,5 +31,7 @@ var_dump($_SESSION);
 		?>
 	</header>
 <h1><?php print $message; ?></h1>
+
 </body>
 </html>
+

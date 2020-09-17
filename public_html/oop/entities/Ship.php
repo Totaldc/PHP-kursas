@@ -18,5 +18,21 @@ class Ship
       'type' => 'C',
       'taken' => false
     ]);
+
+    $this->iamges = [];
+  }
+
+  public function addImage($imgPath)
+  {
+    $this->images[] = $imgPath;
+  }
+
+  public function renderAsRow()
+  {
+?>
+    <div>
+      <img src="<?php print $this->images[0] ?>" alt="<?php print $this->brand ?>">
+    </div>
+<?php
   }
 }

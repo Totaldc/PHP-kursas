@@ -43,8 +43,26 @@ $form = [
 	],
 ];
 
-$_SESSION['color'] = $_POST['color'];
-var_dump($_SESSION['color']);
+// $_SESSION['color'] = $_POST['color'];
+// $_SESSION['number1'] = $_POST['number1'];
+// $_SESSION['number2'] = $_POST['number2'];
+// var_dump($_SESSION);
+
+$db = new FileDB(DB_FILE);
+$db->load();
+$db->createTable('coord');
+$db->save();
+$row = ['x' => $_POST['number1']];
+$db->insertRow('coord', $row);
+$row = ['y' => $_POST['number2']];
+$db->insertRow('coord', $row);
+$row = ['color' => $_POST['color']];
+$db->insertRow('coord', $row);
+$db->save();
+$db->load();
+$database = $db->getData();
+
+var_dump($database['coord']);
 
 ?>
 
