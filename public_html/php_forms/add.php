@@ -1,80 +1,99 @@
 <?php
-
 require('bootloader.php');
-
+if (!is_logged_in()) {
+    header('Location: login.php');
+    exit;
+}
+$db = new FileDB(DB_FILE);
 $form = [
-	'attr' => [
-		'method' => 'POST',
-	],
-	'fields' => [
-		'number1' => [
-			'label' => 'X:',
-			'type' => 'number',
-			'validators' => [
-				'validate_field_not_empty',
-			],
-		],
-		'number2' => [
-			'label' => 'Y:',
-			'type' => 'number',
-			'validators' => [
-				'validate_field_not_empty',
-			],
-        ],
-        'color' => [
-            'label' => 'Color',
-            'type' => 'select',
-            // 'id' => 'kazkoks',
-            'value' => 'Pick a color',
-            'options' => [
-                'black' => 'black',
-                'red' => 'red',
-                'blue' => 'blue',
-                'green' => 'green',
+    'attr' => [
+        'method' => 'POST',
+    ],
+    'fields' => [
+        'coordinate_x' => [
+            'type' => 'text',
+            'value' => '',
+            'validators' => [
+                'validate_field_not_empty',
+                'validate_field_is_number',
+                'validate_field_range' => [
+                    'min' => 0,
+                    'max' => 49,
+                ],
+            ],
+            'extra' => [
+                'attr' => [
+                    'placeholder' => 'X koordinate',
+                ],
             ],
         ],
-	],
-	'buttons' => [
-		'submit' => [
-			'title' => 'Chooose!',
-			'type' => 'submit',
-			'value' => 'submit',
-		],
-	],
+        'coordinate_y' => [
+            'type' => 'text',
+            'value' => '',
+            'validators' => [
+                'validate_field_not_empty',
+                'validate_field_is_number',
+                'validate_field_range' => [
+                    'min' => 0,
+                    'max' => 49,
+                ],
+            ],
+            'extra' => [
+                'attr' => [
+                    'placeholder' => 'Y koordinate',
+                ],
+            ],
+        ],
+        'color' => [
+            'type' => 'select',
+            'value' => 'red',
+            'options' => [
+                'red' => 'Red',
+                'blue' => 'Blue',
+                'green' => 'Green',
+                'black' => 'Black',
+            ],
+            'extra' => [
+                'attr' => [
+                    'class' => 'color-selector'
+                ]
+            ]
+        ],
+    ],
+    'buttons' => [
+        'submit' => [
+            'title' => 'Ideti pixeli',
+            'type' => 'submit',
+            'value' => 'submit',
+        ],
+    ],
+    'validators' => [
+        'validate_pixel_unique',
+    ]
 ];
+$nav = generate_nav();
+if (!empty($_POST)) {
+    // filter characters
+    $form_values = sanitize_form_input_values($form);
+    // validate form according to validators
 
-// $_SESSION['color'] = $_POST['color'];
-// $_SESSION['number1'] = $_POST['number1'];
-// $_SESSION['number2'] = $_POST['number2'];
-// var_dump($_SESSION);
+    unset($form_values['password_repeat']);
+    $db->load();
+    $db->insertRow('pixels', $form_values);
+    $db->save();
+    //		header('Location: login.php');
+    //		exit;
 
-$db = new FileDB(DB_FILE);
-$db->load();
-$db->createTable('coord');
-$db->save();
-$row = ['x' => $_POST['number1']];
-$db->insertRow('coord', $row);
-$row = ['y' => $_POST['number2']];
-$db->insertRow('coord', $row);
-$row = ['color' => $_POST['color']];
-$db->insertRow('coord', $row);
-$db->save();
-$db->load();
-$database = $db->getData();
-
-var_dump($database['coord']);
-
+}
 ?>
-
-
 <!doctype html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <style>
         h1 {
             text-align: center;
         }

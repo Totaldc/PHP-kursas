@@ -1,1 +1,1 @@
-{"coord":[{"x":"125"},{"y":"125"},{"color":"red"},{"x":"125"},{"y":"125"},{"color":"red"},{"x":"125"},{"y":"125"},{"color":"red"},{"x":"125"},{"y":"125"},{"color":"red"},{"x":"125"},{"y":"125"},{"color":"red"},{"x":"25"},{"y":"195"},{"color":"green"},{"x":"250"},{"y":"250"},{"color":"red"}],"users_table":[]}
+{"users_table":[{"email":"email@email.com","password":"psw"}],"pixels":[{"coordinate_x":"25","coordinate_y":"25","color":"blue"}]}

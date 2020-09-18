@@ -1,32 +1,12 @@
 <?php
-
 require('bootloader.php');
-
-$message = is_logged_in() ? 'WELCOME ' . $_SESSION['email'] : 'Nesate prisijunges';
-
-// $color = $_SESSION['color'];
-// $x = $_SESSION['number1'];
-// $y = $_SESSION['number2'];
-
+$nav = generate_nav();
 $db = new FileDB(DB_FILE);
 $db->load();
-$database = $db->getData();
-
-foreach ($database['coord'] as $key => $value) {
-	foreach ($value as $key => $item) {
-		if ($key === 'x') {
-			$x = $item;
-		} else if ($key === 'y') {
-			$y = $item;
-		} else if ($key === 'color') {
-			$color = $item;
-		}
-	}
+if ($db->tableExists('pixels')) {
+	$pixels = $db->getRowsWhere('pixels', []);
 }
-
-print $x;
-print $y;
-print $color;
+var_dump($pixels);
 ?>
 <!doctype html>
 <html lang="en">
@@ -35,42 +15,41 @@ print $color;
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Index</title>
-	<style>
-      .wall {
-		  width: 500px;
-		  height: 500px;
-		  background-color: grey;
-	  }
+	<link rel="stylesheet" href="assets/css/style.css">
+	<title>Document</title>
 
-	  span {
-		  position:  absolute;
-		  width: 10px;
-		  height: 10px;
-		  background-color: <?php print $color; ?>;
-		  top: <?php print $y; ?>;
-		  left: <?php print $x; ?>;
-	  }
-
-	</style>
 </head>
+<style>
+	.wall {
+
+		position: relative;
+		width: 500px;
+		height: 500px;
+		background-color: grey;
+
+	}
+
+	span {
+		width: 10px;
+		height: 10px;
+	}
+
+	.pixel {
+		position: absolute;
+	}
+</style>
 
 <body>
 	<header>
-		<?php
-		include 'app/templates/nav.php';
-		?>
+		<?php include ROOT . '/app/templates/nav.php'; ?>
 	</header>
-	<h1><?php print $message; ?></h1>
-
-<div class="wall">
-	<span>
-		
-	</span>
-
-</div>
-
-
+	<div class="container">
+		<div class="wall">
+			<?php foreach ($pixels as $pixel) : ?>
+				<span class="pixel" style=" background:<?php print $pixel['color'] ?>; bottom: <?php print $pixel['coordinate_y'] ?>px; left: <?php print $pixel['coordinate_x'] ?>px;"></span>
+			<?php endforeach; ?>
+		</div>
+	</div>
 </body>
 
 </html>
