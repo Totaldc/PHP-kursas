@@ -33,6 +33,22 @@ if (isset($_POST['submit'])) {
 
 
                 include_once 'dbh.inc.php';
+
+                if (empty($imageTitle) || empty($imageDesc)) {
+                    header('Location: ../gallery.php?upload=empty');
+                    exit();
+                } else {
+                    $sql = "SELECT * FROM gallery;";
+                    $stmt = mysqli_stmt_init($conn);
+                    if (!mysqli_stmt_prepare($stmt, $sql)) {
+                        print 'SQL statement failed';
+                    } else {
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+                        $rowCount = mysqli_num_rows($result);
+                        $setImageOrder = $rowCount + 1;
+                    }
+                }
             } else {
                 print 'File is too big';
             }
