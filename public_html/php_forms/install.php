@@ -1,9 +1,10 @@
-<?php 
+<?php
 
-
-require 'bootloader.php';
+require ('bootloader.php');
 
 $db = new FileDB(DB_FILE);
 $db->load();
-$db->createTable('users_table');
+$db->createTable('users');
+$db->createTable('pixels');
 $db->save();
+print 'issaugota';

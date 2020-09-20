@@ -1,7 +1,7 @@
 <?php
 
 /**
- * filter form array
+ * Filter form array
  *
  * @param array $form
  * @return array
@@ -16,7 +16,6 @@ function sanitize_form_input_values (array $form): array
 }
 
 /**
- * MANO
  * Validates form
  *
  * @param array $form
@@ -28,7 +27,7 @@ function validate_form (array &$form, array $form_values): bool
 	$success = true;
 	foreach ($form['fields'] as $key => &$field) {
 		// go through validators array
-		foreach ($field['validators'] as $validator_key => $validator) {
+		foreach ($field['validators'] ?? [] as $validator_key => $validator) {
 			//check if validator is array
 			if (is_array($validator)) {
 				$function = $validator_key;
@@ -46,7 +45,7 @@ function validate_form (array &$form, array $form_values): bool
 		}
 	}
 	
-	foreach ($form['validators'] as $validator_name => $validator_array) {
+	foreach ($form['validators'] ?? [] as $validator_name => $validator_array) {
 		if (is_array($validator_array)) {
 			$new_function = $validator_name;
 			$new_params = $validator_array;

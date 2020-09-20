@@ -22,7 +22,10 @@
 				<?php endforeach; ?>
 			</select>
 			<!-- Options generation End -->
-		
+			
+			<!-- Check if input type is range -->
+		<?php elseif (($field['type'] == 'range')): ?>
+			<input <?php print range_attr($field_id, $field); ?> />
 		<?php else: ?>
 			<input <?php print input_attr($field_id, $field); ?>>
 		<?php endif; ?>

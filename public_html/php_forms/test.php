@@ -1,50 +1,36 @@
 <?php
-
 require('bootloader.php');
 
-$db = new FileDB(DB_FILE);
+$db = new fileDB(DB_FILE);
+$db->createTable('users');
 
-$array = [1, 2, 3, 5];
+$row = ['name' => 'testName'];
+$find = ['name' => 'Aiste'];
 
-$db->setData($array);
+$row_id = $db->insertRow('users', $row, 'one');
+$row_id = $db->insertRow('users', $row, 'two');
+$row_id = $db->insertRow('users', $row, 'three');
 
-var_dump($db);
+$results = $db->getRowsWhere('users', $row);
+var_dump($results);
+//var_dump($db);
 
+//$db->getData();
+//$get_array = $db->getData();
+//var_dump($get_array);
+//
+//$db->save();
 
-$newData = $db->getData();
-
-$database = $db->save();
-var_dump($database);
-
-$db->load();
-$database = $db->getData();
-var_dump($database);
-
-$db->createTable('users_table');
-
-// $db->dropTable('users_table');
-
-// $db->truncateTable('users_table');
-
-
-$row = ['name' => 'OtherName'];
-$row2 = ['name' => 'OtherName'];
-$row3 = ['name' => 'OtherName'];
+//$db->load();
+//$get_array = $db->getData();
+//var_dump($get_array);
 
 
-$db->insertRow('users_table', $row, 'First');
-$db->insertRow('users_table', $row2, 'Second');
-$db->insertRow('users_table', $row3, 'Third');
-$conditions = ['name' => 'OtherName'];
 
-// $db->updateRow('users_table', 'First', $row);
-// $db->getRowById('users_table', 'First');
-$test = $db->getRowsWhere('users_table', $conditions);
-var_dump($test);
-// $db->deleteRow('users_table', 'First');
 
-// $db->insertRow('users_table', 'Name', 'First');
-// $db->insertRow('users_table', 'Name', 'Second');
-// $db->insertRow('users_table', 'Name', 'Third');
+
+
+
+
 
 

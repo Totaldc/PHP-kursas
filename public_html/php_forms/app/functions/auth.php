@@ -1,31 +1,34 @@
 <?php
 
 /**
- * Verifying if user is logged in
+ * Check if user is logged in
  *
  * @return bool
  */
-function is_logged_in(): bool
+function is_logged_in (): bool
 {
-    $db = new FileDB(DB_FILE);
-    $db->load();
-    if (empty($_SESSION)) {
-        return false;
-    } else {
-        if ($db->getRowsWhere('users_table', ['email' => $_SESSION['email'], 'password' => $_SESSION['password']])) {
-            return true;
-        }
-    }
-    return false;
+	if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
+		$db = new FileDB(DB_FILE);
+		$db->load();
+		if ($db->getRowsWhere('users', ['email' => $_SESSION['email'], 'password' => $_SESSION['password']])) {
+			return true;
+		}
+	}
+	
+	return false;
 }
 
-
-function logout($redirect = false)
+/**
+ * Logout user from site
+ *
+ * @param false $redirect
+ */
+function logout ($redirect = false)
 {
-	setcookie('PHPSESSID', null, - 1);
+	setcookie('PHPSESSID', null, -1);
 	session_destroy();
 	$_SESSION = [];
-	if($redirect){
+	if ($redirect) {
 		header('Location: login.php');
 		exit;
 	}

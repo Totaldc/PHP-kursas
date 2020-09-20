@@ -2,6 +2,8 @@
 
 require('bootloader.php');
 
+$db = new FileDB(DB_FILE);
+
 $form = [
 	'attr' => [
 		'method' => 'POST',
@@ -53,26 +55,21 @@ $form = [
 	],
 ];
 
+$nav = generate_nav();
 
 if (!empty($_POST)) {
-    $form_values = sanitize_form_input_values($form);
-    $success = validate_form($form, $form_values);
-    if ($success) {
-        unset($form_values['password_repeat']);
-        $db = new FileDB(DB_FILE);
-        $db->load();
-        $db->insertRow('users_table', $form_values);
-        $save_data = $db->save();
-        $message = $save_data ? 'Issaugota' : 'Neisaugota';
-        header('Location: login.php');
-        exit;
-    } else {
-        $message = 'Nepaejo';
-    }
+	// filter characters
+	$form_values = sanitize_form_input_values($form);
+	// validate form according to validators
+	if (validate_form($form, $form_values)) {
+		unset($form_values['password_repeat']);
+		$db->load();
+		$db->insertRow('users', $form_values);
+		$message = $db->save() ? 'Registracija sėkminga!' : 'Užsiregistruoti nepavyko';
+		header('Location: login.php');
+		exit;
+	}
 }
-
-
-
 //var_dump($form);
 //var_dump($form_values);
 ?>
@@ -83,13 +80,14 @@ if (!empty($_POST)) {
 	<meta name="viewport"
 	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="assets/css/style.css">
 	<style>
         h1 {
             text-align: center;
         }
 
         form {
-            box-shadow: 0 4px 6px 2px #555555;
+            box-shadow: 0 4px 6px 2px #5555;
             width: 400px;
             margin: 50px auto;
             padding: 20px;
@@ -118,7 +116,6 @@ if (!empty($_POST)) {
 
         form .error {
             color: #660404;
-            /*background-color: rgba(255, 0, 0, 0.2);*/
             padding: 10px;
         }
 
@@ -129,17 +126,20 @@ if (!empty($_POST)) {
             color: white;
             border: none;
         }
-        
+
         .message {
-	        text-align: center;
+            text-align: center;
         }
 	</style>
 	<title>Document</title>
 </head>
 <body>
+<header>
+	<?php include ROOT . '/app/templates/nav.tpl.php'; ?>
+</header>
 <main>
 	<h1>Registracija:</h1>
-	<?php include('core/templates/form.tpl.php'); ?>
+	<?php include ROOT . '/core/templates/form.tpl.php'; ?>
 	<?php if (isset($message)) : ?>
 		<div class="message">
 			<span><?php print $message; ?></span>

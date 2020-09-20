@@ -1,7 +1,7 @@
 <?php
 
 /**
- * saves array to file
+ * Saves array to file
  *
  * @param $array
  * @param $file_name
@@ -21,7 +21,7 @@ function array_to_file (array $array, string $file_name): bool
 }
 
 /**
- * generates array from json
+ * Generates array from json
  *
  * @param $file_name
  * @return array|false|mixed

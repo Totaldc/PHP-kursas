@@ -1,7 +1,7 @@
 <?php
 
 /**
- * validate not empty fields
+ * Validates not empty fields
  *
  * @param $field_value
  * @param $field
@@ -18,7 +18,7 @@ function validate_field_not_empty (string $field_value, array &$field): bool
 }
 
 /**
- * validate if value is number
+ * Validates if value is number
  *
  * @param $field_value
  * @param $field
@@ -35,7 +35,7 @@ function validate_field_is_number (string $field_value, array &$field): bool
 }
 
 /**
- * validate space between names
+ * Validates space between names
  *
  * @param string $field_value
  * @param array $field
@@ -53,7 +53,7 @@ function validate_space_between_names (string $field_value, array &$field): bool
 }
 
 /**
- * validate if age is between 18 and 100
+ * Validates if age is between 18 and 100
  *
  * @param string $field_value
  * @param array $field
@@ -69,7 +69,7 @@ function validate_field_age (string $field_value, array &$field): bool
 }
 
 /**
- * validate if number is in range
+ * Validates if number is within range
  *
  * @param string $field_value
  * @param array $field
@@ -91,7 +91,7 @@ function validate_field_range (string $field_value, array &$field, array $params
 
 
 /**
- * validates matching fields
+ * Validates matching fields
  *
  * @param $field_value
  * @param $form
@@ -100,8 +100,6 @@ function validate_field_range (string $field_value, array &$field, array $params
  */
 function validate_fields_match (array $field_value, array &$form, array $params): bool
 {
-//	var_dump(['form_values' =>  $field_value, 'params' => $params]);
-
 	for ($i = 1; $i < count($params['fields']); $i++){
 		if ($field_value[$params['fields'][0]] !== $field_value[$params['fields'][$i]]) {
 			$form['error'] = $params['error'] ?? 'Default error';

@@ -1,1 +1,35 @@
-{"users_table":[{"email":"email@email.com","password":"psw"}],"pixels":[{"coordinate_x":"25","coordinate_y":"25","color":"blue"}]}
+{
+    "users": [
+        {
+            "email": "a@a.lt",
+            "password": "a"
+        },
+        {
+            "email": "email@email.com",
+            "password": "psw"
+        }
+    ],
+    "pixels": [
+        {
+            "coordinate_x": "0",
+            "coordinate_y": "0",
+            "color": "green",
+            "size": "20",
+            "email": "a@a.lt"
+        },
+        {
+            "coordinate_x": "480",
+            "coordinate_y": "480",
+            "color": "blue",
+            "size": "20",
+            "email": "a@a.lt"
+        },
+        {
+            "coordinate_x": "15",
+            "coordinate_y": "15",
+            "color": "green",
+            "size": "10",
+            "email": "email@email.com"
+        }
+    ]
+}
