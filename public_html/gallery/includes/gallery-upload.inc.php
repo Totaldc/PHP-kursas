@@ -27,7 +27,12 @@ if (isset($_POST['submit'])) {
 
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
-            if ($fileSize > 2000) {
+            if ($fileSize > 200000) {
+                $imgFullName = $newFileName . "." . uniqid('', true) . '.' . $fileActualExt;
+                $fileDestination = 'img/gallery/' . $imgFullName;
+
+
+                include_once 'dbh.inc.php';
             } else {
                 print 'File is too big';
             }
