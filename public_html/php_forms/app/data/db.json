@@ -7,6 +7,10 @@
         {
             "email": "email@email.com",
             "password": "psw"
+        },
+        {
+            "email": "belekas@belekas.lt",
+            "password": "psw"
         }
     ],
     "pixels": [
@@ -30,6 +34,13 @@
             "color": "green",
             "size": "10",
             "email": "email@email.com"
+        },
+        {
+            "coordinate_x": "15",
+            "coordinate_y": "25",
+            "color": "red",
+            "size": "10",
+            "email": "belekas@belekas.lt"
         }
     ]
 }

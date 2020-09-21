@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 class FileDB
 {
 	private string $file_name;

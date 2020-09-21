@@ -1,8 +1,9 @@
 <?php
+use App\App;
 
 require('bootloader.php');
 
-$db = new FileDB(DB_FILE);
+App::$db;
 
 $form = [
 	'attr' => [
@@ -63,9 +64,9 @@ if (!empty($_POST)) {
 	// validate form according to validators
 	if (validate_form($form, $form_values)) {
 		unset($form_values['password_repeat']);
-		$db->load();
-		$db->insertRow('users', $form_values);
-		$message = $db->save() ? 'Registracija sėkminga!' : 'Užsiregistruoti nepavyko';
+		App::$db->load();
+		App::$db->insertRow('users', $form_values);
+		$message = App::$db->save() ? 'Registracija sėkminga!' : 'Užsiregistruoti nepavyko';
 		header('Location: login.php');
 		exit;
 	}

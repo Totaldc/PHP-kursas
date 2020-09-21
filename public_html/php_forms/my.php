@@ -1,13 +1,13 @@
 <?php
+use App\App;
 
 require('bootloader.php');
 
 $nav = generate_nav();
 
-$db = new FileDB(DB_FILE);
-$db->load();
-if ($db->tableExists('pixels')) {
-	$pixels = $db->getRowsWhere('pixels', ['email' => $_SESSION['email']]);
+App::$db;
+if (App::$db->tableExists('pixels')) {
+	$pixels = App::$db->getRowsWhere('pixels', ['email' => $_SESSION['email']]);
 }
 
 ?>

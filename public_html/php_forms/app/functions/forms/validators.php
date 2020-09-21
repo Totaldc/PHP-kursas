@@ -1,4 +1,5 @@
 <?php
+use App\App;
 
 /**
  * Validates if email exists
@@ -9,9 +10,8 @@
  */
 function validate_user_unique (string $field_value, array &$field): bool
 {
-	$db = new FileDB(DB_FILE);
-	$db->load();
-	if ($db->getRowsWhere('users', ['email' => $field_value])) {
+	App::$db;
+	if (App::$db->getRowsWhere('users', ['email' => $field_value])) {
 		$field['error'] = 'Toks vartotojas jau egzistuoja';
 		return false;
 	}
@@ -27,9 +27,8 @@ function validate_user_unique (string $field_value, array &$field): bool
  */
 function validate_login (array $field_value)
 {
-	$db = new FileDB(DB_FILE);
-	$db->load();
-	if ($db->getRowsWhere('users', ['email' => $field_value['email'], 'password' => $field_value['password']])) {
+	App::$db;
+	if (App::$db->getRowsWhere('users', ['email' => $field_value['email'], 'password' => $field_value['password']])) {
 		$_SESSION['email'] = $field_value['email'];
 		$_SESSION['password'] = $field_value['password'];
 		return true;
@@ -46,9 +45,8 @@ function validate_login (array $field_value)
  */
 function validate_pixel_unique (array $field_value, array &$field): bool
 {
-	$db = new FileDB(DB_FILE);
-	$db->load();
-	if ($db->getRowsWhere('pixels', ['coordinate_x' => $field_value['coordinate_x'],
+	App::$db;
+	if (App::$db->getRowsWhere('pixels', ['coordinate_x' => $field_value['coordinate_x'],
 		'coordinate_y' => $field_value['coordinate_y']])) {
 		$field['error'] = 'Toks pixelis jau egzistuoja';
 		return false;

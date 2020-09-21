@@ -7,10 +7,12 @@ require('core/functions/html.php');
 require('core/functions/file.php');
 require('core/functions/forms/core.php');
 require('core/functions/forms/validators.php');
-require('core/classes/FileDB.php');
-
 require('app/functions/forms/validators.php');
 require('app/functions/auth.php');
 require('app/functions/html.php');
+
+require('vendor/autoload.php');
+
+$app = new App\App();
 
 

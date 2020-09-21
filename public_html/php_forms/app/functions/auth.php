@@ -1,4 +1,5 @@
 <?php
+use App\App;
 
 /**
  * Check if user is logged in
@@ -8,9 +9,7 @@
 function is_logged_in (): bool
 {
 	if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
-		$db = new FileDB(DB_FILE);
-		$db->load();
-		if ($db->getRowsWhere('users', ['email' => $_SESSION['email'], 'password' => $_SESSION['password']])) {
+		if (App::$db->getRowsWhere('users', ['email' => $_SESSION['email'], 'password' => $_SESSION['password']])) {
 			return true;
 		}
 	}

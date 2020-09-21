@@ -47,6 +47,9 @@ if (isset($_POST['submit'])) {
                         $result = mysqli_stmt_get_result($stmt);
                         $rowCount = mysqli_num_rows($result);
                         $setImageOrder = $rowCount + 1;
+
+
+                        $sql = "INSERT INTO gallery (titleGallery, descGallery, imgFullNameGallery, orderGallery) VALUES ();";
                     }
                 }
             } else {

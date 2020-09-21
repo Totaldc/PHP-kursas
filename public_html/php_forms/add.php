@@ -1,5 +1,7 @@
 <?php
 
+use App\App;
+
 require('bootloader.php');
 
 if (!is_logged_in()) {
@@ -7,7 +9,7 @@ if (!is_logged_in()) {
 	exit;
 }
 
-$db = new FileDB(DB_FILE);
+App::$db;
 
 $form = [
 	'attr' => [
@@ -100,9 +102,9 @@ if (!empty($_POST)) {
 	// validate form according to validators
 	if (validate_form($form, $form_values)) {
 		$form_values['email'] = $_SESSION['email'];
-		$db->load();
-		$db->insertRow('pixels', $form_values);
-		$message = $db->save() ? 'Pixeliai prideti!' : 'Pixeliu prideti nepavyko';
+		App::$db->load();
+		App::$db->insertRow('pixels', $form_values);
+		$message = App::$db->save() ? 'Pixeliai prideti!' : 'Pixeliu prideti nepavyko';
 	}
 }
 ?>
