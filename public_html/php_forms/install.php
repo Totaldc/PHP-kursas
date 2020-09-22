@@ -1,8 +1,10 @@
 <?php
+use App\App;
+
 
 require ('bootloader.php');
 
-$db = new FileDB(DB_FILE);
+$db = new App::$db->FileDB(DB_FILE);
 $db->load();
 $db->createTable('users');
 $db->createTable('pixels');

@@ -36,13 +36,13 @@ class Session
     {
         return $this->user;
     }
-    public function logout($redirect = false)
+    public function logout($redirect)
     {
         setcookie('PHPSESSID', null, -1);
         session_destroy();
         $_SESSION = [];
         if ($redirect) {
-            header('Location: $redirect');
+            header($redirect);
             exit;
         }
     }

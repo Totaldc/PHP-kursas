@@ -1,9 +1,9 @@
 <?php
+use App\App;
 require 'bootloader.php';
+App::$db;
 
-$db = new FileDB(DB_FILE);
-$db->load();
-$users = $db->getData();
+$users = App::$db->getData();
 
 $table = [
 	'headers' => [

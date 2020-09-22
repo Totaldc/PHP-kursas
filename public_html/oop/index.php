@@ -14,6 +14,7 @@
     <?php
     include 'constants.php';
     include 'entities/Location.php';
+    include 'libraries/entity.php';
     include 'entities/Ship.php';
     include 'entities/ShipPort.php';
     include 'entities/Cruise.php';

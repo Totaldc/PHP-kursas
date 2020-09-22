@@ -1,5 +1,5 @@
 <?php
-class Ship
+class Ship implements IJSONSerializible;
 {
   // Primary props
   private string $brand;

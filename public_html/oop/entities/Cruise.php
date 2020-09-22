@@ -1,6 +1,6 @@
 <?php
 
-class Cruise
+class Cruise implements IJSONSerializible
 {
   private float $price;
   private Ship $ship;
@@ -83,5 +83,18 @@ class Cruise
    */
   public function renderAsSection(): void
   {
+  }
+
+  public function toJSON(){
+    $assocArray = [
+      "price" => $this->price,
+      "ship" => $this->ship->toJson(),
+      "images" => $this->images,
+      "route" => [],
+    ];
+    foreach($this->route to $stop){
+      $assocArray['route'][] = $stop->toJSON();
+    }
+    return json_encode($assocArray);
   }
 }

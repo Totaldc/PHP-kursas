@@ -1,23 +1,22 @@
 <?php
 
 namespace App;
-class App {
 
+use \Core\FileDB;
+use \Core\Session;
 
-public static $db;
-
-public static $session;
-
-public function __construct()
+class App
 {
-  self::$db = new \Core\FileDB(DB_FILE);
-  self::$db->load();
-}
-
-public function __destruct()
-{
+  public static FileDB $db;
+  public static $session;
+  public function __construct()
+  {
+    self::$db = new FileDB(DB_FILE);
+    self::$db->load();
+    self::$session = new Session();
+  }
+  public function __destruct()
+  {
     self::$db->save();
+  }
 }
-
-}
-

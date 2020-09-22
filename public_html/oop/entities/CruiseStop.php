@@ -1,5 +1,5 @@
 <?php
-class CruiseStop
+class CruiseStop implements IJSONSerializible;
 {
   private ShipPort $port;
   private DateTime $arrivalDateTime;

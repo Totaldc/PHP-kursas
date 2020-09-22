@@ -3,6 +3,8 @@ use App\App;
 
 require('bootloader.php');
 
+App::$session;
+
 $form = [
 	'attr' => [
 		'method' => 'POST',

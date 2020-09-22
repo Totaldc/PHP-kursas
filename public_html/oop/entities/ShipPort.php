@@ -1,5 +1,5 @@
 <?php
-class ShipPort extends Location
+class ShipPort extends Location implements IJSONSerializible;
 {
   private string $name;
   private string $city;

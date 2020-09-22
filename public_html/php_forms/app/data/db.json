@@ -15,6 +15,18 @@
         {
             "email": "geras@dargeresnis.lt",
             "password": "psw"
+        },
+        {
+            "email": "patsgeriausias@email.lt",
+            "password": "psw"
+        },
+        {
+            "email": "belekas@beleko.lt",
+            "password": "psw"
+        },
+        {
+            "email": "qqq@qqq.lt",
+            "password": "psw"
         }
     ],
     "pixels": [

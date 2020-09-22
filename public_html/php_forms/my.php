@@ -5,6 +5,11 @@ require('bootloader.php');
 
 $nav = generate_nav();
 
+if (!is_logged_in()) {
+	header('Location: login.php');
+	exit;
+}
+
 App::$db;
 if (App::$db->tableExists('pixels')) {
 	$pixels = App::$db->getRowsWhere('pixels', ['email' => $_SESSION['email']]);
