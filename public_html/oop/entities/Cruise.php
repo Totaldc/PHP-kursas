@@ -2,26 +2,16 @@
 
 class Cruise
 {
-  // Primary props
-  private $startDateTime;
-  private $finishDateTime;
-  private $startLocation;
-  private $finishLocation;
-  private $price;
-  // Secondary props
-  private $ship;
-  private $stops;
-  private $images;
+  private float $price;
+  private Ship $ship;
+  private array $route;
+  private array $images;
 
-  public function __construct($startDateTime, $finishDateTime, $startLocation, $finishLocation, $price)
+  public function __construct(CruiseStop $firstStop, CruiseStop $lastStop, float $price)
   {
-    $this->startDateTime = $startDateTime;
-    $this->finishDateTime = $finishDateTime;
-    $this->startLocation = $startLocation;
-    $this->finishLocation = $finishLocation;
     $this->price = $price;
-    $this->stops = [];
-    $this->advImages = [];
+    $this->route = [$firstStop, $lastStop];
+    $this->images = [];
   }
 
   /**
@@ -29,7 +19,7 @@ class Cruise
    * 
    * @param Ship $ship instance of Ship class, which will be set for Cruise object
    */
-  public function setShip($ship)
+  public function setShip(Ship $ship): void
   {
     $this->ship = $ship;
   }
@@ -39,13 +29,13 @@ class Cruise
    * 
    * @param array $stops an array of CruiseStop objects
    */
-  public function setStops($stops)
+  public function setRoute(array $stops): void
   {
     foreach ($stops as $cruiseStop) {
       if (!($cruiseStop instanceof CruiseStop))
         throw new Exception("Stop must be an instance of CruiseStop class.");
-      $this->stops[] = $cruiseStop;
     }
+    array_splice($this->route, 1, 0, $stops);
   }
 
   /**
@@ -53,47 +43,45 @@ class Cruise
    * 
    * @param string $imgPath img to be added to advertisment image array.
    */
-  public function addImage($imgPath)
+  public function addImage(string $imgPath): void
   {
-    $this->advImages[] = $imgPath;
+    $this->images[] = $imgPath;
   }
 
   /**
    * Renders Cruise as a card
    */
-  public function renderAsCard()
+  public function renderAsCard(): void
   {
 ?>
     <div class="card">
-      <img class="card__image" src="<?= $this->advImages[0] ?>" />
+      <img class="card__image" src="<?= $this->images[0] ?>" />
       <div class="card__content">
-        <div class="card__destination">Roma - Athens</div>
+        <div class="card__price"><?= $this->price ?> &euro;</div>
+        <div class="card__destination"><?= $this->route[0]->getCity() ?> - <?= end($this->route)->getCity() ?></div>
+        <hr>
         <div class="card__date">
-        <div><span class="card_date_prefix">Arrival</span><?= $this->startDateTime->format(DATE_FORMAT) ?></div>
-          <div><span class="card_date_prefix">Departure</span><?= $this->finishDateTime->format(DATE_FORMAT) ?></div>
+          <div><span class="card_date_prefix">Arrival</span><?= $this->route[0]->getFormattedDepartureTime()  ?></div>
+          <div><span class="card_date_prefix">Departure</span><?= end($this->route)->getFormattedArivalTime()  ?></div>
         </div>
-        <ul>
-        <li>
-        <span><?php print $this->startLocation->getCityAndCountry() ?></span>
-        </li>
-        <?php foreach($this->stops as $stop): ?>
-        <li>
-        <span><?php print $stop->getCityAndCountry() ?></span>
-        </li>
-        <?php endforeach; ?>
-        <li>
-        <span><?php print $this->finishLocation->getCityAndCountry() ?></span>
-        </li>
+        <hr>
+        <div>Route</div>
+        <ul class="card__route_list">
+          <?php foreach ($this->route as $stop) : ?>
+            <li><?= $stop->getCityAndCountry() ?></li>
+          <?php endforeach; ?>
         </ul>
+        <hr>
+        <?= $this->ship->renderAsRow() ?>
       </div>
     </div>
-  <?php
+<?php
   }
 
   /**
    * Renders Cruise as a section
    */
-  public function renderAsSection()
+  public function renderAsSection(): void
   {
   }
 }

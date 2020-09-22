@@ -11,6 +11,10 @@
         {
             "email": "belekas@belekas.lt",
             "password": "psw"
+        },
+        {
+            "email": "geras@dargeresnis.lt",
+            "password": "psw"
         }
     ],
     "pixels": [

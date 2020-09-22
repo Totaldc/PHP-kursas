@@ -3,7 +3,10 @@
 namespace App;
 class App {
 
+
 public static $db;
+
+public static $session;
 
 public function __construct()
 {

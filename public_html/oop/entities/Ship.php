@@ -2,14 +2,14 @@
 class Ship
 {
   // Primary props
-  private $brand;
-  private $model;
-  private $rooms;
+  private string $brand;
+  private string $model;
+  private array $rooms;
   // Secondary props
-  private $description;
-  private $images;
+  private string $description;
+  private array $images;
 
-  public function __construct($brand, $model, $rooms)
+  public function __construct(string $brand, string $model, string $rooms)
   {
     $this->brand = $brand;
     $this->model = $model;
@@ -18,20 +18,31 @@ class Ship
       'type' => 'C',
       'taken' => false
     ]);
-
-    $this->iamges = [];
+    $this->images = [];
   }
 
-  public function addImage($imgPath)
+  /**
+   * Adds image to advertisment image array 
+   * 
+   * @param string $imgPath img to be added to advertisment image array.
+   */
+  public function addImage(string $imgPath): void
   {
     $this->images[] = $imgPath;
   }
 
-  public function renderAsRow()
+  /**
+   * Renders ship as row (for cruise card)
+   */
+  public function renderAsRow(): void
   {
 ?>
-    <div>
-      <img src="<?php print $this->images[0] ?>" alt="<?php print $this->brand ?>">
+    <div class="ship">
+      <img class="ship__img" src="<?= $this->images[0] ?>" alt="<?= $this->brand . '-' . $this->model ?>">
+      <div class="ship__content">
+        <div class="ship__name"><?= $this->brand . ' ' . $this->model ?></div>
+        <p class="ship__description"><?= $this->description ?? '' ?></p>
+      </div>
     </div>
 <?php
   }
