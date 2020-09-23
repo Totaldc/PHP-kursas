@@ -44,12 +44,8 @@ $form = [
 
 if (!empty($_POST)) {
 	$form_values = sanitize_form_input_values($form);
-	if (validate_form($form, $form_values)) {
-		$message = 'Prisijungti pavyko';
-		 header('Location: index.php');
-	} else {
-		$message = 'Prisijungti nepavyko';
-	}
+	App::$session->login($form_values['email'], $form_values['password']);
+	header('Location: index.php');
 }
 
 $nav = generate_nav();

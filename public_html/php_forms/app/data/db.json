@@ -27,6 +27,14 @@
         {
             "email": "qqq@qqq.lt",
             "password": "psw"
+        },
+        {
+            "email": "qwe@qwe.lt",
+            "password": "psw"
+        },
+        {
+            "email": "qaz@qaz.lt",
+            "password": "psw"
         }
     ],
     "pixels": [
@@ -57,6 +65,20 @@
             "color": "red",
             "size": "10",
             "email": "belekas@belekas.lt"
+        },
+        {
+            "coordinate_x": "25",
+            "coordinate_y": "25",
+            "color": "red",
+            "size": "10",
+            "email": "qaz@qaz.lt"
+        },
+        {
+            "coordinate_x": "1",
+            "coordinate_y": "25",
+            "color": "green",
+            "size": "10",
+            "email": "qaz@qaz.lt"
         }
     ]
 }

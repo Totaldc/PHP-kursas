@@ -239,7 +239,7 @@ class FileDB
 
 	public function getRowWhere (string $table_name, array $conditions): array
 	{
-		$new_arr = [];
+		
 		if ($this->tableExists($table_name)) {
 			foreach ($this->data[$table_name] as $index_name => $row_array) {
 				$found = true;
@@ -250,12 +250,12 @@ class FileDB
 					}
 				}
 				if ($found) {
-					$new_arr[$index_name] = $row_array;
+					return $row_array;
 				}
 			}
 		}
 		
-		return reset($new_arr);
+		return false;
 	}
 
 

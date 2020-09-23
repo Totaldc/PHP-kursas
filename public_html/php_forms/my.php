@@ -2,10 +2,10 @@
 use App\App;
 
 require('bootloader.php');
-
+App::$session;
 $nav = generate_nav();
 
-if (!is_logged_in()) {
+if (!App::$session->getUser()) {
 	header('Location: login.php');
 	exit;
 }
