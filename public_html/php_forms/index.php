@@ -2,7 +2,20 @@
 
 use App\App;
 
+use App\Pixels\Pixel;
+
 require('bootloader.php');
+
+$pixel = new Pixel();
+
+
+// $pixel->setCoordinateX(23);
+// $pixel->setCoordinateY(123);
+// $pixel->setColor('blue');
+// $pixel->setEmail('krabukas@email.lt');
+
+$pixel = new Pixel();
+$pixel->_setData(['coordinate_x' => 3, 'coordinate_y' => 3, 'color' => 'red', 'email' => 'a@a.lt']);
 
 $nav = generate_nav();
 

@@ -1,5 +1,5 @@
 <?php
-class Ship implements IJSONSerializible;
+class Ship implements IJSONSerialiazible
 {
   // Primary props
   private string $brand;
@@ -8,6 +8,7 @@ class Ship implements IJSONSerializible;
   // Secondary props
   private string $description;
   private array $images;
+
 
   public function __construct(string $brand, string $model, string $rooms)
   {
@@ -21,6 +22,11 @@ class Ship implements IJSONSerializible;
     $this->images = [];
   }
 
+
+  public static function createFromAssocArr($arr): object
+  {
+    return (object)[];
+  }
   /**
    * Adds image to advertisment image array 
    * 
@@ -46,4 +52,24 @@ class Ship implements IJSONSerializible;
     </div>
 <?php
   }
+
+
+  public function toJSON(): string
+  {
+    return json_encode($this->toAssocArr());
+  }
+
+  public function toAssocArr(): array
+  {
+    return [
+      "brand" => $this->brand,
+      "model" => $this->model,
+      "rooms" => $this->rooms,
+      "description" => $this->description ?? '',
+      "images" => $this->images,
+    ];
+  }
+
+
+ 
 }

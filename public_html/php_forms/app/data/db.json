@@ -79,6 +79,13 @@
             "color": "green",
             "size": "10",
             "email": "qaz@qaz.lt"
+        },
+        {
+            "coordinate_x": "25",
+            "coordinate_y": "19",
+            "color": "blue",
+            "size": "10",
+            "email": "email@email.com"
         }
     ]
 }

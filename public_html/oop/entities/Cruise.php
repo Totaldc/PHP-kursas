@@ -1,11 +1,15 @@
 <?php
-
-class Cruise implements IJSONSerializible
+class Cruise implements IJSONSerialiazible
 {
   private float $price;
   private Ship $ship;
   private array $route;
   private array $images;
+
+  public static function createFromAssocArr($arr): object
+  {
+    return (object)[];
+  }
 
   public function __construct(CruiseStop $firstStop, CruiseStop $lastStop, float $price)
   {
@@ -85,16 +89,27 @@ class Cruise implements IJSONSerializible
   {
   }
 
-  public function toJSON(){
+  public function fromJSON($json): void
+  {
+  }
+
+  public function toJSON(): string
+  {
+
+    return json_encode($this->toAssocarr());
+  }
+
+  public function toAssocarr(): array
+  {
     $assocArray = [
       "price" => $this->price,
-      "ship" => $this->ship->toJson(),
+      "ship" => $this->ship->toAssocarr(),
       "images" => $this->images,
-      "route" => [],
+      "route" => []
     ];
-    foreach($this->route to $stop){
-      $assocArray['route'][] = $stop->toJSON();
+    foreach ($this->route as $stop) {
+      $assocArray['route'][] = $stop->toAssocarr();
     }
-    return json_encode($assocArray);
+    return $assocArray;
   }
 }

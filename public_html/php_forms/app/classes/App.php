@@ -4,6 +4,7 @@ namespace App;
 
 use \Core\FileDB;
 use \Core\Session;
+use \App\Pixels\Pixel;
 
 class App
 {

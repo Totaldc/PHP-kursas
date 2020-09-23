@@ -1,9 +1,14 @@
 <?php
-class CruiseStop implements IJSONSerializible;
+class CruiseStop implements IJSONSerialiazible
 {
   private ShipPort $port;
   private DateTime $arrivalDateTime;
   private DateTime $departureDateTime;
+
+  public static function createFromAssocArr($arr): object
+  {
+    return (object)[];
+  }
 
   public function __construct(ShipPort $port, $arrivalDateTime = null, DateTime $departureDateTime = null)
   {
@@ -31,4 +36,22 @@ class CruiseStop implements IJSONSerializible;
   {
     return isset($this->departureDateTime) ? $this->departureDateTime->format(DATE_FORMAT): '';
   }
+
+  public function toJSON(): string{
+    return json_encode($this->toAssocArr());
+  }
+  
+
+
+
+  public function toAssocArr(): array
+  {
+    return [
+      "port" => $this->port->toAssocArr(),
+      "arrivalDateTime" => $this->getFormattedArivalTime(),
+      "DepartureDateTime" => $this->getFormattedDepartureTime()
+    ];
+  }
+
+
 }
