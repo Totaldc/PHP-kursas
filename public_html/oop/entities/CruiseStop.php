@@ -5,16 +5,16 @@ class CruiseStop implements IJSONSerialiazible
   private DateTime $arrivalDateTime;
   private DateTime $departureDateTime;
 
-  public static function createFromAssocArr($arr): object
-  {
-    return (object)[];
-  }
-
   public function __construct(ShipPort $port, $arrivalDateTime = null, DateTime $departureDateTime = null)
   {
     $this->port = $port;
     if (isset($arrivalDateTime)) $this->arrivalDateTime = $arrivalDateTime;
     if (isset($departureDateTime)) $this->departureDateTime = $departureDateTime;
+  }
+
+  public static function createFromAssocArr(array $arr): object
+  {
+    return (object)[];
   }
 
   public function getCityAndCountry(): string
@@ -37,21 +37,16 @@ class CruiseStop implements IJSONSerialiazible
     return isset($this->departureDateTime) ? $this->departureDateTime->format(DATE_FORMAT): '';
   }
 
+  //  Interface methods
   public function toJSON(): string{
     return json_encode($this->toAssocArr());
   }
   
-
-
-
-  public function toAssocArr(): array
-  {
+  public function toAssocArr(): array{
     return [
       "port" => $this->port->toAssocArr(),
       "arrivalDateTime" => $this->getFormattedArivalTime(),
       "DepartureDateTime" => $this->getFormattedDepartureTime()
     ];
   }
-
-
 }

@@ -1,0 +1,172 @@
+[
+  {
+    "brand": "Shipy",
+    "model": "Lat-3200",
+    "rooms": [
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      }
+    ],
+    "description": "",
+    "images": [
+      "http:\/\/oop.php.lt\/assets\/images\/cruise-ship-simple.jpg"
+    ]
+  },
+  {
+    "brand": "Shipy",
+    "model": "Lat-6700",
+    "rooms": [
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      },
+      {
+        "spaces": 2,
+        "type": "C",
+        "taken": false
+      }
+    ],
+    "description": "",
+    "images": [
+      "http:\/\/oop.php.lt\/assets\/images\/cruise-ship-fancy.jpg"
+    ]
+  }
+]

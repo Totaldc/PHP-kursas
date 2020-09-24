@@ -14,11 +14,7 @@ class FileDataBase
     file_put_contents($filename, $data);
   }
 
-  public static function appendIJSONSerialiaziblesToFile(array $iJSONSerialiazibles, string $file)
-  {
-  }
-
-  public static function readJSON($filename): array{
+  public static function readJSON(string $filename): array{
     $filename = DATA_FILES . $filename;
     return json_decode(file_get_contents($filename), true);
   }

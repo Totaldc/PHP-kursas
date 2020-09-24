@@ -9,7 +9,6 @@ class Ship implements IJSONSerialiazible
   private string $description;
   private array $images;
 
-
   public function __construct(string $brand, string $model, string $rooms)
   {
     $this->brand = $brand;
@@ -22,11 +21,11 @@ class Ship implements IJSONSerialiazible
     $this->images = [];
   }
 
-
-  public static function createFromAssocArr($arr): object
+  public static function createFromAssocArr(array $arr): object
   {
     return (object)[];
   }
+
   /**
    * Adds image to advertisment image array 
    * 
@@ -53,14 +52,8 @@ class Ship implements IJSONSerialiazible
 <?php
   }
 
-
-  public function toJSON(): string
-  {
-    return json_encode($this->toAssocArr());
-  }
-
-  public function toAssocArr(): array
-  {
+  //  Interface methods
+  public function toAssocArr(): array{
     return [
       "brand" => $this->brand,
       "model" => $this->model,
@@ -69,7 +62,9 @@ class Ship implements IJSONSerialiazible
       "images" => $this->images,
     ];
   }
-
-
- 
+  
+  public function toJSON(): string
+  {
+    return json_encode($this->toAssocArr());
+  }
 }

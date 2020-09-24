@@ -1,1 +1,277 @@
-[{"price":240,"ship":{"brand":"Shipy","model":"Lat-3200","rooms":[{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false}],"description":"","images":["http:\/\/phpsualum.lt\/oop\/assets\/images\/cruise-ship-simple.jpg"]},"images":["http:\/\/phpsualum.lt\/oop\/assets\/images\/barselona-port.jpg","http:\/\/phpsualum.lt\/oop\/assets\/images\/cruise-ship-simple.jpg","http:\/\/phpsualum.lt\/oop\/assets\/images\/nice.jpg","https:\/\/raphaeltours.com\/images\/genoahighlightstour3.jpg","https:\/\/lp-cms-production.imgix.net\/2019-06\/b089c412c647e05341592171b6d34ba8-marseille.jpg"],"route":[{"port":{"name":"Port of Barcelona","city":"Barcelona","country":"Spain"},"arrivalDateTime":"","DepartureDateTime":"2020-09-15 18:00"},{"port":{"name":"Port of Marseille","city":"Marseille","country":"France"},"arrivalDateTime":"2020-09-16 11:00","DepartureDateTime":"2020-09-16 21:00"},{"port":{"name":"Port of Nice","city":"Nice","country":"France"},"arrivalDateTime":"2020-09-17 09:00","DepartureDateTime":"2020-09-17 22:00"},{"port":{"name":"Port of Genoa","city":"Genoa","country":"Italy"},"arrivalDateTime":"2020-09-18 14:00","DepartureDateTime":""}]},{"price":2240,"ship":{"brand":"Shipy","model":"Lat-6700","rooms":[{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false},{"spaces":2,"type":"C","taken":false}],"description":"","images":["http:\/\/phpsualum.lt\/oop\/assets\/images\/cruise-ship-fancy.jpg"]},"images":["http:\/\/phpsualum.lt\/oop\/assets\/images\/cruise-ship-fancy.jpg","https:\/\/www.makalius.lt\/wp-content\/travel-destination-images\/90222-travel-destination\/lisabona-790x363.jpg","https:\/\/top-lankytinos-vietos.lt\/wp-content\/uploads\/2019\/01\/Hamburgas.jpg","https:\/\/www.holland.com\/upload_mm\/8\/2\/7\/68467_fullimage_amsterdam_canal2_1360x.jpg","https:\/\/havanatimes.org\/wp-content\/uploads\/2019\/05\/22.5-Puerto-de-la-Habana-.jpg"],"route":[{"port":{"name":"Port of Hamburg","city":"Hamburg","country":"Germany"},"arrivalDateTime":"","DepartureDateTime":"2020-09-17 18:00"},{"port":{"name":"Port of Amsterdam","city":"Amsterdam","country":"Nederlands"},"arrivalDateTime":"2020-09-19 10:00","DepartureDateTime":"2020-09-19 22:00"},{"port":{"name":"Port of Lisabona","city":"Lisabona","country":"Portugal"},"arrivalDateTime":"2020-09-22 11:00","DepartureDateTime":"2020-09-22 22:00"},{"port":{"name":"Port of Ponta De Lagada","city":"Ponta De Lagada","country":"Portugal"},"arrivalDateTime":"2020-09-25 03:00","DepartureDateTime":"2020-09-26 21:00"},{"port":{"name":"Puerto de Guardalamaca","city":"Guardalavaca","country":"Cuba"},"arrivalDateTime":"2020-10-08 11:00","DepartureDateTime":""}]}]
+[
+  {
+    "price": 240,
+    "ship": {
+      "brand": "Shipy",
+      "model": "Lat-3200",
+      "rooms": [
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        }
+      ],
+      "description": "",
+      "images": [
+        "http:\/\/oop.php.lt\/assets\/images\/cruise-ship-simple.jpg"
+      ]
+    },
+    "images": [
+      "http:\/\/oop.php.lt\/assets\/images\/barselona-port.jpg",
+      "http:\/\/oop.php.lt\/assets\/images\/cruise-ship-simple.jpg",
+      "http:\/\/oop.php.lt\/assets\/images\/nice.jpg",
+      "https:\/\/raphaeltours.com\/images\/genoahighlightstour3.jpg",
+      "https:\/\/lp-cms-production.imgix.net\/2019-06\/b089c412c647e05341592171b6d34ba8-marseille.jpg"
+    ],
+    "route": [
+      {
+        "port": {
+          "name": "Port of Barcelona",
+          "city": "Barcelona",
+          "country": "Spain"
+        },
+        "arrivalDateTime": "",
+        "DepartureDateTime": "2020-09-15 18:00"
+      },
+      {
+        "port": {
+          "name": "Port of Marseille",
+          "city": "Marseille",
+          "country": "France"
+        },
+        "arrivalDateTime": "2020-09-16 11:00",
+        "DepartureDateTime": "2020-09-16 21:00"
+      },
+      {
+        "port": {
+          "name": "Port of Nice",
+          "city": "Nice",
+          "country": "France"
+        },
+        "arrivalDateTime": "2020-09-17 09:00",
+        "DepartureDateTime": "2020-09-17 22:00"
+      },
+      {
+        "port": {
+          "name": "Port of Genoa",
+          "city": "Genoa",
+          "country": "Italy"
+        },
+        "arrivalDateTime": "2020-09-18 14:00",
+        "DepartureDateTime": ""
+      }
+    ]
+  },
+  {
+    "price": 2240,
+    "ship": {
+      "brand": "Shipy",
+      "model": "Lat-6700",
+      "rooms": [
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        },
+        {
+          "spaces": 2,
+          "type": "C",
+          "taken": false
+        }
+      ],
+      "description": "",
+      "images": [
+        "http:\/\/oop.php.lt\/assets\/images\/cruise-ship-fancy.jpg"
+      ]
+    },
+    "images": [
+      "http:\/\/oop.php.lt\/assets\/images\/cruise-ship-fancy.jpg",
+      "https:\/\/www.makalius.lt\/wp-content\/travel-destination-images\/90222-travel-destination\/lisabona-790x363.jpg",
+      "https:\/\/top-lankytinos-vietos.lt\/wp-content\/uploads\/2019\/01\/Hamburgas.jpg",
+      "https:\/\/www.holland.com\/upload_mm\/8\/2\/7\/68467_fullimage_amsterdam_canal2_1360x.jpg",
+      "https:\/\/havanatimes.org\/wp-content\/uploads\/2019\/05\/22.5-Puerto-de-la-Habana-.jpg"
+    ],
+    "route": [
+      {
+        "port": {
+          "name": "Port of Hamburg",
+          "city": "Hamburg",
+          "country": "Germany"
+        },
+        "arrivalDateTime": "",
+        "DepartureDateTime": "2020-09-17 18:00"
+      },
+      {
+        "port": {
+          "name": "Port of Amsterdam",
+          "city": "Amsterdam",
+          "country": "Nederlands"
+        },
+        "arrivalDateTime": "2020-09-19 10:00",
+        "DepartureDateTime": "2020-09-19 22:00"
+      },
+      {
+        "port": {
+          "name": "Port of Lisabona",
+          "city": "Lisabona",
+          "country": "Portugal"
+        },
+        "arrivalDateTime": "2020-09-22 11:00",
+        "DepartureDateTime": "2020-09-22 22:00"
+      },
+      {
+        "port": {
+          "name": "Port of Ponta De Lagada",
+          "city": "Ponta De Lagada",
+          "country": "Portugal"
+        },
+        "arrivalDateTime": "2020-09-25 03:00",
+        "DepartureDateTime": "2020-09-26 21:00"
+      },
+      {
+        "port": {
+          "name": "Puerto de Guardalamaca",
+          "city": "Guardalavaca",
+          "country": "Cuba"
+        },
+        "arrivalDateTime": "2020-10-08 11:00",
+        "DepartureDateTime": ""
+      }
+    ]
+  }
+]

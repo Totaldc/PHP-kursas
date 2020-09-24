@@ -6,16 +6,16 @@ class Cruise implements IJSONSerialiazible
   private array $route;
   private array $images;
 
-  public static function createFromAssocArr($arr): object
-  {
-    return (object)[];
-  }
-
   public function __construct(CruiseStop $firstStop, CruiseStop $lastStop, float $price)
   {
     $this->price = $price;
     $this->route = [$firstStop, $lastStop];
     $this->images = [];
+  }
+
+  public static function createFromAssocArr(array $arr): object
+  {
+    return (object)[];
   }
 
   /**
@@ -89,26 +89,23 @@ class Cruise implements IJSONSerialiazible
   {
   }
 
-  public function fromJSON($json): void
-  {
-  }
 
+  // Interface methods
   public function toJSON(): string
   {
-
-    return json_encode($this->toAssocarr());
+    return json_encode($this->toAssocArr());
   }
 
-  public function toAssocarr(): array
+  public function toAssocArr(): array
   {
     $assocArray = [
       "price" => $this->price,
-      "ship" => $this->ship->toAssocarr(),
+      "ship" => $this->ship->toAssocArr(),
       "images" => $this->images,
       "route" => []
     ];
     foreach ($this->route as $stop) {
-      $assocArray['route'][] = $stop->toAssocarr();
+      $assocArray['route'][] = $stop->toAssocArr();
     }
     return $assocArray;
   }

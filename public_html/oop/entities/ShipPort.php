@@ -13,7 +13,7 @@ class ShipPort extends Location implements IJSONSerialiazible
     $this->country = $country;
   }
 
-  public static function createFromAssocArr($arr): object
+  public static function createFromAssocArr(array $arr): object
   {
     return (object)[];
   }
@@ -28,15 +28,9 @@ class ShipPort extends Location implements IJSONSerialiazible
     return $this->city;
   }
 
+  //  Interface methods
 
-  public function toJSON(): string
-  {
-    return json_encode($this->toAssocArr());
-  }
-
-  public function toAssocArr(): array
-  {
-
+  public function toAssocArr(): array{
     return [
       "name" => $this->name,
       "city" => $this->city,
@@ -44,5 +38,8 @@ class ShipPort extends Location implements IJSONSerialiazible
     ];
   }
 
-
+  public function toJSON(): string
+  {
+    return json_encode($this->toAssocArr());
+  }
 }
