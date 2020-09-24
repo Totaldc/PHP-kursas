@@ -16,6 +16,8 @@ $pixel = new Pixel();
 
 $pixel = new Pixel();
 $pixel->_setData(['coordinate_x' => 3, 'coordinate_y' => 3, 'color' => 'red', 'email' => 'a@a.lt']);
+var_dump($pixel->_getData());
+
 
 $nav = generate_nav();
 

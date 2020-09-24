@@ -6,7 +6,7 @@ namespace App\Pixels;
 class Pixel
 {
     private $data;
-    
+
 
     private $properties = [
         'coordinate_x',
@@ -15,12 +15,13 @@ class Pixel
         'email'
     ];
 
-    
 
-
-
-
-
+    public function __construct(?array $data = null)
+    {
+        if ($data !== null) {
+            $this->_setData($data);
+        }
+    }
 
     public function setCoordinateX(int $x)
     {
@@ -63,33 +64,25 @@ class Pixel
         foreach ($this->properties as $property) {
             $method = 'set' . str_replace('_', '', $property);
             if (is_callable(array($this, $method))) {
-               $this->$method($data[$property]);
-               var_dump('viskas gerai');
-               var_dump($data);
+                $this->$method($data[$property]);
+                var_dump('viskas gerai');
+                var_dump($data);
             } else {
-                $this->setCoordinateX($data['coordinate_x']);
-                $this->setCoordinateY($data['coordinate_y']);
-                $this->setColor($data['color']);
-                $this->setEmail($data['email']);
-                var_dump('nelabai, bet gerai');
+                $this->data[$property] = $data[$property] ?? null;
             }
-         }
+        }
     }
 
     public function _getData()
     {
-        // $arrData['x'] = $this->getX();
-        // $arrData['y'] = $this->getY();
-        // $arrData['color'] = $this->getColor();
-        // $arrData['email'] = $this->getEmail();
-
-        // return $arrData;
-
-        return [
-            'coordingate_x' => $this->getCoordinateX(),
-            'coordinate_y' => $this->getCoordinateY(),
-            'color' => $this->getColor(),
-            'email' => $this->getEmail(),
-        ];
+            foreach ($this->properties as $property) {
+                $method = 'get' . str_replace('_', '', $property);
+                if (is_callable(array($this, $method))) {
+                    $data[$property] = $this->$method();
+                } else {
+                    $data[$property] = null;
+                }
+            }
+            return $data;
     }
 }
