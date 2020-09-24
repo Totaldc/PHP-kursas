@@ -93,6 +93,72 @@
             "color": "green",
             "size": "10",
             "email": "email@email.com"
+        },
+        {
+            "coordinate_x": 3,
+            "coordinate_y": 3,
+            "color": "red",
+            "email": "a@a.lt"
+        },
+        {
+            "coordinate_x": 3,
+            "coordinate_y": 3,
+            "color": "red",
+            "email": "a@a.lt"
+        },
+        {
+            "coordinate_x": 3,
+            "coordinate_y": 3,
+            "color": "red",
+            "email": "a@a.lt"
+        },
+        {
+            "coordinate_x": 3,
+            "coordinate_y": 3,
+            "color": "red",
+            "email": "a@a.lt"
+        },
+        {
+            "coordinate_x": 3,
+            "coordinate_y": 3,
+            "color": "red",
+            "email": "a@a.lt"
+        },
+        {
+            "coordinate_x": 3,
+            "coordinate_y": 3,
+            "color": "red",
+            "email": "a@a.lt"
+        },
+        {
+            "coordinate_x": 3,
+            "coordinate_y": 3,
+            "color": "red",
+            "email": "a@a.lt"
+        },
+        {
+            "coordinate_x": 3,
+            "coordinate_y": 3,
+            "color": "red",
+            "email": "a@a.lt"
+        },
+        {
+            "coordinate_x": 3,
+            "coordinate_y": 3,
+            "color": "red",
+            "email": "a@a.lt"
+        },
+        {
+            "coordinate_x": 3,
+            "coordinate_y": 3,
+            "color": "red",
+            "email": "a@a.lt"
+        },
+        {
+            "coordinate_x": 3,
+            "coordinate_y": 3,
+            "color": "red",
+            "email": "a@a.lt"
         }
     ]
 }

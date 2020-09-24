@@ -7,16 +7,9 @@ use App\Pixels\Pixel;
 require('bootloader.php');
 
 $pixel = new Pixel();
+$pixel->_setData(['coordinate_x' => $form_values, 'coordinate_y' => 3, 'color' => 'red', 'email' => 'a@a.lt']);
+App::$db->insertRow('pixels', $pixel->_getData());
 
-
-// $pixel->setCoordinateX(23);
-// $pixel->setCoordinateY(123);
-// $pixel->setColor('blue');
-// $pixel->setEmail('krabukas@email.lt');
-
-$pixel = new Pixel();
-$pixel->_setData(['coordinate_x' => 3, 'coordinate_y' => 3, 'color' => 'red', 'email' => 'a@a.lt']);
-var_dump($pixel->_getData());
 
 
 $nav = generate_nav();
@@ -47,8 +40,8 @@ if (App::$db->tableExists('pixels')) {
 			<?php foreach ($pixels as $pixel): ?>
 				<span class="pixel <?php print $pixel['color']; ?>"
 				      style="bottom: <?php print $pixel['coordinate_y']; ?>px; left: <?php print
-					      $pixel['coordinate_x']; ?>px; width: <?php print $pixel['size']; ?>px; height: <?php print
-					      $pixel['size']; ?>px
+					      $pixel['coordinate_x']; ?>px; width: <?php print $pixel['size'] ?? 10; ?>px; height: <?php print
+					      $pixel['size'] ?? 10; ?>px
 						      "></span>
 			<?php endforeach; ?>
 		</div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\App;
+use App\Pixels\Pixel;
 
 require('bootloader.php');
 App::$session;
@@ -98,15 +99,14 @@ $form = [
 $nav = generate_nav();
 
 if (!empty($_POST)) {
-	// filter characters
-	$form_values = sanitize_form_input_values($form);
-	// validate form according to validators
-	if (validate_form($form, $form_values)) {
-		$form_values['email'] = $_SESSION['email'];
-		App::$db->load();
-		App::$db->insertRow('pixels', $form_values);
-		$message = App::$db->save() ? 'Pixeliai prideti!' : 'Pixeliu prideti nepavyko';
-	}
+    $form_values = sanitize_form_input_values($form);
+    if (validate_form($form, $form_values)) {
+        $pixel = new Pixel($form_values);
+        $pixel->setEmail(App::$session->getUser()['email']);
+        App::$db->insertRow('pixels', $pixel->_getData());
+        header('Location: my.php');
+        exit;
+    }
 }
 ?>
 

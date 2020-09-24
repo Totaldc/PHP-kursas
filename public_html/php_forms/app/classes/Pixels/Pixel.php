@@ -75,14 +75,14 @@ class Pixel
 
     public function _getData()
     {
-            foreach ($this->properties as $property) {
-                $method = 'get' . str_replace('_', '', $property);
-                if (is_callable(array($this, $method))) {
-                    $data[$property] = $this->$method();
-                } else {
-                    $data[$property] = null;
-                }
+        foreach ($this->properties as $property) {
+            $method = 'get' . str_replace('_', '', $property);
+            if (is_callable(array($this, $method))) {
+                $data[$property] = $this->$method();
+            } else {
+                $data[$property] = $data[$property] ?? null;
             }
-            return $data;
+        }
+        return $data;
     }
 }
