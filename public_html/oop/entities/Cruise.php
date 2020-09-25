@@ -15,7 +15,18 @@ class Cruise implements IJSONSerialiazible
 
   public static function createFromAssocArr(array $arr): object
   {
-    return (object)[];
+    $firstStop = CruiseStop::createFromAssocArr($arr['route'][0]);
+    $lastStop = CruiseStop::createFromAssocArr(end($arr['route']));
+    $cruise = new Cruise($firstStop, $lastStop, $arr['price']);
+    $ship = Ship::createFromAssocArr($arr['ship']);
+    $route = [];
+    for ($i = 1; $i < count($arr['route']) - 1; $i++)
+      $route[] = CruiseStop::createFromAssocArr($arr['route'][$i]);
+    foreach ($arr['images'] as $image)
+      $cruise->addImage($image);
+    $cruise->setRoute($route);
+    $cruise->setShip($ship);
+    return $cruise;
   }
 
   /**
@@ -88,7 +99,6 @@ class Cruise implements IJSONSerialiazible
   public function renderAsSection(): void
   {
   }
-
 
   // Interface methods
   public function toJSON(): string

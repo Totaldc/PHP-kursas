@@ -1,112 +1,39 @@
 {
     "users": [
         {
-            "email": "a@a.lt",
-            "password": "a"
+            "email": "test@test.lt",
+            "password": "test"
+        },
+        {
+            "email": "1@1.lt",
+            "password": "1"
         },
         {
             "email": "email@email.com",
-            "password": "psw"
-        },
-        {
-            "email": "belekas@belekas.lt",
-            "password": "psw"
-        },
-        {
-            "email": "geras@dargeresnis.lt",
-            "password": "psw"
-        },
-        {
-            "email": "patsgeriausias@email.lt",
-            "password": "psw"
-        },
-        {
-            "email": "belekas@beleko.lt",
-            "password": "psw"
-        },
-        {
-            "email": "qqq@qqq.lt",
-            "password": "psw"
-        },
-        {
-            "email": "qwe@qwe.lt",
-            "password": "psw"
-        },
-        {
-            "email": "qaz@qaz.lt",
             "password": "psw"
         }
     ],
     "pixels": [
         {
             "coordinate_x": "0",
-            "coordinate_y": "0",
-            "color": "green",
-            "size": "20",
-            "email": "a@a.lt"
-        },
-        {
-            "coordinate_x": "480",
-            "coordinate_y": "480",
-            "color": "blue",
-            "size": "20",
-            "email": "a@a.lt"
-        },
-        {
-            "coordinate_x": "15",
-            "coordinate_y": "15",
-            "color": "green",
-            "size": "10",
-            "email": "email@email.com"
-        },
-        {
-            "coordinate_x": "15",
-            "coordinate_y": "25",
+            "coordinate_y": "20",
             "color": "red",
-            "size": "10",
-            "email": "belekas@belekas.lt"
+            "email": "1@1.lt",
+            "size": "10"
+        },
+        {
+            "coordinate_x": "450",
+            "coordinate_y": "450",
+            "color": "blue",
+            "email": "1@1.lt",
+            "size": "20"
         },
         {
             "coordinate_x": "25",
             "coordinate_y": "25",
-            "color": "red",
-            "size": "10",
-            "email": "qaz@qaz.lt"
-        },
-        {
-            "coordinate_x": "1",
-            "coordinate_y": "25",
             "color": "green",
-            "size": "10",
-            "email": "qaz@qaz.lt"
-        },
-        {
-            "coordinate_x": "25",
-            "coordinate_y": "19",
-            "color": "blue",
-            "size": "10",
-            "email": "email@email.com"
-        },
-        {
-            "coordinate_x": "15",
-            "coordinate_y": "45",
-            "color": "green",
-            "size": "10",
-            "email": "email@email.com"
-        },
-        {
-            "coordinate_x": null,
-            "coordinate_y": null,
-            "color": null,
             "email": "email@email.com",
-            "size": null
-        },
-        {
-            "coordinate_x": null,
-            "coordinate_y": null,
-            "color": null,
-            "email": "email@email.com",
-            "size": null
+            "size": "10"
         }
     ]
 }

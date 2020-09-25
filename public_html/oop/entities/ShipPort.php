@@ -5,7 +5,7 @@ class ShipPort extends Location implements IJSONSerialiazible
   private string $city;
   private string $country;
 
-  public function __construct(string $name, string $city, string $country, float $latitude, float $longitude)
+  public function __construct(string $name, string $city, string $country, float $latitude = 0, float $longitude = 0)
   {
     parent::__construct($latitude, $longitude);
     $this->name = $name;
@@ -15,7 +15,7 @@ class ShipPort extends Location implements IJSONSerialiazible
 
   public static function createFromAssocArr(array $arr): object
   {
-    return (object)[];
+    return new ShipPort($arr['name'], $arr['city'], $arr['country']);
   }
 
   public function getCityAndCountry(): string

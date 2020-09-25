@@ -76,7 +76,7 @@
           "country": "Spain"
         },
         "arrivalDateTime": "",
-        "DepartureDateTime": "2020-09-15 18:00"
+        "departureDateTime": "2020-09-15 18:00"
       },
       {
         "port": {
@@ -85,7 +85,7 @@
           "country": "France"
         },
         "arrivalDateTime": "2020-09-16 11:00",
-        "DepartureDateTime": "2020-09-16 21:00"
+        "departureDateTime": "2020-09-16 21:00"
       },
       {
         "port": {
@@ -94,7 +94,7 @@
           "country": "France"
         },
         "arrivalDateTime": "2020-09-17 09:00",
-        "DepartureDateTime": "2020-09-17 22:00"
+        "departureDateTime": "2020-09-17 22:00"
       },
       {
         "port": {
@@ -103,7 +103,7 @@
           "country": "Italy"
         },
         "arrivalDateTime": "2020-09-18 14:00",
-        "DepartureDateTime": ""
+        "departureDateTime": ""
       }
     ]
   },
@@ -234,7 +234,7 @@
           "country": "Germany"
         },
         "arrivalDateTime": "",
-        "DepartureDateTime": "2020-09-17 18:00"
+        "departureDateTime": "2020-09-17 18:00"
       },
       {
         "port": {
@@ -243,7 +243,7 @@
           "country": "Nederlands"
         },
         "arrivalDateTime": "2020-09-19 10:00",
-        "DepartureDateTime": "2020-09-19 22:00"
+        "departureDateTime": "2020-09-19 22:00"
       },
       {
         "port": {
@@ -252,7 +252,7 @@
           "country": "Portugal"
         },
         "arrivalDateTime": "2020-09-22 11:00",
-        "DepartureDateTime": "2020-09-22 22:00"
+        "departureDateTime": "2020-09-22 22:00"
       },
       {
         "port": {
@@ -261,7 +261,7 @@
           "country": "Portugal"
         },
         "arrivalDateTime": "2020-09-25 03:00",
-        "DepartureDateTime": "2020-09-26 21:00"
+        "departureDateTime": "2020-09-26 21:00"
       },
       {
         "port": {
@@ -270,7 +270,7 @@
           "country": "Cuba"
         },
         "arrivalDateTime": "2020-10-08 11:00",
-        "DepartureDateTime": ""
+        "departureDateTime": ""
       }
     ]
   }

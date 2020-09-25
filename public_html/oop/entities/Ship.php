@@ -9,21 +9,38 @@ class Ship implements IJSONSerialiazible
   private string $description;
   private array $images;
 
-  public function __construct(string $brand, string $model, string $rooms)
+  public function __construct(string $brand, string $model, int $rooms = null)
   {
     $this->brand = $brand;
     $this->model = $model;
-    $this->rooms = array_fill(0, $rooms, [
-      'spaces' => 2,
-      'type' => 'C',
-      'taken' => false
-    ]);
+    if (!empty($rooms)) {
+      $this->rooms = array_fill(0, $rooms, [
+        'spaces' => 2,
+        'type' => 'C',
+        'taken' => false
+      ]);
+    }
     $this->images = [];
   }
 
   public static function createFromAssocArr(array $arr): object
   {
-    return (object)[];
+    $ship = new Ship($arr['brand'], $arr['model']);
+    $ship->setRooms($arr['rooms']);
+    $ship->setDescription($arr['description']);
+    foreach ($arr['images'] as $image) 
+      $ship->addImage($image);
+    return $ship;
+  }
+
+  public function setRooms(array $rooms): void
+  {
+    $this->rooms = $rooms;
+  }
+
+  public function setDescription(string $description): void
+  {
+    $this->description = $description;
   }
 
   /**
@@ -53,7 +70,8 @@ class Ship implements IJSONSerialiazible
   }
 
   //  Interface methods
-  public function toAssocArr(): array{
+  public function toAssocArr(): array
+  {
     return [
       "brand" => $this->brand,
       "model" => $this->model,
@@ -62,7 +80,7 @@ class Ship implements IJSONSerialiazible
       "images" => $this->images,
     ];
   }
-  
+
   public function toJSON(): string
   {
     return json_encode($this->toAssocArr());

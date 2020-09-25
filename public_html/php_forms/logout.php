@@ -1,10 +1,9 @@
 <?php
-use App\App;
+
 require('bootloader.php');
+use App\App;
 
-App::$session;
-
-App::$session->logout('Location: login.php')
+App::$session->logout('login.php');
 
 ?>
 

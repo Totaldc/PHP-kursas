@@ -1,7 +1,7 @@
-<form <?php print html_attr($form['attr'] ?? []); ?>>
+<form <?php print html_attr($data['attr'] ?? []); ?>>
 	
 	<!-- Field Generation Start -->
-	<?php foreach ($form['fields'] ?? [] as $field_id => $field): ?>
+	<?php foreach ($data['fields'] ?? [] as $field_id => $field): ?>
 		
 		<!-- Checking if input has label -->
 		<?php if (isset($field['label'])): ?>
@@ -42,14 +42,14 @@
 	<!-- Field Generation End -->
 	
 	<!-- Button Generation Start -->
-	<?php foreach ($form['buttons'] ?? [] as $button_id => $button): ?>
+	<?php foreach ($data['buttons'] ?? [] as $button_id => $button): ?>
 		<button <?php print button_attr($button); ?>><?php print $button['title']; ?>
 		</button>
 	<?php endforeach; ?>
 	<!-- Button Generation End -->
 </form>
 
-<?php if (isset($form['error'])): ?>
+<?php if (isset($data['error'])): ?>
 	<span class="error"><?php print $form['error']; ?></span>
 <?php endif; ?>
 

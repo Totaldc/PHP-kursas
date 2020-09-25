@@ -1,9 +1,12 @@
 <?php
-use App\App;
 
 require('bootloader.php');
 
-App::$db;
+use App\App;
+use App\Users\User;
+use Core\View;
+
+$view_nav = new View(generate_nav());
 
 $form = [
 	'attr' => [
@@ -55,18 +58,18 @@ $form = [
 		],
 	],
 ];
+$view_register = new View($form);
 
-$nav = generate_nav();
 
 if (!empty($_POST)) {
 	// filter characters
 	$form_values = sanitize_form_input_values($form);
 	// validate form according to validators
 	if (validate_form($form, $form_values)) {
-		unset($form_values['password_repeat']);
-		App::$db->load();
-		App::$db->insertRow('users', $form_values);
-		$message = App::$db->save() ? 'Registracija sėkminga!' : 'Užsiregistruoti nepavyko';
+		//		unset($form_values['password_repeat']);
+		$user = new User($form_values);
+		App::$db->insertRow('users', $user->_getData());
+		//		$message = $db->save() ? 'Registracija sėkminga!' : 'Užsiregistruoti nepavyko';
 		header('Location: login.php');
 		exit;
 	}
@@ -136,11 +139,11 @@ if (!empty($_POST)) {
 </head>
 <body>
 <header>
-	<?php include ROOT . '/app/templates/nav.tpl.php'; ?>
+	<?php print $view_nav->render(ROOT . '/app/templates/nav.tpl.php'); ?>
 </header>
 <main>
 	<h1>Registracija:</h1>
-	<?php include ROOT . '/core/templates/form.tpl.php'; ?>
+	<?php print $view_register->render(ROOT . '/core/templates/form.tpl.php'); ?>
 	<?php if (isset($message)) : ?>
 		<div class="message">
 			<span><?php print $message; ?></span>

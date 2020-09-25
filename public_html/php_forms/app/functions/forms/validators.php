@@ -1,4 +1,5 @@
 <?php
+
 use App\App;
 
 /**
@@ -10,7 +11,6 @@ use App\App;
  */
 function validate_user_unique (string $field_value, array &$field): bool
 {
-	App::$db;
 	if (App::$db->getRowsWhere('users', ['email' => $field_value])) {
 		$field['error'] = 'Toks vartotojas jau egzistuoja';
 		return false;
@@ -25,34 +25,43 @@ function validate_user_unique (string $field_value, array &$field): bool
  * @param array $field_value
  * @return bool
  */
-function validate_login (array $field_value)
+function validate_login (array $field_value): bool
 {
-	App::$db;
-	if (App::$db->getRowsWhere('users', ['email' => $field_value['email'], 'password' => $field_value['password']])) {
-		$_SESSION['email'] = $field_value['email'];
-		$_SESSION['password'] = $field_value['password'];
-		return true;
-	}
-	return false;
+	return App::$session->login($field_value['email'], $field_value['password']);
 }
 
 /**
- * Validates if pixel already exists in database
+ * Validates if pixel coordinates are taken
  *
- * @param array $field_value
- * @param array $field
+ * @param array $form_values
+ * @param array $form
  * @return bool
  */
-function validate_pixel_unique (array $field_value, array &$field): bool
+function validate_pixel_coordinates (array $form_values, array &$form)
 {
-	App::$db;
-	if (App::$db->getRowsWhere('pixels', ['coordinate_x' => $field_value['coordinate_x'],
-		'coordinate_y' => $field_value['coordinate_y']])) {
-		$field['error'] = 'Toks pixelis jau egzistuoja';
+	$pixels = App::$db->getRowsWhere('pixels', []);
+	foreach ($pixels as $pixel) {
+		if (($form_values['coordinate_x'] + $form_values['size'] >= $pixel['coordinate_x']
+				&& $form_values['coordinate_x'] <=
+				$pixel['coordinate_x'] + $pixel['size'])
+			&&
+			($form_values['coordinate_y'] + $form_values['size'] >= $pixel['coordinate_y'] &&
+				$form_values['coordinate_y'] <= $pixel['coordinate_y'] + $pixel['size'])) {
+			$form['error'] = 'Koordinates jau uzimtos';
+			return false;
+		}
+	}
+	if ($form_values['coordinate_x'] + $form_values['size'] > 500) {
+		$form['error'] = 'Pixelis per didelis';
+		return false;
+	}
+	if ($form_values['coordinate_y'] + $form_values['size'] > 500) {
+		$form['error'] = 'Pixelis per didelis';
 		return false;
 	}
 	return true;
 }
+
 
 /**
  * Validates option selected
@@ -63,11 +72,11 @@ function validate_pixel_unique (array $field_value, array &$field): bool
  */
 function validate_option (string $field_value, array $field)
 {
-	foreach($field['options'] as $option_key => $option_value){
-		if($option_key === $field_value){
+	foreach ($field['options'] as $option_key => $option_value) {
+		if ($option_key === $field_value) {
 			return true;
 		}
 	}
-
+	
 	return false;
 }

@@ -1,16 +1,16 @@
 <?php
-use App\App;
 
 require('bootloader.php');
-App::$session;
-$nav = generate_nav();
+use App\App;
+use Core\View;
+
+$view_nav = new View(generate_nav());
 
 if (!App::$session->getUser()) {
 	header('Location: login.php');
 	exit;
 }
 
-App::$db;
 if (App::$db->tableExists('pixels')) {
 	$pixels = App::$db->getRowsWhere('pixels', ['email' => $_SESSION['email']]);
 }
@@ -28,17 +28,19 @@ if (App::$db->tableExists('pixels')) {
 </head>
 <body>
 <header>
-	<?php include ROOT . '/app/templates/nav.tpl.php'; ?>
+	<?php print $view_nav->render(ROOT . '/app/templates/nav.tpl.php'); ?>
 </header>
 <div class="container">
 	<div class="wall">
 		<div class="poop-wall">
-			<?php foreach ($pixels as $pixel): ?>
+			<?php foreach ($pixels ?? [] as $pixel): ?>
 				<span class="pixel <?php print $pixel['color']; ?>"
 				      style="bottom: <?php print $pixel['coordinate_y']; ?>px; left: <?php print
-					      $pixel['coordinate_x']; ?>px; width: <?php print $pixel['size']; ?>px; height: <?php print
+					      $pixel['coordinate_x']; ?>px; width: <?php print $pixel['size']; ?>px; height: <?php
+				      print
 					      $pixel['size']; ?>px
-						      "></span>
+						      ">
+				</span>
 			<?php endforeach; ?>
 		</div>
 	</div>

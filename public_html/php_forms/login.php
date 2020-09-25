@@ -1,9 +1,10 @@
 <?php
-use App\App;
 
 require('bootloader.php');
 
-App::$session;
+use Core\View;
+
+$view_nav = new View(generate_nav());
 
 $form = [
 	'attr' => [
@@ -41,17 +42,19 @@ $form = [
 		'validate_login'
 	]
 ];
+$view = new View($form);
 
 if (!empty($_POST)) {
 	$form_values = sanitize_form_input_values($form);
-	App::$session->login($form_values['email'], $form_values['password']);
-	header('Location: index.php');
+	if (validate_form($form, $form_values)) {
+//		App::$session->login($form_values['email'], $form_values['password']);
+		header('Location: index.php');
+	} else {
+		$message = 'Prisijungti nepavyko';
+	}
 }
 
-$nav = generate_nav();
-
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -116,11 +119,11 @@ $nav = generate_nav();
 </head>
 <body>
 <header>
-	<?php include ROOT . '/app/templates/nav.tpl.php'; ?>
+	<?php print $view_nav->render('app/templates/nav.tpl.php'); ?>
 </header>
 <main>
 	<h1>Login:</h1>
-	<?php include ROOT . '/core/templates/form.tpl.php'; ?>
+	<?php print $view->render('core/templates/form.tpl.php'); ?>
 	<?php if (isset($message)) : ?>
 		<div class="message">
 			<span><?php print $message; ?></span>

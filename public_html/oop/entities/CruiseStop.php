@@ -14,7 +14,11 @@ class CruiseStop implements IJSONSerialiazible
 
   public static function createFromAssocArr(array $arr): object
   {
-    return (object)[];
+    return new CruiseStop(
+      ShipPort::createFromAssocArr($arr['port']),
+      !empty($arr['arrivalDateTime']) ? DateTime::createFromFormat(DATE_FORMAT, $arr['arrivalDateTime']) : null,
+      !empty($arr['departureDateTime']) ? DateTime::createFromFormat(DATE_FORMAT, $arr['departureDateTime']) : null
+    );
   }
 
   public function getCityAndCountry(): string
@@ -34,19 +38,21 @@ class CruiseStop implements IJSONSerialiazible
 
   public function getFormattedDepartureTime(): string
   {
-    return isset($this->departureDateTime) ? $this->departureDateTime->format(DATE_FORMAT): '';
+    return isset($this->departureDateTime) ? $this->departureDateTime->format(DATE_FORMAT) : '';
   }
 
   //  Interface methods
-  public function toJSON(): string{
+  public function toJSON(): string
+  {
     return json_encode($this->toAssocArr());
   }
-  
-  public function toAssocArr(): array{
+
+  public function toAssocArr(): array
+  {
     return [
       "port" => $this->port->toAssocArr(),
       "arrivalDateTime" => $this->getFormattedArivalTime(),
-      "DepartureDateTime" => $this->getFormattedDepartureTime()
+      "departureDateTime" => $this->getFormattedDepartureTime()
     ];
   }
 }

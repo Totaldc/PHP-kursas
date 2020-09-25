@@ -1,7 +1,7 @@
 <?php
 class Location {
-  private float $latitude;
-  private float $longitude;
+  protected float $latitude;
+  protected float $longitude;
   
   public function __construct(float $latitude, float $longitude)
   {

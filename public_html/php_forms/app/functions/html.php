@@ -17,4 +17,5 @@ function generate_nav(): array
 		$nav[] = ['url' => 'login.php', 'title' => 'Login'];
 	}
 	return $nav;
+
 }
