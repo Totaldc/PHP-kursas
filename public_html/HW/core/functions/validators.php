@@ -1,6 +1,7 @@
 <?php
 
 
+
 /**
  * validate not empty fields
  *
@@ -129,17 +130,29 @@ function validate_register(string $field_value, array &$field): bool
  * @param array $form
  * @return bool
  */
-function validate_login(array $form_values, array &$form): bool
+// function validate_login(array $form_values, array &$form): bool
+// {
+//     $users = file_to_array(DB_FILE);
+//     foreach ($users as $user) {
+//         if ($form_values['email'] === $user['email'] && $form_values['number1'] === $user['number1']) {
+//             $_SESSION['email'] = $form_values['email'];
+//             $_SESSION['password'] = $form_values['password'];
+//             var_dump('paejoooo');
+//             return true;
+//         }
+//     }
+//     var_dump('neveikia validate_login');
+//     return false;
+// }
+
+function validate_login (array $field_value)
 {
-    $users = file_to_array(DB_FILE);
-    foreach ($users as $user) {
-        if ($form_values['email'] === $user['email'] && $form_values['number1'] === $user['number1']) {
-            $_SESSION['email'] = $form_values['email'];
-            $_SESSION['password'] = $form_values['password'];
-            var_dump('paejoooo');
-            return true;
-        }
-    }
-    var_dump('neveikia validate_login');
-    return false;
+	$db = new FileDB(DB_FILE);
+	$db->load();
+	if ($db->getRowsWhere('users', ['email' => $field_value['email'], 'password' => $field_value['password']])) {
+		$_SESSION['email'] = $field_value['email'];
+		$_SESSION['password'] = $field_value['password'];
+		return true;
+	}
+	return false;
 }
