@@ -95,7 +95,7 @@ $form = [
 		'validate_pixel_coordinates',
 	]
 ];
-$view_add_form = new View($form);
+$view_add = new View($form);
 
 if (!empty($_POST)) {
 	$form_values = sanitize_form_input_values($form);
@@ -126,7 +126,7 @@ if (!empty($_POST)) {
 <main>
 	<div class="add container">
 		<h1>Pridek pixeliuka</h1>
-		<?php print $view_add_form->render('core/templates/form.tpl.php'); ?>
+		<?php print $view_add->render('core/templates/form.tpl.php'); ?>
 		<?php if (isset($message)) : ?>
 			<div class="message">
 				<span><?php print $message; ?></span>

@@ -3,7 +3,7 @@
 class Sniper
 {
     private string $name;
-    public int $accuracy = 90;
+    public int $accuracy = 50;
     public int $visibility = 10;
     public int $health = 100;
     public int $damage = 100;
@@ -37,6 +37,9 @@ class Sniper
 
     public function isAlive(): bool
     {
-       return $this->health > 0;
+        return $this->health > 0;
     }
+
+  
+    
 }
