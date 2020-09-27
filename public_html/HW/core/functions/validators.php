@@ -131,7 +131,7 @@ function validate_register(string $field_value, array &$field): bool
  */
 function validate_login(array $form_values, array &$form): bool
 {
-    $users = file_to_array('db.txt');
+    $users = file_to_array(DB_FILE);
     foreach ($users as $user) {
         if ($form_values['email'] === $user['email'] && $form_values['number1'] === $user['number1']) {
             $_SESSION['email'] = $form_values['email'];

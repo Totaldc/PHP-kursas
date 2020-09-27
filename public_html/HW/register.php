@@ -2,6 +2,8 @@
 
 require('bootloader.php');
 
+$db = new FileDB(DB_FILE);
+
 $form = [
 	'attr' => [
 		'class' => 'my-form',
@@ -89,23 +91,33 @@ $form = [
 ];
 
 
+// if (!empty($_POST)) {
+// 	$form_values = sanitize_form_input_values($form);
+// 	$success = validate_form($form, $form_values);
+// 	unset($form_values['password2']);
+// 	if ($success) {
+// 		form_success($form_values);
+// 		header('Location: login.php');
+// 	} else {
+// 		var_dump('Enter correct information');
+// 	}
+// }
+
 if (!empty($_POST)) {
+	// filter characters
 	$form_values = sanitize_form_input_values($form);
-	$success = validate_form($form, $form_values);
-	unset($form_values['password2']);
-	if ($success) {
-		form_success($form_values);
+	// validate form according to validators
+	if (validate_form($form, $form_values)) {
+		unset($form_values['password2']);
+		$db->load();
+		$db->insertRow('users', $form_values);
+		$message = $db->save() ? 'Registracija sėkminga!' : 'Užsiregistruoti nepavyko';
 		header('Location: login.php');
-	} else {
-		var_dump('Enter correct information');
+		exit;
 	}
 }
 
-//var_dump($form);
-//var_dump($form_values);
 
-// $json = json_encode($form);
-// $bytes = file_put_contents("db.txt", $json); 
 
 ?>
 <!doctype html>
