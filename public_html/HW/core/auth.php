@@ -5,16 +5,29 @@
  *
  * @return bool
  */
-function is_logged_in(): bool
-{
+// function is_logged_in(): bool
+// {
 
+// 	if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
+// 		$users = file_to_array(DB_FILE) ?? [];
+// 		foreach ($users as $user) {
+// 			if ($user['email'] === $_SESSION['email'] && $user['password'] === $_SESSION['password']) {
+//                 var_dump('is logged in paejo');
+// 				return true;
+// 			}
+// 		}
+// 	}
+	
+// 	return false;
+// }
+
+function is_logged_in (): bool
+{
 	if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
-		$users = file_to_array('db.txt') ?? [];
-		foreach ($users as $user) {
-			if ($user['email'] === $_SESSION['email'] && $user['password'] === $_SESSION['password']) {
-                var_dump('is logged in paejo');
-				return true;
-			}
+		$db = new FileDB(DB_FILE);
+		$db->load();
+		if ($db->getRowsWhere('users', ['email' => $_SESSION['email'], 'password' => $_SESSION['password']])) {
+			return true;
 		}
 	}
 	

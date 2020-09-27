@@ -2,6 +2,10 @@
 
 require('bootloader.php');
 
+if(is_logged_in()){
+	header('Location: index.php');
+}
+
 $form = [
 	'attr' => [
 		'method' => 'POST',

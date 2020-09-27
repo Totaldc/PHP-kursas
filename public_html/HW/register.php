@@ -4,6 +4,10 @@ require('bootloader.php');
 
 $db = new FileDB(DB_FILE);
 
+if(is_logged_in()){
+	header('Location: index.php');
+}
+
 $form = [
 	'attr' => [
 		'class' => 'my-form',
