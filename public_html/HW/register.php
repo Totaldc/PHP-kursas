@@ -94,6 +94,7 @@ $form = [
 	]
 ];
 
+$nav = generate_nav();
 
 // if (!empty($_POST)) {
 // 	$form_values = sanitize_form_input_values($form);
@@ -175,6 +176,7 @@ if (!empty($_POST)) {
 
 <body>
 	<main>
+	<?php include ROOT . '/app/templates/nav.tpl.php'; ?>
 		<?php include('core/templates/form.tpl.php'); ?>
 		<?php if (isset($message)) : ?>
 			<span><?php print $message; ?></span>

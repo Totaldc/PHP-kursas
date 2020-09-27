@@ -7,3 +7,4 @@ require ('core/functions/html.php');
 require ('core/functions/file.php');
 require ('core/auth.php');
 require ('core/classes/FileDB.php');
+require ('app/functions/html.php');
