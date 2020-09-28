@@ -69,6 +69,20 @@
             "color": "red",
             "email": "email@email.com",
             "size": "10"
+        },
+        {
+            "coordinate_x": "50",
+            "coordinate_y": "250",
+            "color": "green",
+            "email": "email@email.com",
+            "size": "10"
+        },
+        {
+            "coordinate_x": "300",
+            "coordinate_y": "350",
+            "color": "red",
+            "email": "email@email.com",
+            "size": "20"
         }
     ]
 }

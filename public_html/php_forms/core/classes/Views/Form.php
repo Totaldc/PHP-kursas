@@ -80,43 +80,47 @@ class Form extends \Core\Abstracts\Views\Form
      *
      * @return bool
      */
-    public function validate(): bool
-    {
-        $success = true;
-        // input validator
-        foreach ($this->data['fields'] as $key => &$field) {
-            // go through validators array
-            foreach ($field['validators'] ?? [] as $validator_key => $validator) {
-                //check if validator is array
-                if (is_array($validator)) {
-                    $function = $validator_key;
-                    $params = $validator;
-                } else {
-                    $function = $validator;
-                }
-
-                if ($function($this->getSubmitData()[$key], $field, $params ?? null)) {
-                    $field['value'] = $this->getSubmitData()[$key];
-                } else {
-                    $success = false;
-                    break;
-                }
-            }
-        }
-        //form validator
-        foreach ($this->data['validators'] ?? [] as $form_validator_key => $form_validator) {
-            if (is_array($form_validator)) {
-                $form_validator_function = $form_validator_key;
-                $form_validator_params = $form_validator;
-            } else {
-                $form_validator_function = $form_validator;
-            }
-            if (!$form_validator_function($this->getSubmitData(), $this->data, $form_validator_params ?? null)) {
-                $success = false;
-                break;
-            }
-        }
-
-        return $success;
-    }
+    public function validate (): bool
+	{
+		$form = &$this->data;
+		$form_values = $this->getSubmitData();
+		$success = true;
+		foreach ($form['fields'] as $key => &$field) {
+			// go through validators array
+			foreach ($field['validators'] ?? [] as $validator_key => $validator) {
+				//check if validator is array
+				if (is_array($validator)) {
+					$function = $validator_key;
+					$params = $validator;
+				} else {
+					$function = $validator;
+				}
+				
+				if ($function($form_values[$key], $field, $params ?? null)) {
+					$field['value'] = $form_values[$key];
+				} else {
+					$success = false;
+					break;
+				}
+			}
+		}
+		
+		if ($success) {
+			foreach ($form['validators'] ?? [] as $validator_name => $validator_array) {
+				if (is_array($validator_array)) {
+					$new_function = $validator_name;
+					$new_params = $validator_array;
+				} else {
+					$new_function = $validator_array;
+				}
+				
+				if (!$new_function($form_values, $form, $new_params ?? null)) {
+					$success = false;
+					break;
+				}
+			}
+		}
+		
+		return $success;
+	}
 }

@@ -14,41 +14,36 @@
                 <h2>Gallery</h2>
 
                 <div class="gallery-container">
-                    <a href="#">
-                        <div></div>
-                        <h3>This is a title</h3>
-                        <p>This is a paragraph</p>
-                    </a>
-                    <a href="#">
-                        <div></div>
-                        <h3>This is a title</h3>
-                        <p>This is a paragraph</p>
-                    </a>
-                    <a href="#">
-                        <div></div>
-                        <h3>This is a title</h3>
-                        <p>This is a paragraph</p>
-                    </a>
-                    <a href="#">
-                        <div></div>
-                        <h3>This is a title</h3>
-                        <p>This is a paragraph</p>
-                    </a>
-                    <a href="#">
-                        <div></div>
-                        <h3>This is a title</h3>
-                        <p>This is a paragraph</p>
-                    </a>
+                    <?php
+                include_once 'includes/dbh.inc.php';
+
+                $sql = "SELECT * FROM gallery ORDER BY orderGallery DESC";
+                $stmt = mysqli_stmt_init($conn);
+                if(mysqli_stmt_prepare($stmt, $sql)){
+                    print "SQL statement failed";
+                } else{
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
+
+                    while($row = mysqli_fetch_assoc($result)){
+                        print '<a href="#">
+                        <div style="background-image: url(img/gallery/' . $row['imageFullNameGallery'] .');"></div>
+                        <h3>' . $row['titleGallery'] .'</h3>
+                        <p>' . $row['descGallery'] . '</p>
+                    </a>';
+                    }
+                }
+                    ?>
                 </div>
 
                 <section class="gallery-upload">
                     <form action="includes/gallery-upload.inc.php" method="post" enctype="multipart/form-data">
-                       <input type="text" name="filename" placeholder="File name..."> 
-                       <input type="text" name="filetitle" placeholder="Image title..."> 
-                       <input type="text" name="filedesc" placeholder="Image description...">
-                       <input type="file" name="file"  >
-                       <button type="submit" name="submit">Upload</button>  
-                </form>
+                        <input type="text" name="filename" placeholder="File name...">
+                        <input type="text" name="filetitle" placeholder="Image title...">
+                        <input type="text" name="filedesc" placeholder="Image description...">
+                        <input type="file" name="file">
+                        <button type="submit" name="submit">Upload</button>
+                    </form>
                 </section>
 
             </div>
