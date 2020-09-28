@@ -2,12 +2,25 @@
 
 namespace Core\Views;
 
-
 class Form extends \Core\Abstracts\Views\Form
 {
-    public function render(string $template_path = ROOT . '/core/templates/form.tpl.php'): string
+
+    public function render(string $template_path = ROOT . '/core/templates/form.tpl.php')
     {
         return parent::render($template_path);
+    }
+
+    /**
+     * Checks if the form is submitted
+     *
+     * Gets submit action from $_POST, and checks if form array
+     * has a button with such index
+     *
+     * @return bool
+     */
+    public function isSubmitted(): bool
+    {
+        return array_key_exists(self::getSubmitAction(), $this->data['buttons']);
     }
 
     /**
@@ -20,54 +33,6 @@ class Form extends \Core\Abstracts\Views\Form
     static function getSubmitAction(): ?string
     {
         return $_POST['action'] ?? null;
-    }
-
-
-    /**
-     * Checks if the form is submitted
-     *
-     * Gets submit action from $_POST, and checks if form array
-     * has a button with such index
-     *
-     * @return bool
-     */
-    public function isSubmitted (): bool
-	{
-		
-		foreach ($this->data['buttons'] as $key => $value) {
-			
-			if (self::getSubmitAction() === $key) {
-				return true;
-			}
-		}
-		
-		return false;
-	}
-
-
-    /**
-     * Gets form submitted data
-     * If $filtered = false, returns $_POST if not empty (or null)
-     * If $filtered = true, returns filtered $_POST array
-     * based on form array: $this->data
-     *
-     * DO NOT CALL any functions, it has to be full-code
-     *
-     * @param bool $filter
-     * @return array|null
-     */
-    public function getSubmitData($filter = true): ?array
-    {
-        if ($filter) {
-            $filter_parameters = [];
-            foreach ($this->data['fields'] as $key => $field) {
-                $filter_parameters[$key] = $field['filter'] ?? FILTER_SANITIZE_SPECIAL_CHARS;
-            }
-
-            return filter_input_array(INPUT_POST, $filter_parameters);
-        }
-
-        return $_POST;
     }
 
     /**
@@ -118,5 +83,30 @@ class Form extends \Core\Abstracts\Views\Form
         }
 
         return $success;
+    }
+
+    /**
+     * Gets form submitted data
+     * If $filtered = false, returns $_POST if not empty (or null)
+     * If $filtered = true, returns filtered $_POST array
+     * based on form array: $this->data
+     *
+     * DO NOT CALL any functions, it has to be full-code
+     *
+     * @param bool $filter
+     * @return array|null
+     */
+    public function getSubmitData($filter = true): ?array
+    {
+        if ($filter) {
+            $filter_parameters = [];
+            foreach ($this->data['fields'] as $key => $field) {
+                $filter_parameters[$key] = $field['filter'] ?? FILTER_SANITIZE_SPECIAL_CHARS;
+            }
+
+            return filter_input_array(INPUT_POST, $filter_parameters);
+        }
+
+        return $_POST;
     }
 }

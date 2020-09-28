@@ -2,9 +2,9 @@
 
 require('bootloader.php');
 
-use Core\View;
-
-$view_nav = new View(generate_nav());
+use App\App;
+use App\Views\Navigation;
+use Core\Views\Form;
 
 $form = [
 	'attr' => [
@@ -42,7 +42,10 @@ $form = [
 		'validate_login'
 	]
 ];
-$view = new View($form);
+$view_nav = new Navigation();
+$login = new Form($form);
+
+
 
 if (!empty($_POST)) {
 	$form_values = sanitize_form_input_values($form);
@@ -119,11 +122,11 @@ if (!empty($_POST)) {
 </head>
 <body>
 <header>
-	<?php print $view_nav->render('app/templates/nav.tpl.php'); ?>
+	<?php print $view_nav->render(); ?>
 </header>
 <main>
 	<h1>Login:</h1>
-	<?php print $view->render('core/templates/form.tpl.php'); ?>
+	<?php print $login->render(); ?>
 	<?php if (isset($message)) : ?>
 		<div class="message">
 			<span><?php print $message; ?></span>

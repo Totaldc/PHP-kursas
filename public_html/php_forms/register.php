@@ -4,9 +4,10 @@ require('bootloader.php');
 
 use App\App;
 use App\Users\User;
-use Core\View;
+use App\Views\Navigation;
+use Core\Views\Form;
 
-$view_nav = new View(generate_nav());
+
 
 $form = [
 	'attr' => [
@@ -58,7 +59,8 @@ $form = [
 		],
 	],
 ];
-$view_register = new View($form);
+$view_nav = new Navigation();
+$register = new Form($form);
 
 
 if (!empty($_POST)) {
@@ -76,6 +78,9 @@ if (!empty($_POST)) {
 }
 //var_dump($form);
 //var_dump($form_values);
+
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -139,11 +144,11 @@ if (!empty($_POST)) {
 </head>
 <body>
 <header>
-	<?php print $view_nav->render(ROOT . '/app/templates/nav.tpl.php'); ?>
+<?php print $view_nav->render(); ?>
 </header>
 <main>
 	<h1>Registracija:</h1>
-	<?php print $view_register->render($template_path); ?>
+	<?php print $register->render(); ?>
 	<?php if (isset($message)) : ?>
 		<div class="message">
 			<span><?php print $message; ?></span>

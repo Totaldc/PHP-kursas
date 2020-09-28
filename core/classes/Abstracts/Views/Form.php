@@ -26,6 +26,7 @@ abstract class Form extends View
      */
     abstract static function getSubmitAction(): ?string;
 
+
     /**
      * Checks if the form is submitted
      *
@@ -61,7 +62,8 @@ abstract class Form extends View
      */
     abstract public function validate(): bool;
 
-    public function render(string $template_path = ROOT . '/core/templates/form.tpl.php'): string
+
+    public function render(string $template_path = ROOT . '/core/templates/form.tpl.php')
     {
         return parent::render($template_path);
     }

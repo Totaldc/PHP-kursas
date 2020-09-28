@@ -34,6 +34,41 @@
             "color": "green",
             "email": "email@email.com",
             "size": "10"
+        },
+        {
+            "coordinate_x": "50",
+            "coordinate_y": "50",
+            "color": "black",
+            "email": "email@email.com",
+            "size": "10"
+        },
+        {
+            "coordinate_x": "250",
+            "coordinate_y": "250",
+            "color": "blue",
+            "email": "email@email.com",
+            "size": "10"
+        },
+        {
+            "coordinate_x": "50",
+            "coordinate_y": "25",
+            "color": "red",
+            "email": "email@email.com",
+            "size": "10"
+        },
+        {
+            "coordinate_x": "300",
+            "coordinate_y": "300",
+            "color": "blue",
+            "email": "email@email.com",
+            "size": "20"
+        },
+        {
+            "coordinate_x": "350",
+            "coordinate_y": "350",
+            "color": "red",
+            "email": "email@email.com",
+            "size": "10"
         }
     ]
 }

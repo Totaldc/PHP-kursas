@@ -109,7 +109,8 @@ if (!empty($_POST)) {
 	}
 }
 
-$form = new Form($form);
+$view_add_form = new Form($form);
+$view_add_form->isSubmitted();
 ?>
 
 <!doctype html>
@@ -127,7 +128,7 @@ $form = new Form($form);
 <main>
 	<div class="add container">
 		<h1>Pridek pixeliuka</h1>
-		<?php print $form->render(); ?>
+		<?php print $view_add_form->render(); ?>
 		<?php if (isset($message)) : ?>
 			<div class="message">
 				<span><?php print $message; ?></span>

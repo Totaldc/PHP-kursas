@@ -50,6 +50,5 @@
 </form>
 
 <?php if (isset($data['error'])): ?>
-	<span class="error"><?php print $form['error']; ?></span>
+	<span class="error"><?php print $data['error']; ?></span>
 <?php endif; ?>
-
