@@ -4,7 +4,14 @@ require('bootloader.php');
 
 use App\App;
 use App\Pixels\Pixel;
+use App\Views\Navigation;
 use Core\View;
+
+$view = new View(generate_nav());
+
+$nav = new Navigation();
+
+$pixels = App::$db->getRowsWhere('pixels', []);
 
 $pixel = new Pixel();
 $pixel->_setData(['coordinate_x' => 678, 'coordinate_y' => 3, 'color' => 'red', 'email' => 'a@a.lt', 'size' => 15]);
@@ -14,6 +21,8 @@ $pixel->_setData(['coordinate_x' => 678, 'coordinate_y' => 3, 'color' => 'red', 
 //var_dump($pixel);
 
 $view_nav = new View(generate_nav());
+
+$nav = new Navigation();
 
 if (App::$db->tableExists('pixels')) {
 	$pixels = App::$db->getRowsWhere('pixels', []);
@@ -30,9 +39,7 @@ if (App::$db->tableExists('pixels')) {
 	<title>Document</title>
 </head>
 <body>
-<header>
-	<?php print $view_nav->render(ROOT . '/app/templates/nav.tpl.php'); ?>
-</header>
+<header><?php print $nav->render(); ?></header>
 <div class="container">
 	<div class="wall">
 		<div class="poop-wall">

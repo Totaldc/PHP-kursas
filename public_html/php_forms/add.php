@@ -4,9 +4,10 @@ require('bootloader.php');
 
 use App\App;
 use App\Pixels\Pixel;
-use Core\View;
+use App\Views\Navigation;
+use Core\Views\Form;
 
-$view_nav = new View(generate_nav());
+$nav = new Navigation();
 
 if (!App::$session->getUser()) {
 	header('Location: login.php');
@@ -95,7 +96,7 @@ $form = [
 		'validate_pixel_coordinates',
 	]
 ];
-$view_add = new View($form);
+
 
 if (!empty($_POST)) {
 	$form_values = sanitize_form_input_values($form);
@@ -107,6 +108,8 @@ if (!empty($_POST)) {
 		header('Location: my.php');
 	}
 }
+
+$form = new Form($form);
 ?>
 
 <!doctype html>
@@ -120,13 +123,11 @@ if (!empty($_POST)) {
 	<title>Add pixels</title>
 </head>
 <body>
-<header>
-	<?php print $view_nav->render('app/templates/nav.tpl.php'); ?>
-</header>
+<header><?php print $nav->render(); ?></header>
 <main>
 	<div class="add container">
 		<h1>Pridek pixeliuka</h1>
-		<?php print $view_add->render('core/templates/form.tpl.php'); ?>
+		<?php print $form->render(); ?>
 		<?php if (isset($message)) : ?>
 			<div class="message">
 				<span><?php print $message; ?></span>

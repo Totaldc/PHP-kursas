@@ -143,7 +143,7 @@ if (!empty($_POST)) {
 </header>
 <main>
 	<h1>Registracija:</h1>
-	<?php print $view_register->render(ROOT . '/core/templates/form.tpl.php'); ?>
+	<?php print $view_register->render($template_path); ?>
 	<?php if (isset($message)) : ?>
 		<div class="message">
 			<span><?php print $message; ?></span>
