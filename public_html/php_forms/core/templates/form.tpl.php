@@ -43,7 +43,7 @@
 	
 	<!-- Button Generation Start -->
 	<?php foreach ($data['buttons'] ?? [] as $button_id => $button): ?>
-		<button <?php print button_attr($button); ?>><?php print $button['title']; ?>
+		<button <?php print button_attr($button, $button_id); ?>><?php print $button['title']; ?>
 		</button>
 	<?php endforeach; ?>
 	<!-- Button Generation End -->

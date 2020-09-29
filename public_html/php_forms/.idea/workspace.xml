@@ -191,6 +191,9 @@
       <workItem from="1601284806135" duration="74000" />
       <workItem from="1601284906493" duration="1356000" />
       <workItem from="1601286716188" duration="1013000" />
+      <workItem from="1601361962161" duration="13000" />
+      <workItem from="1601361986240" duration="1703000" />
+      <workItem from="1601364353438" duration="978000" />
     </task>
     <task id="LOCAL-00001" summary="Individual project pixels">
       <created>1600349191957</created>
@@ -294,10 +297,10 @@
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state x="458" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.811@0.23.1440.811" timestamp="1600068272919" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1601284801677">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1601361974471">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601284801677" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601361974471" />
     <state width="1398" height="238" key="GridCell.Tab.0.bottom" timestamp="1600930531012">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
@@ -382,17 +385,19 @@
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state x="428" y="37" width="584" height="783" key="find.popup/0.23.1440.811@0.23.1440.811" timestamp="1600940833731" />
-    <state x="504" y="220" key="refactoring.ChangeSignatureDialog" timestamp="1599498173054">
-      <screen x="0" y="23" width="1440" height="811" />
+    <state x="538" y="200" key="refactoring.ChangeSignatureDialog" timestamp="1601362882358">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="538" y="200" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1601362882358" />
     <state x="504" y="220" key="refactoring.ChangeSignatureDialog/0.23.1440.811@0.23.1440.811" timestamp="1599498173054" />
     <state x="385" y="194" key="run.anything.popup" timestamp="1600418492485">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state x="385" y="194" key="run.anything.popup/0.23.1440.811@0.23.1440.811" timestamp="1600418492485" />
-    <state x="385" y="158" width="670" height="676" key="search.everywhere.popup" timestamp="1601021131981">
-      <screen x="0" y="23" width="1440" height="811" />
+    <state x="411" y="137" width="715" height="687" key="search.everywhere.popup" timestamp="1601362054035">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="411" y="137" width="715" height="687" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1601362054035" />
     <state x="385" y="158" width="670" height="676" key="search.everywhere.popup/0.23.1440.811@0.23.1440.811" timestamp="1601021131981" />
   </component>
 </project>

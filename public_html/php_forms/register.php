@@ -9,67 +9,16 @@ use Core\Views\Form;
 
 
 
-$form = [
-	'attr' => [
-		'method' => 'POST',
-	],
-	'fields' => [
-		'email' => [
-			'label' => 'Your Email:',
-			'type' => 'email',
-			'validators' => [
-				'validate_field_not_empty',
-				'validate_user_unique',
-			],
-			'extra' => [
-				'attr' => [
-					'placeholder' => 'Pvz. aivaras@makdraiveris.lt',
-				],
-			],
-		],
-		'password' => [
-			'label' => 'Password:',
-			'type' => 'password',
-			'validators' => [
-				'validate_field_not_empty',
-			],
-		],
-		'password_repeat' => [
-			'label' => 'Repeat Password:',
-			'type' => 'password',
-			'validators' => [
-				'validate_field_not_empty',
-			],
-		],
-	],
-	'buttons' => [
-		'submit' => [
-			'title' => 'Register',
-			'type' => 'submit',
-			'value' => 'submit',
-		],
-	],
-	'validators' => [
-		'validate_fields_match' => [
-			'fields' => [
-				'password',
-				'password_repeat',
-			],
-			'error' => 'Laukeliai privalo sutapti',
-		],
-	],
-];
+
 $view_nav = new Navigation();
-$register = new Form($form);
+$form = new \App\Views\Forms\RegisterForm();
 
 
-if (!empty($_POST)) {
+if ($form->isSubmitted()) {
 	// filter characters
-	$form_values = sanitize_form_input_values($form);
 	// validate form according to validators
-	if (validate_form($form, $form_values)) {
-		//		unset($form_values['password_repeat']);
-		$user = new User($form_values);
+	if ($form->validate()) {
+		$user = new User($form->getSubmitData());
 		App::$db->insertRow('users', $user->_getData());
 		//		$message = $db->save() ? 'Registracija sėkminga!' : 'Užsiregistruoti nepavyko';
 		header('Location: login.php');
@@ -148,7 +97,7 @@ if (!empty($_POST)) {
 </header>
 <main>
 	<h1>Registracija:</h1>
-	<?php print $register->render(); ?>
+	<?php print $form->render(); ?>
 	<?php if (isset($message)) : ?>
 		<div class="message">
 			<span><?php print $message; ?></span>

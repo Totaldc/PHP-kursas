@@ -6,50 +6,15 @@ use App\App;
 use App\Views\Navigation;
 use Core\Views\Form;
 
-$form = [
-	'attr' => [
-		'method' => 'POST',
-	],
-	'fields' => [
-		'email' => [
-			'label' => 'Your Email:',
-			'type' => 'email',
-			'validators' => [
-				'validate_field_not_empty',
-			],
-			'extra' => [
-				'attr' => [
-					'placeholder' => 'Pvz. aivaras@makdraiveris.lt',
-				],
-			],
-		],
-		'password' => [
-			'label' => 'Password:',
-			'type' => 'password',
-			'validators' => [
-				'validate_field_not_empty',
-			],
-		],
-	],
-	'buttons' => [
-		'submit' => [
-			'title' => 'Login',
-			'type' => 'submit',
-			'value' => 'submit',
-		],
-	],
-	'validators' => [
-		'validate_login'
-	]
-];
+
 $view_nav = new Navigation();
-$login = new Form($form);
+$login = new \App\Views\Forms\LoginForm();
 
 
 
-if (!empty($_POST)) {
-	$form_values = sanitize_form_input_values($form);
-	if (validate_form($form, $form_values)) {
+if ($login->isSubmitted()) {
+//	$form_values = sanitize_form_input_values($form);
+	if ($login->validate()) {
 //		App::$session->login($form_values['email'], $form_values['password']);
 		header('Location: index.php');
 	} else {

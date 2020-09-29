@@ -1,6 +1,17 @@
-<?
+<?php
+abstract class Tube {
+    protected $name = 'Tube';
 
-require 'bootloader.php';
+    abstract protected function getName();
+}
 
-$form = new \Core\Views\Form();
+class YouTube extends Tube {
+    protected $name = 'YouTube';
 
+    public function getName() {
+        return $this->name;
+    }
+}
+
+$youtube = new YouTube();
+print $youtube->getName();
