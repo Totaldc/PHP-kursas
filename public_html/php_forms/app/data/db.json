@@ -23,6 +23,14 @@
         {
             "email": "naujas@php.lt",
             "password": "psw"
+        },
+        {
+            "email": "qwe@asd",
+            "password": "psw"
+        },
+        {
+            "email": "qaz@qaz.lt",
+            "password": "psw"
         }
     ],
     "pixels": [
@@ -150,6 +158,13 @@
             "coordinate_y": "325",
             "color": "red",
             "email": "testas@testas.lt",
+            "size": "20"
+        },
+        {
+            "coordinate_x": "1",
+            "coordinate_y": "269",
+            "color": "green",
+            "email": "qaz@qaz.lt",
             "size": "20"
         }
     ]
