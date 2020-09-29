@@ -1,0 +1,92 @@
+.grid-cruise{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.card {
+  display: inline-flex;
+  width: 720px;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 3px 4px 2px #0005;
+  justify-content: space-between;
+}
+
+.card__image {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card__content {
+  position: relative;
+  width: 100%;
+  padding-left: 1rem;
+}
+
+.card__price{
+  color: rgb(18, 149, 18);
+  font-weight: 600;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.card__destination {
+  margin-bottom: 0.25rem;
+}
+
+.card__date {
+  color: #333;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.card_date_prefix {
+  display: inline-block;
+  width: 70px;
+}
+
+.card_date_prefix:after {
+  content: ': ';
+}
+
+.card__route_list{
+  padding-left: 0.5rem;
+  list-style: none;
+  margin-top: 0.25rem;
+  height: 90px;
+}
+
+.card__route_list>li{
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+/* SHIP STYLES */
+.ship{
+  display: flex;
+}
+
+.ship__img{
+  display: block;
+  height: 80px;
+  width: 110px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ship__content{
+  padding-left: 0.5rem;
+}
+
+.ship__name{
+ /* .... */
+}
+
+.ship__description{
+  /* .... */
+ }

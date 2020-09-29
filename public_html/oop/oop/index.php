@@ -17,8 +17,8 @@ include 'init.php';
 <body>
 <?php
 // include 'pages/home.php';
-// include 'pages/cruiseForm.php';
-// include 'pages/shipPortForm.php';
+include 'pages/cruiseForm.php';
+include 'pages/shipPortForm.php';
 include 'pages/shipForm.php';
 ?>
 </body>
