@@ -1,14 +1,9 @@
-<?php
-
-require 'bootloader.php';
+<?php 
 
 use App\App;
 use App\Users\User;
 use App\Views\Navigation;
-use App\Views\Pages\BasePage;
-use Core\Views\Content;
 use Core\Views\Form;
-
 
 
 
@@ -28,10 +23,14 @@ if ($form->isSubmitted()) {
 		exit;
 	}
 }
+?>
 
-$content = new Content();
-
-$indexPage = new BasePage();
-$indexPage->setTitle('Index: Register');
-$indexPage->setContent($content->render('register.tpl.php'));
-print $indexPage->render();
+<main>
+	<h1>Registracija:</h1>
+	<?php print $form->render(); ?>
+	<?php if (isset($message)) : ?>
+		<div class="message">
+			<span><?php print $message; ?></span>
+		</div>
+	<?php endif; ?>
+</main>

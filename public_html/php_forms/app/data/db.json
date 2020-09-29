@@ -15,6 +15,14 @@
         {
             "email": "testas@testas.lt",
             "password": "psw"
+        },
+        {
+            "email": "paulius@paulius.pk",
+            "password": "psw"
+        },
+        {
+            "email": "naujas@php.lt",
+            "password": "psw"
         }
     ],
     "pixels": [
@@ -133,6 +141,13 @@
         {
             "coordinate_x": "25",
             "coordinate_y": "349",
+            "color": "red",
+            "email": "testas@testas.lt",
+            "size": "20"
+        },
+        {
+            "coordinate_x": "325",
+            "coordinate_y": "325",
             "color": "red",
             "email": "testas@testas.lt",
             "size": "20"
