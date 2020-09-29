@@ -25,6 +25,6 @@ class BasePage extends Page
 		$this->addCSS('assets/css/style.css');
 		$this->setHeader($nav->render());
 		$this->setContent('Content');
-		$this->setFooter('Footeris');
+		$this->setFooter('Footer');
 	}
 }
