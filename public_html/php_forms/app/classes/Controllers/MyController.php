@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Abstracts\Controller;
 use App\App;
-use App\Views\Pages\BasePage;
+use App\Pixels\Pixel;
+use App\Views\Forms\PixelAddForm;
 use Core\Views\Content;
-use Core\Views\Page;
 
 class MyController extends Controller
 {
@@ -36,28 +37,23 @@ class MyController extends Controller
 	 *
 	 * @return string|null
 	 */
-	function index (): ?string
+function my(): ?string
 	{
-		//kintamasis $pixels pixelių masyvo duomenis iš db.json
 		if (!App::$session->getUser()) {
-            header('Location: login.php');
-            exit;
-        }
-        
-        if (App::$db->tableExists('pixels')) {
-            $pixels = App::$db->getRowsWhere('pixels', ['email' => $_SESSION['email']]);
-        };
+			header('Location: login.php');
+			exit;
+		}
 		
-		//sukuriamas naujas objektas, kurio pagalba gaunamas pixels masyvas (per View klasę), paduodamas $template_path???
+		if (App::$db->tableExists('pixels')) {
+			$pixels = App::$db->getRowsWhere('pixels', ['email' => $_SESSION['email']]);
+		}
+		
 		$content = new Content($pixels);
 		
-		//nurodomas page Title
-		$this->page->setTitle('All Pixels');
+		$this->page->setTitle('My Pixels');
 		
-		//nustatomas html content, paduodamas pixelių masyvas renderiui, kuris jau aprašytas index.tpl.php
 		$this->page->setContent($content->render('pixels/index.tpl.php'));
 		
-		//išprintinamas visas puslapis
 		return $this->page->render();
 	}
-}
+    }

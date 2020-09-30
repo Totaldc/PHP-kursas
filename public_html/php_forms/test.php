@@ -1,5 +1,5 @@
 <?php
-require('../bootloader.php');
+require('bootloader.php');
 
 use Core\Sniper;
 use Core\Game;

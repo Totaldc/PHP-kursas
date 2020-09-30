@@ -13,6 +13,10 @@
             "password": "gaga"
         },
         {
+            "email": "aistonija16@gmail.com",
+            "password": "12"
+        },
+        {
             "email": "email@email.com",
             "password": "psw"
         }
@@ -40,11 +44,25 @@
             "size": "20"
         },
         {
+            "coordinate_x": "480",
+            "coordinate_y": "0",
+            "color": "red",
+            "email": "test@test.lt",
+            "size": "20"
+        },
+        {
             "coordinate_x": "250",
-            "coordinate_y": "250",
-            "color": "green",
+            "coordinate_y": "300",
+            "color": "blue",
             "email": "email@email.com",
-            "size": "10"
+            "size": "20"
+        },
+        {
+            "coordinate_x": "123",
+            "coordinate_y": "123",
+            "color": "blue",
+            "email": "email@email.com",
+            "size": "20"
         }
     ]
 }

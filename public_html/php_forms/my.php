@@ -1,8 +1,9 @@
 <?php
 
-
-use App\Controllers\MyController;
+use App\Controllers\PixelsController;
 
 require('bootloader.php');
-$controller = new MyController();
-print $controller->index();
+$controller = new PixelsController();
+print $controller->my();
+?>
+
