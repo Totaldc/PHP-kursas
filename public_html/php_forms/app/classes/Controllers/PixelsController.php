@@ -39,15 +39,11 @@ class PixelsController extends Controller
 	 */
 	function index (): ?string
 	{
-		//kintamasis $pixels pixelių masyvo duomenis iš db.json
+	
 		$pixels = App::$db->getRowsWhere('pixels', []);
-		//sukuriamas naujas objektas, kurio pagalba gaunamas pixels masyvas (per View klasę), paduodamas $template_path???
 		$content = new Content($pixels);
-		//nurodomas page Title
 		$this->page->setTitle('All Pixels');
-		//nustatomas html content, paduodamas pixelių masyvas renderiui, kuris jau aprašytas index.tpl.php
 		$this->page->setContent($content->render('pixels/index.tpl.php'));
-		//išprintinamas visas puslapis
 		return $this->page->render();
 	}
 	
