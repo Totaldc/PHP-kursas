@@ -5,177 +5,34 @@
             "password": "test"
         },
         {
-            "email": "1@1.lt",
-            "password": "1"
+            "email": "a@test.lt",
+            "password": "test"
         },
         {
-            "email": "email@email.com",
-            "password": "psw"
-        },
-        {
-            "email": "testas@testas.lt",
-            "password": "psw"
-        },
-        {
-            "email": "paulius@paulius.pk",
-            "password": "psw"
-        },
-        {
-            "email": "naujas@php.lt",
-            "password": "psw"
-        },
-        {
-            "email": "qwe@asd",
-            "password": "psw"
-        },
-        {
-            "email": "qaz@qaz.lt",
-            "password": "psw"
-        },
-        {
-            "email": "qweasd@test.lt",
-            "password": "psw"
+            "email": "gaga@gaga.lt",
+            "password": "gaga"
         }
     ],
     "pixels": [
         {
             "coordinate_x": "0",
-            "coordinate_y": "20",
-            "color": "red",
-            "email": "1@1.lt",
-            "size": "10"
-        },
-        {
-            "coordinate_x": "450",
-            "coordinate_y": "450",
-            "color": "blue",
-            "email": "1@1.lt",
+            "coordinate_y": "0",
+            "color": "green",
+            "email": "test@test.lt",
             "size": "20"
         },
         {
-            "coordinate_x": "25",
-            "coordinate_y": "25",
-            "color": "green",
-            "email": "email@email.com",
-            "size": "10"
+            "coordinate_x": "480",
+            "coordinate_y": "480",
+            "color": "blue",
+            "email": "test@test.lt",
+            "size": "20"
         },
         {
-            "coordinate_x": "50",
-            "coordinate_y": "50",
+            "coordinate_x": "0",
+            "coordinate_y": "480",
             "color": "black",
-            "email": "email@email.com",
-            "size": "10"
-        },
-        {
-            "coordinate_x": "250",
-            "coordinate_y": "250",
-            "color": "blue",
-            "email": "email@email.com",
-            "size": "10"
-        },
-        {
-            "coordinate_x": "50",
-            "coordinate_y": "25",
-            "color": "red",
-            "email": "email@email.com",
-            "size": "10"
-        },
-        {
-            "coordinate_x": "300",
-            "coordinate_y": "300",
-            "color": "blue",
-            "email": "email@email.com",
-            "size": "20"
-        },
-        {
-            "coordinate_x": "350",
-            "coordinate_y": "350",
-            "color": "red",
-            "email": "email@email.com",
-            "size": "10"
-        },
-        {
-            "coordinate_x": "50",
-            "coordinate_y": "250",
-            "color": "green",
-            "email": "email@email.com",
-            "size": "10"
-        },
-        {
-            "coordinate_x": "300",
-            "coordinate_y": "350",
-            "color": "red",
-            "email": "email@email.com",
-            "size": "20"
-        },
-        {
-            "coordinate_x": "400",
-            "coordinate_y": "400",
-            "color": "green",
-            "email": "email@email.com",
-            "size": "20"
-        },
-        {
-            "coordinate_x": "200",
-            "coordinate_y": "150",
-            "color": "black",
-            "email": "testas@testas.lt",
-            "size": "20"
-        },
-        {
-            "coordinate_x": "1",
-            "coordinate_y": "450",
-            "color": "red",
-            "email": "testas@testas.lt",
-            "size": "20"
-        },
-        {
-            "coordinate_x": null,
-            "coordinate_y": null,
-            "color": null,
-            "email": "testas@testas.lt",
-            "size": null
-        },
-        {
-            "coordinate_x": null,
-            "coordinate_y": null,
-            "color": null,
-            "email": "testas@testas.lt",
-            "size": null
-        },
-        {
-            "coordinate_x": null,
-            "coordinate_y": null,
-            "color": null,
-            "email": "testas@testas.lt",
-            "size": null
-        },
-        {
-            "coordinate_x": "25",
-            "coordinate_y": "349",
-            "color": "red",
-            "email": "testas@testas.lt",
-            "size": "20"
-        },
-        {
-            "coordinate_x": "325",
-            "coordinate_y": "325",
-            "color": "red",
-            "email": "testas@testas.lt",
-            "size": "20"
-        },
-        {
-            "coordinate_x": "1",
-            "coordinate_y": "269",
-            "color": "green",
-            "email": "qaz@qaz.lt",
-            "size": "20"
-        },
-        {
-            "coordinate_x": "16",
-            "coordinate_y": "300",
-            "color": "red",
-            "email": "qwe@asd",
+            "email": "gaga@gaga.lt",
             "size": "20"
         }
     ]

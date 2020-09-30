@@ -78,7 +78,7 @@ function validate_field_age (string $field_value, array &$field): bool
  */
 function validate_field_range (string $field_value, array &$field, array $params): ?bool
 {
-	if (($field_value < $params['min']) || ($field_value > $params['max'])) {
+	if ((intval($field_value) < $params['min']) || (intval($field_value) > $params['max'])) {
 		$field['error'] = strtr('Laukelio vertė turi būti @from iki @to', [
 			'@from' => $params['min'],
 			'@to' => $params['max']

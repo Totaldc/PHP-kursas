@@ -22,9 +22,10 @@ class BasePage extends Page
 	public function __construct ()
 	{
 		$nav = new Navigation();
+		
 		$this->addCSS('assets/css/style.css');
 		$this->setHeader($nav->render());
 		$this->setContent('Content');
-		$this->setFooter('Footer');
+		$this->setFooter('');
 	}
 }

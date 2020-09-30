@@ -2,33 +2,40 @@
 
 namespace App\Views\Forms;
 
-class LoginForm extends \Core\Views\Form {
-	
-	public function  __construct (array $form = [])
+use Core\Views\Form;
+
+class LoginForm extends Form
+{
+	public function __construct ()
 	{
-		$form_login = [
+		$form_array = [
 			'attr' => [
 				'method' => 'POST',
 			],
 			'fields' => [
 				'email' => [
-					'label' => 'Your Email:',
+					'label' => 'Enter Email:',
 					'type' => 'email',
 					'validators' => [
 						'validate_field_not_empty',
 					],
 					'extra' => [
 						'attr' => [
-							'placeholder' => 'Pvz. aivaras@makdraiveris.lt',
+							'placeholder' => 'Pvz. umpa@lumpa.lt',
 						],
 					],
 				],
 				'password' => [
-					'label' => 'Password:',
+					'label' => 'Enter Password:',
 					'type' => 'password',
 					'validators' => [
 						'validate_field_not_empty',
 					],
+//					'extra' => [
+//						'attr' => [
+//							'placeholder' => 'Enter your password',
+//						],
+//					],
 				],
 			],
 			'buttons' => [
@@ -38,12 +45,11 @@ class LoginForm extends \Core\Views\Form {
 					'value' => 'submit',
 				],
 			],
-			'validators' => [
-				'validate_login'
-			]
+//			'validators' => [
+//				'validate_login'
+//			]
 		];
 		
-		parent::__construct($form_login);
+		parent::__construct($form_array);
 	}
-	
 }

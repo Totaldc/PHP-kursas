@@ -1,5 +1,7 @@
 <?php
 
+use App\App;
+
 function generate_nav(): array
 {
 	$nav = [
@@ -8,7 +10,7 @@ function generate_nav(): array
 			'title' => 'Home'
 		],
 	];
-	if (is_logged_in()) {
+	if (App::$session->getUser()) {
 		$nav[] = ['url' => 'add.php', 'title' => 'Add'];
 		$nav[] = ['url' => 'my.php', 'title' => 'My'];
 		$nav[] = ['url' => 'logout.php', 'title' => 'Logout'];

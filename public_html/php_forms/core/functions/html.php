@@ -107,15 +107,15 @@ function range_attr (string $field_id, array $field)
  * Generates button
  *
  * @param array $button
+ * @param string $button_id
  * @return string
  */
-function button_attr (array $button, $button_id)
+function button_attr (array $button, string $button_id)
 {
 	$button_data = [
 		'name' => 'action',
 		'type' => $button['type'],
 		'value' => $button_id,
-		
 	];
 	
 	$button_data += $button['extra']['attr'] ?? [];

@@ -1,33 +1,26 @@
 <?php
-require 'bootloader.php';
 
 use App\App;
-use App\Users\User;
-
+use App\Views\Forms\LoginForm;
+use App\Views\Navigation;
 use App\Views\Pages\BasePage;
 use Core\Views\Content;
-use Core\Views\Form;
 
+require('bootloader.php');
 
+$form = new LoginForm();
 
-
-$login = new \App\Views\Forms\LoginForm();
-
-
-
-if ($login->isSubmitted()) {
-//	$form_values = sanitize_form_input_values($form);
-	if ($login->validate()) {
-//		App::$session->login($form_values['email'], $form_values['password']);
-		header('Location: index.php');
-	} else {
-		$message = 'Prisijungti nepavyko';
+if ($form->isSubmitted()) {
+	if ($form->validate()) {
+		App::$session->login($form->getSubmitData()['email'], $form->getSubmitData()['password'])
+			? header('Location: index.php') : $error = 'Prisijungti nepavyko!';
 	}
 }
 
-$content = new Content();
+$content = new Content(['form' => $form->render(), 'error' => $error ?? null]);
 
-$indexPage = new BasePage();
-$indexPage->setTitle('Index: Login');
-$indexPage->setContent($content->render('login.tpl.php'));
-print $indexPage->render();
+$login_page = new BasePage();
+$login_page->setTitle('Login');
+$login_page->setContent($content->render('login.tpl.php'));
+print $login_page->render();
+?>

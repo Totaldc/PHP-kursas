@@ -2,12 +2,12 @@
 
 namespace App\Views\Forms;
 
+use Core\Views\Form;
 
-class RegisterForm extends \Core\Views\Form {
-	
-	public function  __construct (array $form = [])
+class RegisterForm extends Form
+{
+	public function __construct ()
 	{
-		
 		$form_array = [
 			'attr' => [
 				'method' => 'POST',
@@ -60,7 +60,5 @@ class RegisterForm extends \Core\Views\Form {
 		];
 		
 		parent::__construct($form_array);
-		
 	}
-	
 }

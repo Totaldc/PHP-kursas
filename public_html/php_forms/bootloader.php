@@ -15,4 +15,3 @@ require('app/functions/auth.php');
 require('app/functions/html.php');
 
 $app = new App\App();
-

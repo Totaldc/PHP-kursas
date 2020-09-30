@@ -12,10 +12,10 @@ use App\App;
 function validate_user_unique (string $field_value, array &$field): bool
 {
 	if (App::$db->getRowsWhere('users', ['email' => $field_value])) {
-		$field['error'] = 'Toks vartotojas jau egzistuoja';
+		$field['error'] = 'Toks vartotojas jau egzistuoja!';
 		return false;
 	}
-	
+
 	return true;
 }
 
@@ -25,10 +25,10 @@ function validate_user_unique (string $field_value, array &$field): bool
  * @param array $field_value
  * @return bool
  */
-function validate_login (array $field_value): bool
-{
-	return App::$session->login($field_value['email'], $field_value['password']);
-}
+//function validate_login (array $field_value): bool
+//{
+//	return App::$session->login($field_value['email'], $field_value['password']);
+//}
 
 /**
  * Validates if pixel coordinates are taken
@@ -39,23 +39,26 @@ function validate_login (array $field_value): bool
  */
 function validate_pixel_coordinates (array $form_values, array &$form)
 {
+	$cord_x = intval($form_values['coordinate_x']);
+	$cord_y = intval($form_values['coordinate_y']);
+	
 	$pixels = App::$db->getRowsWhere('pixels', []);
 	foreach ($pixels as $pixel) {
-		if (($form_values['coordinate_x'] + $form_values['size'] >= $pixel['coordinate_x']
-				&& $form_values['coordinate_x'] <=
+		if (($cord_x + $form_values['size'] >= $pixel['coordinate_x']
+				&& $cord_x <=
 				$pixel['coordinate_x'] + $pixel['size'])
 			&&
-			($form_values['coordinate_y'] + $form_values['size'] >= $pixel['coordinate_y'] &&
-				$form_values['coordinate_y'] <= $pixel['coordinate_y'] + $pixel['size'])) {
+			($cord_y + $form_values['size'] >= $pixel['coordinate_y'] &&
+				$cord_y <= $pixel['coordinate_y'] + $pixel['size'])) {
 			$form['error'] = 'Koordinates jau uzimtos';
 			return false;
 		}
 	}
-	if ($form_values['coordinate_x'] + $form_values['size'] > 500) {
+	if ($cord_x + $form_values['size'] > 500) {
 		$form['error'] = 'Pixelis per didelis';
 		return false;
 	}
-	if ($form_values['coordinate_y'] + $form_values['size'] > 500) {
+	if ($cord_y + $form_values['size'] > 500) {
 		$form['error'] = 'Pixelis per didelis';
 		return false;
 	}

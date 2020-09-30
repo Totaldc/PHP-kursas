@@ -1,12 +1,7 @@
 <?php
-abstract class Tube {
-    protected $name = 'Tube';
 
-    abstract protected function getName();
-}
+require 'bootloader.php';
 
-class YouTube extends Tube {
-    public function getName() {
-        return $this->name;
-    }
-}
+$controller = new App\Controllers\PixelController();
+
+print $controller->index();
