@@ -11,6 +11,10 @@
         {
             "email": "gaga@gaga.lt",
             "password": "gaga"
+        },
+        {
+            "email": "email@email.com",
+            "password": "psw"
         }
     ],
     "pixels": [
@@ -34,6 +38,13 @@
             "color": "black",
             "email": "gaga@gaga.lt",
             "size": "20"
+        },
+        {
+            "coordinate_x": "250",
+            "coordinate_y": "250",
+            "color": "green",
+            "email": "email@email.com",
+            "size": "10"
         }
     ]
 }
