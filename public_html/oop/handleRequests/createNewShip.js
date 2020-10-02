@@ -1,4 +1,5 @@
 const form = document.querySelector('#createNewShip');
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const inputs = Array.from(form.querySelectorAll('[name]'));
@@ -16,6 +17,6 @@ form.addEventListener('submit', (e) => {
       console.log(data);
     }))
     .catch(() => {
-      alert('Kazkas blogai su ivedimu, \n\t -Ponia validacija-')
+      // alert('Kazkas blogai su ivedimu, \n\t -Ponia validacija-')
     })
 });

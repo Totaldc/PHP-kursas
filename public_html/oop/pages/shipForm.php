@@ -1,5 +1,5 @@
 <div class="container">
-  <form id="createNewShip" method="POST" action="<?= REQUEST_HANDLERS_PATH?>createNewShip.php" class="form">
+  <form id="createNewShip" method="POST" action="<?= REQUEST_HANDLERS_PATH ?>createNewShip.php" class="form">
     <h2>Naujo laivo kūrimas</h2>
     <div class="justify-space-between-horizontaly">
       <div class="form-group">

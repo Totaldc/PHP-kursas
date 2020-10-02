@@ -9,7 +9,7 @@ class Ship implements IJSONSerialiazible
   private string $description;
   private array $images;
 
-  public function __construct(string $brand, string $model, int $rooms = null)
+  public function __construct(string $brand, string $model, int $rooms = null, string $description = "", array $images = [])
   {
     $this->brand = $brand;
     $this->model = $model;
@@ -20,7 +20,7 @@ class Ship implements IJSONSerialiazible
         'taken' => false
       ]);
     }
-    $this->images = [];
+    $this->images = $images;
   }
 
   public static function createFromAssocArr(array $arr): object
