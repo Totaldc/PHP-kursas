@@ -83,3 +83,8 @@ function validate_option (string $field_value, array $field)
 	
 	return false;
 }
+
+
+function validate_cash($field_value, $field){
+	
+}

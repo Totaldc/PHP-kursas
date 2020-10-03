@@ -23,6 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f526103-a8b0-419d-b897-b66347590d32" name="Default Changelist" comment="Individual project pixels">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/classes/Controllers/PixelsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Controllers/PixelsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/data/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/db.json" afterDir="false" />
     </list>
@@ -198,7 +199,7 @@
       <workItem from="1601490246885" duration="2659000" />
       <workItem from="1601531611147" duration="5797000" />
       <workItem from="1601713746006" duration="680000" />
-      <workItem from="1601715329541" duration="1034000" />
+      <workItem from="1601715329541" duration="1455000" />
     </task>
     <task id="LOCAL-00001" summary="Individual project pixels">
       <created>1600349191957</created>

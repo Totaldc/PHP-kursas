@@ -23,7 +23,7 @@ class AddForm extends Form
 						'validate_field_is_number',
 						'validate_field_range' => [
 							'min' => 50,
-							'max' => 9999,
+							'max' => 100,
 						],
 					],
 					'extra' => [

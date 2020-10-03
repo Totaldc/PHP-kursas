@@ -108,24 +108,26 @@ class PixelsController extends Controller
 			header('Location:'. Router::getUrl('login'));
 			exit;
 		}
-		
 		$pixel = new Pixel($form->getSubmitData());
 		$userRows = App::$db->getRowsWhere('accounts', ['email' => $_SESSION['email']]);
 		var_dump($userRows);
+		if ($form->isSubmitted()){
+			if($form->validate()){
 		foreach ($userRows as $key => $row) {
-			var_dump($key);
-			var_dump($row['balansas']);
+	
 			if($form->getSubmitAction() === 'submit'){
 				print 'valio blet, submit buvo';
 				$income = (int)$_POST['balansas'] + (int)$row['balansas'];
 				App::$db->updateRow('accounts', $key, ['balansas' => $income, 'email' => $_SESSION['email']]);
-			} 
+				var_dump($_POST['balansas']);
+
+			} elseif ($form->getSubmitAction() === 'submit2'){
+				print 'valio blet, submit2 buvo';
+				$income =(int)$row['balansas'] - (int)$_POST['balansas'];
+				App::$db->updateRow('accounts', $key, ['balansas' => $income, 'email' => $_SESSION['email']]);
+			}
 		}
-		if($form->getSubmitAction() === 'submit2'){
-			print 'valio blet, submit2 buvo';
-		} elseif($form->getSubmitAction() === 'submit') {
-				$pixel->setEmail(App::$session->getUser()['email']);
-				App::$db->updateRow('accounts', 'email@email.com', $pixel->_getData());
+			}
 		}
 
 
