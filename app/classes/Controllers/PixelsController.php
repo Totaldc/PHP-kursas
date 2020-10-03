@@ -117,8 +117,8 @@ class PixelsController extends Controller
 			var_dump($row['balansas']);
 			if($form->getSubmitAction() === 'submit'){
 				print 'valio blet, submit buvo';
-				
-				App::$db->updateRow('accounts', $key, ['balansas' => $_POST['balansas'], 'email' => $_SESSION['email']]);
+				$income = (int)$_POST['balansas'] + (int)$row['balansas'];
+				App::$db->updateRow('accounts', $key, ['balansas' => $income, 'email' => $_SESSION['email']]);
 			} 
 		}
 		if($form->getSubmitAction() === 'submit2'){
