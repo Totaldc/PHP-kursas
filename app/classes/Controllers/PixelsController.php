@@ -6,8 +6,10 @@ use App\Abstracts\Controller;
 use App\App;
 use App\Pixels\Pixel;
 use App\Views\Forms\PixelAddForm;
+use App\Views\Forms\AddForm;
 use Core\Router;
 use Core\Views\Content;
+use Core\Views\Form;
 
 class PixelsController extends Controller
 {
@@ -63,9 +65,6 @@ class PixelsController extends Controller
 			exit;
 		}
 		
-		if (App::$db->tableExists('pixels')) {
-			$pixels = App::$db->getRowsWhere('pixels', ['email' => $_SESSION['email']]);
-		}
 		
 		$content = new Content($pixels);
 		
@@ -75,6 +74,7 @@ class PixelsController extends Controller
 		
 		return $this->page->render();
 	}
+
 	
 	function add (): ?string
 	{
@@ -94,8 +94,45 @@ class PixelsController extends Controller
 			}
 		}
 		
+		
 		$this->page->setTitle('Add Pixels');
 		$this->page->setContent($form->render());
+		return $this->page->render();
+	}
+
+	function game (): ?string
+	{
+		$form = new AddForm();
+		
+		if (!App::$session->getUser()) {
+			header('Location:'. Router::getUrl('login'));
+			exit;
+		}
+		
+		$pixel = new Pixel($form->getSubmitData());
+		$userRows = App::$db->getRowsWhere('accounts', ['email' => $_SESSION['email']]);
+		var_dump($userRows);
+		foreach ($userRows as $key => $row) {
+			var_dump($key);
+			var_dump($row['balansas']);
+			if($form->getSubmitAction() === 'submit'){
+				print 'valio blet, submit buvo';
+				
+				App::$db->updateRow('accounts', $key, ['balansas' => $_POST['balansas'], 'email' => $_SESSION['email']]);
+			} 
+		}
+		if($form->getSubmitAction() === 'submit2'){
+			print 'valio blet, submit2 buvo';
+		} elseif($form->getSubmitAction() === 'submit') {
+				$pixel->setEmail(App::$session->getUser()['email']);
+				App::$db->updateRow('accounts', 'email@email.com', $pixel->_getData());
+		}
+
+
+		$content = new Content(['form' => $form->render(), 'error' => $error ?? null]);
+		
+		$this->page->setTitle('Add cash');
+		$this->page->setContent($content->render('addCash.tpl.php'));
 		return $this->page->render();
 	}
 }

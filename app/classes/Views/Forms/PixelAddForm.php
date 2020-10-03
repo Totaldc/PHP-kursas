@@ -23,7 +23,7 @@ class PixelAddForm extends Form
 						'validate_field_is_number',
 						'validate_field_range' => [
 							'min' => 0,
-							'max' => 499,
+							'max' => 9999,
 						],
 					],
 					'extra' => [
@@ -40,7 +40,7 @@ class PixelAddForm extends Form
 						'validate_field_is_number',
 						'validate_field_range' => [
 							'min' => 0,
-							'max' => 499,
+							'max' => 9999,
 						],
 					],
 					'extra' => [

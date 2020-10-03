@@ -1,44 +1,18 @@
 {
     "users": [
         {
-            "email": "test@test.lt",
-            "password": "test"
-        },
-        {
-            "email": "a@test.lt",
-            "password": "test"
-        },
-        {
-            "email": "gaga@gaga.lt",
-            "password": "gaga"
-        },
-        {
-            "email": "aistonija16@gmail.com",
-            "password": "12"
-        },
-        {
-            "email": "um@um.lt",
-            "password": "um"
-        },
-        {
             "email": "email@email.com",
             "password": "psw"
         }
     ],
-    "pixels": [
+    "accounts": [
         {
-            "coordinate_x": "0",
-            "coordinate_y": "0",
-            "color": "green",
-            "email": "test@test.lt",
-            "size": "20"
+            "balansas": "650",
+            "email": "email@email.com"
         },
         {
-            "coordinate_x": "20",
-            "coordinate_y": "0",
-            "color": "blue",
-            "email": "test@test.lt",
-            "size": "20"
+            "balansas": "500",
+            "email": "php@php.com"
         }
     ]
 }

@@ -21,7 +21,7 @@ class Navigation extends View
 			$nav[] = ['url' => Router::getUrl('add'), 'title' => 'Add'];
 			$nav[] = ['url' => Router::getUrl('my'), 'title' => 'My'];
 			$nav[] = ['url' => Router::getUrl('logout'), 'title' => 'Logout'];
-			$nav[] = ['url' => Router::getUrl('users'), 'title' => 'Users'];
+			$nav[] = ['url' => Router::getUrl('game'), 'title' => 'Game'];
 		} else {
 			$nav[] = ['url' => Router::getUrl('register'), 'title' => 'Register'];
 			$nav[] = ['url' => Router::getUrl('login'), 'title' => 'Login'];

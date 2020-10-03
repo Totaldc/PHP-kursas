@@ -7,42 +7,20 @@ use Core\DataHolder;
 class Pixel extends DataHolder
 {
 	protected array $properties = [
-		'coordinate_x',
-		'coordinate_y',
-		'color',
+		'balansas',
 		'email',
-		'size'
 	];
 	
-	public function setCoordinateX (?int $x)
+	public function setBalansas (?int $balansas)
 	{
-		$this->data['coordinate_x'] = $x;
+		$this->data['balansas'] = $balansas;
 	}
 	
-	public function getCoordinateX (): ?string
+	public function getBalansas (): ?string
 	{
-		return $this->data['coordinate_x'] ?? null;
+		return $this->data['balansas'] ?? null;
 	}
 	
-	public function setCoordinateY (?int $y)
-	{
-		$this->data['coordinate_y'] = $y;
-	}
-	
-	public function getCoordinateY (): ?string
-	{
-		return $this->data['coordinate_y'] ?? null;
-	}
-	
-	public function setColor (?string $color)
-	{
-		$this->data['color'] = $color;
-	}
-	
-	public function getColor (): ?string
-	{
-		return $this->data['color'] ?? null;
-	}
 	
 	public function setEmail (?string $email)
 	{
@@ -54,13 +32,4 @@ class Pixel extends DataHolder
 		return $this->data['email'] ?? null;
 	}
 	
-	public function setsize (?int $size)
-	{
-		$this->data['size'] = $size;
-	}
-	
-	public function getSize (): ?string
-	{
-		return $this->data['size'] ?? null;
-	}
 }

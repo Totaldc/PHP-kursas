@@ -21,7 +21,7 @@ class LoginForm extends Form
 					],
 					'extra' => [
 						'attr' => [
-							'placeholder' => 'Pvz. umpa@lumpa.lt',
+							'placeholder' => 'Pvz. jusu@email.lt',
 						],
 					],
 				],
