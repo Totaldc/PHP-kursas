@@ -3,16 +3,52 @@
         {
             "email": "email@email.com",
             "password": "psw"
+        },
+        {
+            "email": "qwe@123456",
+            "password": "psw"
+        },
+        {
+            "email": "belekas@bekelo.lt",
+            "password": "psw"
+        },
+        {
+            "email": "belekas@bekeloks.lt",
+            "password": "psw"
+        },
+        {
+            "email": "paulius@paulius.pk",
+            "password": "psw"
+        },
+        {
+            "email": "pz@pz.lt",
+            "password": "psw"
+        },
+        {
+            "email": "nupz@pz.lt",
+            "password": "psw"
         }
     ],
     "accounts": [
         {
-            "balansas": 250,
+            "balansas": 2000,
             "email": "email@email.com"
         },
         {
-            "balansas": "500",
-            "email": "php@php.com"
+            "email": null,
+            "balance": 0
+        },
+        {
+            "email": null,
+            "balance": 0
+        },
+        {
+            "email": null,
+            "balansas": 0
+        },
+        {
+            "balansas": 1000,
+            "email": "nupz@pz.lt"
         }
     ]
 }

@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Abstracts\Controller;
 use App\App;
-use App\Pixels\Pixel;
+use App\Pixels\Game;
 use App\Views\Forms\AddForm;
 use App\Views\Forms\PixelAddForm;
 use App\Views\Forms\PlayForm;
@@ -12,7 +12,7 @@ use Core\Router;
 use Core\Views\Content;
 use Core\Views\Form;
 
-class PixelsController extends Controller
+class GameController extends Controller
 {
 
     /**
@@ -42,11 +42,11 @@ class PixelsController extends Controller
      */
     public function index(): ?string
     {
-        //kintamasis $pixels pixelių masyvo duomenis iš db.json
-        $pixels = App::$db->getRowsWhere('pixels', []);
+        //kintamasis $games pixelių masyvo duomenis iš db.json
+        $games = App::$db->getRowsWhere('pixels', []);
 
         //sukuriamas naujas objektas, kurio pagalba gaunamas pixels masyvas (per View klasę), paduodamas $template_path???
-        $content = new Content($pixels);
+        $content = new Content($games);
 
         //nurodomas page Title
         $this->page->setTitle('All Pixels');
@@ -58,45 +58,6 @@ class PixelsController extends Controller
         return $this->page->render();
     }
 
-    public function my(): ?string
-    {
-        if (!App::$session->getUser()) {
-            header('Location:' . Router::getUrl('login'));
-            exit;
-        }
-
-        $content = new Content($pixels);
-
-        $this->page->setTitle('My Pixels');
-
-        $this->page->setContent($content->render('pixels/index.tpl.php'));
-
-        return $this->page->render();
-    }
-
-    public function add(): ?string
-    {
-        if (!App::$session->getUser()) {
-            header('Location:' . Router::getUrl('login'));
-            exit;
-        }
-
-        $form = new PixelAddForm();
-
-        if ($form->isSubmitted()) {
-            if ($form->validate()) {
-                $pixel = new Pixel($form->getSubmitData());
-                $pixel->setEmail(App::$session->getUser()['email']);
-                App::$db->insertRow('pixels', $pixel->_getData());
-                header('Location:' . Router::getUrl('my'));
-            }
-        }
-
-        $this->page->setTitle('Add Pixels');
-        $this->page->setContent($form->render());
-        return $this->page->render();
-    }
-
     public function game(): ?string
     {
         $form = new AddForm();
@@ -105,10 +66,15 @@ class PixelsController extends Controller
             header('Location:' . Router::getUrl('login'));
             exit;
         }
-        $pixel = new Pixel($form->getSubmitData());
+        $game = new Game($form->getSubmitData());
         $userRows = App::$db->getRowsWhere('accounts', ['email' => $_SESSION['email']]);
+        // foreach($userRows as $key => $row){
+        //     if($row['balansas']){
+        //         App::$db->insertRow('accounts', ['balansas' => 0], $key)
+        //     }
+        // }
+        // rowExists
         // var_dump($userRows);
-
         if ($form->isSubmitted()) {
             if ($form->validate()) {
                 foreach ($userRows as $key => $row) {
@@ -148,7 +114,7 @@ class PixelsController extends Controller
             header('Location:' . Router::getUrl('login'));
             exit;
         }
-        $pixel = new Pixel($form->getSubmitData());
+        $game = new Game($form->getSubmitData());
         $userRows = App::$db->getRowsWhere('accounts', ['email' => $_SESSION['email']]);
         var_dump($userRows);
         if ($form->isSubmitted()) {
@@ -156,7 +122,6 @@ class PixelsController extends Controller
                 foreach ($userRows as $key => $row) {
 
                     if ($form->getSubmitAction() === 'submit2') {
-                        print 'valio blet, submit2 buvo';
 						$income = (int) $row['balansas'] - (int) $_POST['balansas'];
 						
 						foreach($images as &$image){

@@ -4,7 +4,7 @@ namespace App\Pixels;
 
 use Core\DataHolder;
 
-class Pixel extends DataHolder
+class Game extends DataHolder
 {
 	protected array $properties = [
 		'balansas',

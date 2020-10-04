@@ -19,6 +19,10 @@ main {
     min-height: calc(100vh - 165px);
 }
 
+h2 {
+    text-align: center;
+}
+
 .container {
     width: 80%;
     margin: 50px auto;

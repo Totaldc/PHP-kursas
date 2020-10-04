@@ -44,7 +44,8 @@ class RegisterController extends Controller
         if ($form->isSubmitted()) {
             if ($form->validate()) {
                 $user = new User($form->getSubmitData());
-                App::$db->insertRow('users', $user->_getData());
+				App::$db->insertRow('users', $user->_getData());
+				App::$db->insertRow('accounts', ['email' => $user->getEmail(), 'balansas' => 0]);
                 header('Location:' . Router::getUrl('login'));
                 exit;
             }
