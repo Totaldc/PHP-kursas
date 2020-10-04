@@ -8,4 +8,5 @@ Router::add('logout', '/logout', '\App\Controllers\Auth\LogoutController', 'inde
 Router::add('index', '/', '\App\Controllers\PixelsController', 'index');
 Router::add('my', '/my', '\App\Controllers\PixelsController', 'my');
 Router::add('add', '/add', '\App\Controllers\PixelsController', 'add');
-Router::add('game', '/game', '\App\Controllers\PixelsController', 'game');
+Router::add('index', '/', '\App\Controllers\PixelsController', 'game');
+Router::add('play', '/play', '\App\Controllers\PixelsController',  'play');

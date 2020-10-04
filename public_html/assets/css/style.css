@@ -238,3 +238,40 @@ input[type=range]::-ms-thumb {
     cursor: pointer;
 }
 
+.play-0 {
+    background-image: url('https://cdn.pixabay.com/photo/2015/11/03/08/56/question-mark-1019820_1280.jpg');
+    background-size: contain;
+}
+.play-1 {
+    background-image: url('https://images.theconversation.com/files/350865/original/file-20200803-24-50u91u.jpg?ixlib=rb-1.1.0&rect=37%2C29%2C4955%2C3293&q=45&auto=format&w=926&fit=clip');
+    width: 33%;
+    height: 150px;
+}
+.play-2 {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcReRqYTwhKXSb0a-L-hL8TsBcN2Af6zMG-uYg&usqp=CAU');
+    width: 33%;
+    height: 150px;
+}
+.play-3 {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS7GfW0LQ3d562ea1Xrikto7_289ge8qKEuUA&usqp=CAU');
+    width: 33%;
+    height: 150px;
+}
+.play-images {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.play{
+    background-color: red;
+    width: 100px;
+    height: 100px;
+}
+
+.flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

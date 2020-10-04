@@ -6,7 +6,7 @@ namespace App\Views\Forms;
 
 use Core\Views\Form;
 
-class AddForm extends Form
+class PlayForm extends Form
 {
 	public function __construct ()
 	{
@@ -14,7 +14,12 @@ class AddForm extends Form
 			'attr' => [
 				'method' => 'POST',
 			],
-			'fields' => [
+			'pic' => [
+                'img1' => 'https://hatrabbits.com/wp-content/uploads/2016/12/rare-combinaties.jpg',
+                'img2' => 'https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+                'img3' => 'https://www.computerhope.com/jargon/r/random-dice.jpg',
+            ],
+            'fields' => [
 				'balansas' => [
 					'type' => 'text',
 					'value' => '',
@@ -22,8 +27,8 @@ class AddForm extends Form
 						'validate_field_not_empty',
 						'validate_field_is_number',
 						'validate_field_range' => [
-							'min' => 50,
-							'max' => 999999,
+							'min' => 5,
+							'max' => 5,
 						],
 					],
 					'extra' => [
@@ -32,20 +37,14 @@ class AddForm extends Form
 						],
 					],
 				],
-			],
-			'buttons' => [
-				'submit' => [
-					'title' => 'INESTI',
-					'type' => 'submit',
-                ],
+            ],
+            'buttons' => [
                 'submit2' => [
-					'title' => 'NUSIIMTI',
+					'title' => 'STATYK',
 					'type' => 'submit',
 				],
 			],
-			'validators' => [
-				// 'validate_pixel_coordinates',
-			]
+	
 		];
 
 		parent::__construct($form_array);
